@@ -116,6 +116,11 @@
 
 /* Ottimizzazione per dispositivi mobili */
 @media (max-width: 768px) {
+    body {
+        height: auto;
+        padding: 20px;
+    }
+
     header {
         padding: 20px 10%;
     }
@@ -147,6 +152,10 @@
 
 /* Ottimizzazione per schermi molto piccoli (mobile) */
 @media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
     header {
         padding: 20px 5%;
     }
@@ -164,32 +173,6 @@
     .social-buttons {
         flex-direction: row;
     }
-}
-.section {
-    height: 80vh;
-    display: flex;
-    flex-direction: column; /* Dispone il titolo e il testo in colonna */
-    align-items: center; /* Centra orizzontalmente */
-    justify-content: center; /* Centra verticalmente */
-    font-size: 48px;
-    font-weight: bold;
-    padding: 0 10%;
-    text-transform: uppercase;
-    text-align: center; /* Centra il testo */
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s, transform 1s;
-    margin-bottom: 10px;
-}
-
-.content-text {
-    font-size: 24px;
-    line-height: 1.5;
-    text-align: center; /* Assicura che il testo sia centrato */
-    margin-top: 10px; /* Spazio tra il titolo e il testo */
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s, transform 1s;
 }
 
 /* Il resto del CSS rimane invariato */
