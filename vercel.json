@@ -2,7 +2,7 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "www.webg.site",
+      "destination": "https://webg.site",
       "permanent": true
     }
   ]
