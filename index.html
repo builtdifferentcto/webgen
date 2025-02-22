@@ -25,6 +25,120 @@
     overflow-x: hidden;
 }
 
+/* CSS di base aggiornato per il desktop */
+/* Packages Section */
+/* Packages Section */
+#packages {
+  padding: 50px 10%;
+  text-align: center;
+  margin-top: 7px;
+}
+/* Ingrandisce e allunga le tabelle BASIC e PREMIUM */
+.package-container {
+    display: flex;
+    justify-content: center;
+    gap: 100px; /* Aumentato il gap tra i pacchetti */
+    position: relative;
+}
+
+.package {
+    width: 500px; /* Aumenta la larghezza dei pacchetti */
+    padding: 50px; /* Aggiunge più padding per ingrandire il contenuto */
+    text-align: center;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+    box-sizing: border-box; /* Garantisce che padding e border siano inclusi nella larghezza */
+}
+
+.package .description {
+    display: none;
+    font-size: 20px; /* Aumenta la dimensione del testo nella descrizione */
+    margin-top: 70px;
+}
+
+/* Packages Section */
+#packages {
+  padding: 70px 10%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Container */
+.package-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  position: relative;
+}
+
+/* Individual Packages */
+.package {
+  width: 400px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+}
+
+/* Nasconde la descrizione di default */
+.package .description {
+  display: none;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* Quando passi sopra, mostra il testo e nasconde l’altro titolo */
+.package:hover {
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.package:hover .description {
+  display: block;
+}
+.package h2 {
+    font-size: 32px; /* Aumenta la dimensione del titolo */
+    font-weight: bold; /* Puoi anche rendere il titolo più spesso, se desideri */
+}
+
+/* Nasconde completamente l’altro titolo */
+.package-container:hover .package:not(:hover) h2 {
+  opacity: 0;
+}
+
+
+.section {
+    height: 80vh;
+    display: flex;
+    flex-direction: column; /* Dispone il titolo e il testo in colonna */
+    align-items: center; /* Centra orizzontalmente */
+    justify-content: center; /* Centra verticalmente */
+    font-size: 48px;
+    font-weight: bold;
+    padding: 0 10%;
+    text-transform: uppercase;
+    text-align: center; /* Centra il testo */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s, transform 1s;
+    margin-bottom: 10px;
+}
+
+.content-text {
+    font-size: 24px;
+    line-height: 1.5;
+    text-align: center; /* Assicura che il testo sia centrato */
+    margin-top: 10px; /* Spazio tra il titolo e il testo */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s, transform 1s;
+}
+
+/* Il resto del CSS rimane invariato */
 
         header {
             display: flex;
@@ -59,37 +173,7 @@
         nav ul li a:hover {
             opacity: 0.7;
         }
-     /* CSS di base aggiornato per il desktop */
-
-.section {
-    height: 80vh;
-    display: flex;
-    flex-direction: column; /* Dispone il titolo e il testo in colonna */
-    align-items: center; /* Centra orizzontalmente */
-    justify-content: center; /* Centra verticalmente */
-    font-size: 48px;
-    font-weight: bold;
-    padding: 0 10%;
-    text-transform: uppercase;
-    text-align: center; /* Centra il testo */
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s, transform 1s;
-    margin-bottom: 10px;
-}
-
-.content-text {
-    font-size: 24px;
-    line-height: 1.5;
-    text-align: center; /* Assicura che il testo sia centrato */
-    margin-top: 10px; /* Spazio tra il titolo e il testo */
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s, transform 1s;
-}
-
-/* Il resto del CSS rimane invariato */
-
+     
   }
     .social-buttons {
       margin-bottom: 20px; /* Spazio tra i bottoni e il footer */
@@ -118,218 +202,6 @@
 .navbar a:hover {
   color: #98AFC7 !important;
   text-shadow: 0px 0px 10px rgba(152, 175, 199, 0.8); /* Effetto glow */
-}
-/* CSS di base rimane invariato */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-body {
-    background-image: url('https://imagizer.imageshack.com/img924/7884/CNSzUh.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    color: black;
-    text-align: center;
-    overflow-x: hidden;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    position: fixed;
-    width: 90%;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    transition: background 0.3s;
-}
-header.scrolled {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-}
-nav ul li {
-    margin: 0 20px;
-}
-nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
-    transition: opacity 0.3s;
-}
-nav ul li a:hover {
-    opacity: 0.7;
-}
-
-.social-buttons {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-.social-buttons a {
-    font-size: 2.5rem;
-    color: black; /* Icone nere */
-    text-decoration: none;
-}
-.social-buttons a:hover {
-    color: #FFD700;
-}
-
-.section {
-    height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    font-weight: bold;
-    padding: 0 10%;
-    text-transform: uppercase;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s, transform 1s;
-    margin-bottom: 10px;
-}
-.section.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.icon-section {
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 100px;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 1.5s, transform 1.5s;
-}
-.icon-section.show {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.social-buttons,
-.quote-button {
-    margin-top: 10px;
-}
-
-.social-buttons a, .quote-button a {
-    display: inline-block;
-    background-color: #1da1f2;
-    color: black; /* Icone nere */
-    padding: 12px 24px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-size: 18px;
-    transition: background 0.3s ease-in-out;
-}
-.social-buttons a:hover, .quote-button a:hover {
-    background-color: #0d8ecf;
-}
-
-footer {
-    padding: 40px;
-    font-size: 14px;
-    opacity: 0.6;
-}
-
-.content-text {
-    font-size: 24px;
-    line-height: 1.5;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s, transform 1s;
-}
-.content-text.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Media Queries per dispositivi mobili (max-width: 480px) */
-@media (max-width: 480px) {
-    /* Correzione dello sfondo per dispositivi mobili */
-    body {
-        background-attachment: scroll;
-    }
-    
-    /* Header e logo centrati */
-    header {
-        padding: 10px 3%;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    h1 {
-        font-size: 20px;
-        text-align: center;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    /* Menu navbar: layout orizzontale centrato */
-    nav {
-        width: 100%;
-    }
-    
-    nav ul {
-        display: flex;
-        justify-content: center;
-        flex-wrap: nowrap;
-    }
-    
-    nav ul li {
-        margin: 0 10px;
-    }
-    
-    nav ul li a {
-        font-size: 14px;
-        text-align: center;
-    }
-    
-    /* Sezioni: titoli e testo centrati */
-    .section {
-        height: auto; /* Altezza in base al contenuto */
-        padding: 20px 3%;
-        font-size: 28px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .section .content-text {
-        font-size: 16px;
-        margin-top: 10px;
-        text-align: center;
-    }
-    
-    /* Social buttons centrati */
-    .social-buttons {
-        justify-content: center;
-        margin-top: 15px;
-        flex-wrap: wrap;
-    }
-    
-    .social-buttons a, .quote-button a {
-        font-size: 1.8rem;
-        padding: 8px 16px;
-    }
 }
 
         .section {
@@ -453,6 +325,20 @@ footer {
         Basic or Premium
         <div class="content-text">Choose the package you prefer and take your project to the next level </div>
     </div>
+<section id="packages">
+  <div class="package-container">
+    <div class="package basic" onmouseover="showPackage('basic')" onmouseout="resetPackages()">
+      <h2>BASIC</h2>
+      <p class="description">Basic solutions for a simple and effective online presence.</p>
+    </div>
+    <div class="package premium" onmouseover="showPackage('premium')" onmouseout="resetPackages()">
+      <h2>PREMIUM</h2>
+      <p class="description">Advanced solutions with exclusive functionality and design.</p>
+    </div>
+  </div>
+</section>
+
+
 
     
     <div class="section" id="contact">
@@ -472,6 +358,25 @@ footer {
 </footer>
     
     <script>
+function showPackage(type) {
+  document.querySelectorAll(".package").forEach((pkg) => {
+    if (!pkg.classList.contains(type)) {
+      pkg.style.opacity = "0";
+    } else {
+      pkg.style.opacity = "1";
+      pkg.style.zIndex = "2";
+    }
+  });
+}
+
+function resetPackages() {
+  document.querySelectorAll(".package").forEach((pkg) => {
+    pkg.style.opacity = "1";
+    pkg.style.zIndex = "1";
+  });
+}
+
+
         window.addEventListener('scroll', function() {
             let header = document.querySelector('header');
             if (window.scrollY > 50) {
