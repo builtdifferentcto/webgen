@@ -59,7 +59,37 @@
         nav ul li a:hover {
             opacity: 0.7;
         }
-     
+     /* CSS di base aggiornato per il desktop */
+
+.section {
+    height: 80vh;
+    display: flex;
+    flex-direction: column; /* Dispone il titolo e il testo in colonna */
+    align-items: center; /* Centra orizzontalmente */
+    justify-content: center; /* Centra verticalmente */
+    font-size: 48px;
+    font-weight: bold;
+    padding: 0 10%;
+    text-transform: uppercase;
+    text-align: center; /* Centra il testo */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s, transform 1s;
+    margin-bottom: 10px;
+}
+
+.content-text {
+    font-size: 24px;
+    line-height: 1.5;
+    text-align: center; /* Assicura che il testo sia centrato */
+    margin-top: 10px; /* Spazio tra il titolo e il testo */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s, transform 1s;
+}
+
+/* Il resto del CSS rimane invariato */
+
   }
     .social-buttons {
       margin-bottom: 20px; /* Spazio tra i bottoni e il footer */
