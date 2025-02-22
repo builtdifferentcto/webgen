@@ -65,13 +65,13 @@
   margin-top: 20px;
 }
 
-/* Container */
 .package-container {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  position: relative;
+    display: flex;
+    flex-direction: column; /* Disporre i pacchetti in colonna */
+    gap: 20px;
+    position: relative;
 }
+
 
 /* Individual Packages */
 .package {
@@ -138,21 +138,17 @@
     transition: opacity 1s, transform 1s;
 }
 
-/* Il resto del CSS rimane invariato */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    position: fixed;
+    width: 100%; /* Cambia da 90% a 100% per un layout più largo */
+    top: 0;
+    z-index: 1000;
+}
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            position: fixed;
-            width: 90%;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            transition: background 0.3s;
-        }
         header.scrolled {
             background: rgba(0, 0, 0, 0.4);
             backdrop-filter: blur(10px);
@@ -292,6 +288,93 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Ottimizzazione per schermi più piccoli (tablet e smartphone) */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll; /* Disabilita il "fixed" per lo sfondo */
+    }
+
+    header {
+        padding: 20px 5%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .package-container {
+        flex-direction: column; /* Modifica la disposizione dei pacchetti in colonna */
+        gap: 20px;
+    }
+
+    .package {
+        width: 90%; /* Riduce la larghezza dei pacchetti */
+        padding: 20px;
+    }
+
+    .content-text {
+        font-size: 18px; /* Riduce la dimensione del testo per dispositivi mobili */
+        line-height: 1.4;
+    }
+
+    .section {
+        height: auto; /* Consente alla sezione di adattarsi meglio al contenuto */
+        font-size: 32px; /* Riduce la dimensione del titolo */
+        padding: 0 5%;
+    }
+
+    .icon-section {
+        font-size: 70px; /* Riduce la dimensione delle icone */
+    }
+
+    .social-buttons {
+        gap: 10px; /* Riduce lo spazio tra i bottoni social */
+    }
+
+    footer {
+        padding-top: 10px;
+    }
+
+    .navbar a {
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 15px 5%;
+    }
+
+    .package {
+        width: 100%; /* Fa sì che i pacchetti occupino tutta la larghezza */
+    }
+
+    .package h2 {
+        font-size: 24px; /* Riduce la dimensione del titolo dei pacchetti */
+    }
+
+    .section {
+        font-size: 24px; /* Riduce ulteriormente la dimensione del titolo */
+        padding: 0 5%;
+    }
+
+    .content-text {
+        font-size: 16px; /* Riduce la dimensione del testo per schermi più piccoli */
+    }
+
+    .social-buttons a {
+        font-size: 1.5rem; /* Riduce la dimensione delle icone social */
+    }
+}
+
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
