@@ -91,66 +91,59 @@
 }
 /* CSS di base rimane invariato */
 
-/* Media queries per schermi medi */
+/* Media Queries per la responsività mantenendo layout orizzontale */
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    padding: 15px 5%;
-  }
-
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav ul li {
-    margin: 10px 0;
-  }
-
-  .section {
-    font-size: 32px; /* riduci la dimensione del testo */
-    padding: 0 5%;
-  }
-
-  .content-text {
-    font-size: 18px;
-  }
-
-  .social-buttons a, .quote-button a {
-    font-size: 1.8rem;
-    padding: 10px 20px;
-  }
+    header {
+        padding: 15px 5%;
+    }
+    
+    /* Il menu rimane in layout orizzontale */
+    nav ul li {
+        margin: 0 10px;
+    }
+    
+    .section {
+        font-size: 32px;
+        padding: 0 5%;
+    }
+    
+    .content-text {
+        font-size: 18px;
+    }
+    
+    .social-buttons a, .quote-button a {
+        font-size: 1.8rem;
+        padding: 10px 20px;
+    }
 }
 
-/* Media queries per schermi piccoli */
 @media (max-width: 480px) {
-  header {
-    padding: 10px 3%;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  nav ul li a {
-    font-size: 16px;
-  }
-
-  .section {
-    font-size: 24px;
-    padding: 0 3%;
-  }
-
-  .content-text {
-    font-size: 16px;
-  }
-
-  .social-buttons a, .quote-button a {
-    font-size: 1.5rem;
-    padding: 8px 16px;
-  }
+    header {
+        padding: 10px 3%;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    nav ul li a {
+        font-size: 16px;
+    }
+    
+    .section {
+        font-size: 24px;
+        padding: 0 3%;
+    }
+    
+    .content-text {
+        font-size: 16px;
+    }
+    
+    .social-buttons a, .quote-button a {
+        font-size: 1.5rem;
+        padding: 8px 16px;
+    }
 }
-
         .section {
             height: 80vh; /* Ridotto ulteriormente l'altezza */
             display: flex;
