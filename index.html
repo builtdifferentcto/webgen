@@ -10,411 +10,291 @@
     <style>
         /* Ottimizzazione del contenuto della pagina per mobile */
 /* Ottimizzazione della Navbar su Mobile */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-    /* Navbar mobile */
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #333; /* Colore di sfondo scuro per la navbar */
-        padding: 10px 20px;
-        position: relative;
-    }
-
-    .navbar .logo {
-        font-size: 20px;
-        color: white;
-        text-align: center;
-    }
-
-    /* Hamburger Menu (Icona) */
-    .navbar .hamburger {
-        display: block;
-        cursor: pointer;
-    }
-
-    .navbar .hamburger div {
-        width: 30px;
-        height: 3px;
-        background-color: white;
-        margin: 6px 0;
-    }
-
-    /* Menu a discesa */
-    .navbar .menu {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        background-color: #333;
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    .navbar .menu.active {
-        display: block;
-    }
-
-    .navbar .menu a {
-        display: block;
-        padding: 10px 20px;
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-        border-bottom: 1px solid #444;
-    }
-
-    .navbar .menu a:hover {
-        background-color: #555;
-    }
-
-    /* Sezione attivazione hamburger */
-    .navbar .hamburger.active + .menu {
-        display: block;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-/* Ottimizzazione delle Tabelle su Mobile */
-@media (max-width: 768px) {
-    /* Contenitore della tabella scorrevole */
-    .table-container {
-        overflow-x: auto;
-        width: 100%;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    table {
-        width: 100%;
-        table-layout: fixed; /* Impostazione fissa per le colonne */
-        border-collapse: collapse;
-    }
-
-    th, td {
-        padding: 8px;
-        text-align: left;
-        border: 1px solid #ddd;
-        word-wrap: break-word;
-    }
-
-    th {
-        background-color: #f4f4f4;
-        color: #333;
-    }
-
-    td {
-        background-color: #fff;
-    }
-
-    /* Rimuove bordi per colonne con testo troppo lungo */
-    td {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-}
-
-/* Navbar su Tablet (fino a 1024px) */
-@media (max-width: 1024px) {
-    .navbar {
-        padding: 15px 25px;
-    }
-
-    .navbar .menu a {
-        font-size: 16px;
-    }
-}
-
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-        body {
+body {
     background-image: url('https://imagizer.imageshack.com/img922/5593/sopTLO.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    color: black; /* Imposta il colore del testo per contrastare con lo sfondo */
+    color: black;
     text-align: center;
     overflow-x: hidden;
 }
 
-/* CSS di base aggiornato per il desktop */
-/* Packages Section */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    position: fixed;
+    width: 90%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: background 0.3s;
+}
+
+header.scrolled {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    transition: opacity 0.3s;
+}
+
+nav ul li a:hover {
+    opacity: 0.7;
+}
+
 /* Packages Section */
 #packages {
-  padding: 50px 10%;
-  text-align: center;
-  margin-top: 7px;
+    padding: 70px 10%;
+    text-align: center;
+    margin-top: 20px;
 }
-/* Ingrandisce e allunga le tabelle BASIC e PREMIUM */
+
 .package-container {
     display: flex;
     justify-content: center;
-    gap: 100px; /* Aumentato il gap tra i pacchetti */
+    gap: 50px;
     position: relative;
 }
 
 .package {
-    width: 500px; /* Aumenta la larghezza dei pacchetti */
-    padding: 50px; /* Aggiunge più padding per ingrandire il contenuto */
+    width: 400px;
+    padding: 20px;
     text-align: center;
     border: 2px solid white;
     cursor: pointer;
     transition: transform 0.3s ease, opacity 0.3s ease;
     position: relative;
-    box-sizing: border-box; /* Garantisce che padding e border siano inclusi nella larghezza */
 }
 
 .package .description {
     display: none;
-    font-size: 20px; /* Aumenta la dimensione del testo nella descrizione */
-    margin-top: 70px;
+    font-size: 18px;
+    margin-top: 10px;
 }
 
-/* Packages Section */
-#packages {
-  padding: 70px 10%;
-  text-align: center;
-  margin-top: 20px;
-}
-
-/* Container */
-.package-container {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  position: relative;
-}
-
-/* Individual Packages */
-.package {
-  width: 400px;
-  padding: 20px;
-  text-align: center;
-  border: 2px solid white;
-  cursor: pointer;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  position: relative;
-}
-
-/* Nasconde la descrizione di default */
-.package .description {
-  display: none;
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-/* Quando passi sopra, mostra il testo e nasconde l’altro titolo */
 .package:hover {
-  transform: scale(1.1);
-  z-index: 2;
+    transform: scale(1.1);
+    z-index: 2;
 }
 
 .package:hover .description {
-  display: block;
+    display: block;
 }
+
 .package h2 {
-    font-size: 32px; /* Aumenta la dimensione del titolo */
-    font-weight: bold; /* Puoi anche rendere il titolo più spesso, se desideri */
+    font-size: 32px;
+    font-weight: bold;
 }
 
-/* Nasconde completamente l’altro titolo */
 .package-container:hover .package:not(:hover) h2 {
-  opacity: 0;
+    opacity: 0;
 }
-
 
 .section {
     height: 80vh;
     display: flex;
-    flex-direction: column; /* Dispone il titolo e il testo in colonna */
-    align-items: center; /* Centra orizzontalmente */
-    justify-content: center; /* Centra verticalmente */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-size: 48px;
     font-weight: bold;
     padding: 0 10%;
     text-transform: uppercase;
-    text-align: center; /* Centra il testo */
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s, transform 1s;
-    margin-bottom: 10px;
 }
 
 .content-text {
     font-size: 24px;
     line-height: 1.5;
-    text-align: center; /* Assicura che il testo sia centrato */
-    margin-top: 10px; /* Spazio tra il titolo e il testo */
+    text-align: center;
+    margin-top: 10px;
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s, transform 1s;
 }
 
-/* Il resto del CSS rimane invariato */
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            position: fixed;
-            width: 90%;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            transition: background 0.3s;
-        }
-        header.scrolled {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-        }
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-        nav ul li {
-            margin: 0 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #ffffff;
-            font-size: 18px;
-            transition: opacity 0.3s;
-        }
-        nav ul li a:hover {
-            opacity: 0.7;
-        }
-     
-  }
-    .social-buttons {
-      margin-bottom: 20px; /* Spazio tra i bottoni e il footer */
-      margin-top: 10px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-    .social-buttons a {
-      font-size: 2.5rem;
-      color: black;
-      text-decoration: none;
-    }
-    .social-buttons a:hover {
-      color: #98AFC7;
-    }
-
-.navbar a {
-  color: white;
-  text-decoration: none;
-  padding: 10px 15px;
-  font-size: 18px;
-  transition: all 0.3s ease-in-out;
+.content-text.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.navbar a:hover {
-  color: #98AFC7 !important;
-  text-shadow: 0px 0px 10px rgba(152, 175, 199, 0.8); /* Effetto glow */
+footer {
+    border-top: 1px solid black;
+    padding-top: 10px;
 }
-
-        .section {
-            height: 80vh; /* Ridotto ulteriormente l'altezza */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 48px;
-            font-weight: bold;
-            padding: 0 10%;
-            text-transform: uppercase;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s, transform 1s;
-            margin-bottom: 10px; /* Ulteriore riduzione del margine */
-        }
-
-        .section.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .icon-section {
-            height: 60vh; /* Ulteriore riduzione dell'altezza */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 100px;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 1.5s, transform 1.5s;
-        }
-
-
-        .icon-section.show {
-            opacity: 1;
-            transform: scale(1);
-        }
 
 .social-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 50px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-buttons a {
+    font-size: 2.5rem;
+    color: black;
+    text-decoration: none;
+}
+
+.social-buttons a:hover {
+    color: #98AFC7;
 }
 
 .social-button {
-  background-color: #000 !important; /* Sfondo nero forzato */
-  color: #fff !important; /* Testo bianco forzato */
-  border: 2px solid black;
-  padding: 12px 25px;
-  border-radius: 8px;
-  font-size: 18px;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 1);
-  transition: all 0.3s ease-in-out;
-  display: inline-block;
-  text-align: center;
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 2px solid black;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 1);
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
+    text-align: center;
 }
 
-.social-button:hover, 
-.social-button:focus, 
-.social-button:active {
-  background-color: black!important; /* Cambia sfondo in bianco */
-  color: #000 !important; /* Cambia testo in nero */
-  border: 2px solid black;
-  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.8);
-  transform: translateY(-2px);
+.social-button:hover {
+    background-color: black !important;
+    color: #000 !important;
+    border: 2px solid black;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.8);
+    transform: translateY(-2px);
 }
 
+/* Responsive Design */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+    }
 
-        footer {
-  border-top: 1px solid black; /* Linea nera sottile */
-  padding-top: 10px; /* Distanza tra il contenuto del footer e la linea */
-  padding-top: 20px; /* Distanza tra la linea e il contenuto sottostante */
+    nav ul {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    #packages {
+        padding: 50px 5%;
+    }
+
+    .package-container {
+        flex-direction: column;
+    }
+
+    .package {
+        width: 80%;
+    }
+
+    .section {
+        font-size: 36px;
+        padding: 0 5%;
+    }
+
+    .content-text {
+        font-size: 20px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+
+    .social-buttons a {
+        font-size: 2rem;
+    }
 }
-        .content-text {
-            font-size: 24px;
-            line-height: 1.5;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s, transform 1s;
-        }
 
-        .content-text.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+@media (max-width: 768px) {
+    .section {
+        font-size: 28px;
+        padding: 0 5%;
+    }
+
+    .content-text {
+        font-size: 18px;
+    }
+
+    .social-buttons a {
+        font-size: 1.5rem;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+
+    .package-container {
+        flex-direction: column;
+    }
+
+    .package {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 5%;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .social-buttons {
+        margin-top: 30px;
+    }
+
+    .social-buttons a {
+        font-size: 1.5rem;
+    }
+
+    .package h2 {
+        font-size: 24px;
+    }
+
+    .content-text {
+        font-size: 16px;
+    }
+
+    footer {
+        font-size: 10px;
+    }
+}
+
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
