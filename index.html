@@ -292,36 +292,110 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Layout mobile: il menu si posiziona sotto la scritta "webGen" */
+        /* Media Queries per la Responsività */
 @media (max-width: 768px) {
-    header nav {
-        text-align: center; /* Centra l'intestazione e il menu */
-    }
+  /* Adattamento menu */
+  header nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
 
-    header nav ul {
-        flex-direction: column; /* Menu verticale su mobile */
-        justify-content: center; /* Centra gli elementi in colonna */
-        padding: 0;
-        margin-top: 10px; /* Spazio tra la scritta e il menu */
-        width: 100%;
-    }
+  header nav ul li {
+    margin: 10px 15px; /* Spaziatura tra le voci */
+  }
 
-    header nav ul li {
-        margin: 10px 0; /* Aggiunge spazio tra le voci del menu */
-    }
+  header nav ul li a {
+    font-size: 1rem; /* Font più piccolo per mobile */
+    margin: 0 10px; /* Distanza tra le voci */
+  }
 
-    header ul li a {
-        font-size: 16px; /* Riduce la dimensione del font per dispositivi mobili */
-        padding: 10px 0; /* Aggiunge spazio sopra e sotto ogni voce */
-    }
+  .banner-section {
+    height: 250px;
+  }
+
+  .section h2 {
+    font-size: 2.5rem;
+  }
+
+  .how-to-buy-box div {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .how-to-buy-box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-box {
+    width: 90%;
+  }
+
+  .tokenomics-box {
+    font-size: 2rem;
+  }
 }
 
-/* Layout per schermi molto piccoli */
 @media (max-width: 480px) {
-    header nav ul li a {
-        font-size: 14px; /* Font più piccolo su schermi piccoli */
-    }
+  /* Adattamento menu */
+  header nav ul {
+    padding: 10px 0;
+  }
+
+  header nav ul li {
+    margin: 5px 10px; /* Ridurre gli spazi per schermi più piccoli */
+  }
+
+  header nav ul li a {
+    font-size: 0.9rem;
+    margin: 0 5px;
+  }
+
+  .banner-section {
+    height: 200px;
+  }
+
+  .section h2 {
+    font-size: 2rem;
+  }
+
+  .social-buttons {
+    gap: 10px;
+    margin: 15px 0;
+  }
+
+  .social-buttons a {
+    font-size: 1.5rem;
+    padding: 8px 16px;
+  }
+
+  .how-to-buy-box {
+    gap: 10px;
+  }
+
+  .how-to-buy-box div {
+    padding: 20px;
+    font-size: 1rem;
+  }
+
+  .tokenomics-box {
+    font-size: 1.5rem;
+  }
+
+  /* Riduzione del font per il testo CA sui dispositivi molto piccoli */
+  #ca-text {
+    font-size: 1rem;
+  }
+
+  .footer {
+    font-size: 0.9rem;
+  }
 }
+
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
