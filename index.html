@@ -292,54 +292,36 @@
             opacity: 1;
             transform: translateY(0);
         }
-          /* MEDIA QUERIES PER DISPOSITIVI PIÙ PICCOLI */
-        @media (max-width: 768px) {
-             header nav ul li a {
-        font-size: 14px; /* Font più piccolo su schermi piccoli */
+        /* Layout mobile: il menu si posiziona sotto la scritta "webGen" */
+@media (max-width: 768px) {
+    header nav {
+        text-align: center; /* Centra l'intestazione e il menu */
+    }
+
+    header nav ul {
+        flex-direction: column; /* Menu verticale su mobile */
+        justify-content: center; /* Centra gli elementi in colonna */
+        padding: 0;
+        margin-top: 10px; /* Spazio tra la scritta e il menu */
+        width: 100%;
+    }
 
     header nav ul li {
-        margin: 10px 20px; /* Aggiunge spazio tra le voci del menu */
+        margin: 10px 0; /* Aggiunge spazio tra le voci del menu */
     }
 
     header ul li a {
         font-size: 16px; /* Riduce la dimensione del font per dispositivi mobili */
+        padding: 10px 0; /* Aggiunge spazio sopra e sotto ogni voce */
     }
 }
-            .content-text {
-                font-size: 20px;
-                padding: 0 20px;
-            }
 
-            .package-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .package {
-                width: 90%;
-                padding: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section {
-                font-size: 28px;
-            }
-
-            .package-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .package {
-                width: 100%;
-                padding: 15px;
-            }
-
-            .social-buttons a {
-                font-size: 2rem;
-            }
-        }
+/* Layout per schermi molto piccoli */
+@media (max-width: 480px) {
+    header nav ul li a {
+        font-size: 14px; /* Font più piccolo su schermi piccoli */
+    }
+}
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
