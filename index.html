@@ -114,7 +114,57 @@
   opacity: 0;
 }
 
+/* Ottimizzazione per dispositivi mobili */
+@media (max-width: 768px) {
+    header {
+        padding: 20px 10%;
+    }
 
+    nav ul {
+        flex-direction: row; /* Rende la navbar orizzontale anche sui dispositivi mobili */
+        justify-content: center; /* Le voci rimangono centrate */
+    }
+
+    nav ul li {
+        margin: 10px 15px;
+    }
+
+    .section {
+        font-size: 32px;
+        padding: 0 5%;
+        text-align: center;
+    }
+
+    .content-text {
+        font-size: 18px;
+        padding: 0 5%;
+    }
+
+    .social-buttons {
+        flex-direction: row;
+    }
+}
+
+/* Ottimizzazione per schermi molto piccoli (mobile) */
+@media (max-width: 480px) {
+    header {
+        padding: 20px 5%;
+    }
+
+    .section {
+        font-size: 28px;
+        padding: 0 5%;
+    }
+
+    .content-text {
+        font-size: 16px;
+        padding: 0 5%;
+    }
+
+    .social-buttons {
+        flex-direction: row;
+    }
+}
 .section {
     height: 80vh;
     display: flex;
