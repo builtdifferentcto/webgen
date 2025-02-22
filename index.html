@@ -137,7 +137,7 @@
     transform: translateY(50px);
     transition: opacity 1s, transform 1s;
 }
- /* Responsive per mobile */
+  /* Responsive per mobile */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -145,12 +145,13 @@
             }
 
             nav ul {
-                flex-direction: column;
+                flex-direction: row;
+                justify-content: center;
                 margin-top: 20px;
             }
 
             nav ul li {
-                margin: 10px 0;
+                margin: 0 15px;
             }
 
             .section {
@@ -193,7 +194,7 @@
                 width: 100%;
                 padding: 15px;
             }
-        }
+        }}
 /* Il resto del CSS rimane invariato */
 
         header {
