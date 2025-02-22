@@ -137,7 +137,63 @@
     transform: translateY(50px);
     transition: opacity 1s, transform 1s;
 }
+ /* Responsive per mobile */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+            }
 
+            nav ul {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .section {
+                font-size: 32px;
+                padding: 10%;
+                height: auto;
+            }
+
+            .content-text {
+                font-size: 18px;
+            }
+
+            .package-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .package {
+                width: 90%;
+                padding: 20px;
+            }
+
+            footer {
+                padding-bottom: 10px;
+            }
+        }
+
+        /* Ulteriore ottimizzazione per schermi molto piccoli */
+        @media (max-width: 480px) {
+            .section {
+                font-size: 28px;
+                padding: 5%;
+            }
+
+            .content-text {
+                font-size: 16px;
+            }
+
+            .package {
+                width: 100%;
+                padding: 15px;
+            }
+        }
 /* Il resto del CSS rimane invariato */
 
         header {
