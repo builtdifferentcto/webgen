@@ -292,6 +292,157 @@
             opacity: 1;
             transform: translateY(0);
         }
+/* Ottimizzazione per dispositivi mobili */
+@media (max-width: 768px) {
+    body {
+        background-size: auto;
+        background-position: center;
+    }
+
+    header {
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .package-container {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 20px;
+    }
+
+    .package {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .section {
+        font-size: 32px; /* Riduci la dimensione del testo */
+        padding: 0 5%;
+    }
+
+    .content-text {
+        font-size: 18px;
+        padding: 0 5%;
+    }
+
+    .social-buttons {
+        gap: 10px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .social-buttons a {
+        font-size: 2rem;
+    }
+}
+
+/* Ottimizzazione per dispositivi molto piccoli */
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .section {
+        font-size: 28px; /* Riduci ulteriormente la dimensione del testo */
+    }
+
+    .content-text {
+        font-size: 16px;
+    }
+
+    .social-buttons a {
+        font-size: 1.8rem;
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 14px;
+    }
+}
+/* Navbar responsive */
+@media (max-width: 768px) {
+    /* Rendi la navbar a colonna invece di riga */
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        display: none; /* Nasconde il menu di default */
+        background-color: #333; /* Aggiungi uno sfondo */
+        position: absolute;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
+    }
+
+    nav ul li {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    /* Aggiungi un pulsante per aprire il menu su mobile */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        color: white;
+        padding: 10px;
+    }
+
+    /* Quando il menu è aperto, mostra gli elementi */
+    nav.open ul {
+        display: flex;
+    }
+}
+
+/* Modifica l'aspetto della navbar su dispositivi molto piccoli (<=480px) */
+@media (max-width: 480px) {
+    nav ul li {
+        font-size: 16px; /* Riduci la dimensione del testo */
+    }
+
+    .menu-toggle {
+        font-size: 1.8rem;
+    }
+}
+/* Tabelle responsive */
+@media (max-width: 768px) {
+    table {
+        width: 100%;
+        overflow-x: auto; /* Permette la scrollabilità orizzontale */
+        display: block;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    /* Ridurre la dimensione del testo nelle tabelle per mobile */
+    table th, table td {
+        font-size: 14px;
+    }
+}
+
+/* Ottimizzazione per dispositivi molto piccoli */
+@media (max-width: 480px) {
+    table th, table td {
+        font-size: 12px; /* Ulteriore riduzione del font per dispositivi piccoli */
+    }
+}
+
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -350,7 +501,7 @@
  <!-- Social Buttons sotto il banner -->
   <div class="social-buttons">
     <a href="https://twitter.com/weBgen_graphics" target="_blank"><i class="fab fa-x"></i></a>
-    <a href="https://t.me/webGen87" target="_blank"><i class="fab fa-telegram"></i></a>
+    <a href="ttps://t.me/webGen87" target="_blank"><i class="fab fa-telegram"></i></a>
       </div>
 
 <footer>
@@ -392,6 +543,14 @@ function resetPackages() {
                 }
             });
         });
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('open');
+    });
+
     </script>
 </body>
 </html>
