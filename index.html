@@ -132,7 +132,7 @@
     font-size: 24px;
     line-height: 1.5;
     text-align: center; /* Assicura che il testo sia centrato */
-    margin-top: 25px; /* Spazio tra il titolo e il testo */
+    margin-top: 40px; /* Spazio tra il titolo e il testo */
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s, transform 1s;
@@ -294,121 +294,60 @@
         }
         /* Media Queries per dispositivi mobili e tablet */
 
-/* Tablet: Schermi fino a 768px */
+/* Menu principale - orizzontale su mobile e tablet */
+@media (max-width: 1024px) {
+    nav {
+        position: sticky; /* Fissa il menu in cima */
+        top: 0;
+        width: 100%; /* Assicurati che il menu occupi tutta la larghezza */
+        background-color: #111; /* Colore di sfondo per il menu */
+        z-index: 1000; /* Rende il menu visibile sopra altri contenuti */
+        padding: 10px 0; /* Padding per spaziatura verticale */
+    }
+
+    /* Navbar - Flex per allineare i link orizzontalmente */
+    .nav-links {
+        display: flex; /* Disposizione orizzontale dei link */
+        justify-content: center; /* Allinea i link al centro */
+        gap: 20px; /* Spazio tra i link */
+        flex-wrap: nowrap; /* Evita che i link vadano a capo */
+    }
+
+    .nav-links a {
+        color: #fff; /* Colore del testo */
+        text-decoration: none; /* Rimuovi la sottolineatura */
+        font-size: 16px; /* Imposta una dimensione font appropriata */
+        padding: 10px 20px; /* Spaziatura intorno ai link */
+    }
+
+    .nav-links a:hover {
+        background-color: #333; /* Colore di hover per i link */
+        border-radius: 5px; /* Arrotonda gli angoli al passaggio del mouse */
+    }
+}
+
+/* Aggiunta per dispositivi più piccoli, come smartphone */
 @media (max-width: 768px) {
-    /* Imposta un layout più compatto per il header */
-    header {
-        padding: 10px 5%;
+    nav {
+        padding: 8px 0; /* Riduci il padding su schermi più piccoli */
     }
 
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
+    .nav-links {
+        display: flex;
+        justify-content: space-evenly; /* Allinea i link con spazio uniforme */
+        gap: 15px; /* Spazio più stretto tra i link */
     }
 
-    nav ul li a {
-        font-size: 16px;
+    .nav-links a {
+        font-size: 14px; /* Diminuisci la dimensione del font su dispositivi piccoli */
+        padding: 8px 16px; /* Riduci la spaziatura intorno ai link */
     }
 
-    /* Sezione About, Services, e Contact */
-    .section {
-        font-size: 36px;
-        padding: 0 5%;
-    }
-
-    .content-text {
-        font-size: 18px;
-        margin-top: 10px;
-    }
-
-    /* Pacchetti */
-    #packages {
-        padding: 50px 5%;
-    }
-
-    .package-container {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .package {
-        width: 100%;
-        padding: 30px;
-    }
-
-    .package .description {
-        font-size: 16px;
-        margin-top: 20px;
-    }
-
-    /* Social Buttons */
-    .social-buttons {
-        margin-bottom: 30px;
-    }
-
-    .social-buttons a {
-        font-size: 2rem;
+    .nav-links a:hover {
+        background-color: #444; /* Colore leggermente più chiaro per hover */
     }
 }
 
-/* Mobile: Schermi fino a 480px */
-@media (max-width: 480px) {
-    /* Header e navigation menu */
-    header {
-        padding: 8px 5%;
-    }
-
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-    }
-
-    nav ul li a {
-        font-size: 14px;
-    }
-
-    /* Sezione About, Services, e Contact */
-    .section {
-        font-size: 28px;
-        padding: 0 5%;
-    }
-
-    .content-text {
-        font-size: 16px;
-        margin-top: 8px;
-    }
-
-    /* Pacchetti */
-    #packages {
-        padding: 40px 5%;
-    }
-
-    .package-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .package {
-        width: 100%;
-        padding: 20px;
-    }
-
-    .package .description {
-        font-size: 14px;
-        margin-top: 15px;
-    }
-
-    /* Social Buttons */
-    .social-buttons a {
-        font-size: 1.8rem;
-    }
-
-    footer {
-        font-size: 14px;
-        padding-top: 20px;
-    }
-}
 
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
