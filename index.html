@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weBgen - Web Design Services</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -15,70 +14,105 @@
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
         }
-     /* CSS di base aggiornato per il desktop e mobile */
-
-/* Impostazioni generali */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-}
-body {
+        body {
     background-image: url('https://imagizer.imageshack.com/img922/5593/sopTLO.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
-    color: black;
+    color: black; /* Imposta il colore del testo per contrastare con lo sfondo */
     text-align: center;
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Centra tutto il contenuto della pagina */
-    height: 100vh;
 }
 
-/* Navbar */
-header {
+/* CSS di base aggiornato per il desktop */
+/* Packages Section */
+/* Packages Section */
+#packages {
+  padding: 50px 10%;
+  text-align: center;
+  margin-top: 7px;
+}
+/* Ingrandisce e allunga le tabelle BASIC e PREMIUM */
+.package-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    transition: background 0.3s;
-}
-header.scrolled {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-}
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center; /* Centra le voci della navbar */
-    flex-wrap: wrap; /* Permette la gestione di voci su più righe se necessario */
-}
-nav ul li {
-    margin: 0 15px;
-}
-nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
-    transition: opacity 0.3s;
-}
-nav ul li a:hover {
-    opacity: 0.7;
+    justify-content: center;
+    gap: 100px; /* Aumentato il gap tra i pacchetti */
+    position: relative;
 }
 
-/* Sezioni */
+.package {
+    width: 500px; /* Aumenta la larghezza dei pacchetti */
+    padding: 50px; /* Aggiunge più padding per ingrandire il contenuto */
+    text-align: center;
+    border: 2px solid white;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+    box-sizing: border-box; /* Garantisce che padding e border siano inclusi nella larghezza */
+}
+
+.package .description {
+    display: none;
+    font-size: 20px; /* Aumenta la dimensione del testo nella descrizione */
+    margin-top: 70px;
+}
+
+/* Packages Section */
+#packages {
+  padding: 70px 10%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Container */
+.package-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  position: relative;
+}
+
+/* Individual Packages */
+.package {
+  width: 400px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+}
+
+/* Nasconde la descrizione di default */
+.package .description {
+  display: none;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* Quando passi sopra, mostra il testo e nasconde l’altro titolo */
+.package:hover {
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.package:hover .description {
+  display: block;
+}
+.package h2 {
+    font-size: 32px; /* Aumenta la dimensione del titolo */
+    font-weight: bold; /* Puoi anche rendere il titolo più spesso, se desideri */
+}
+
+/* Nasconde completamente l’altro titolo */
+.package-container:hover .package:not(:hover) h2 {
+  opacity: 0;
+}
+
+
 .section {
-    height: auto;
+    height: 80vh;
     display: flex;
     flex-direction: column; /* Dispone il titolo e il testo in colonna */
     align-items: center; /* Centra orizzontalmente */
@@ -87,134 +121,22 @@ nav ul li a:hover {
     font-weight: bold;
     padding: 0 10%;
     text-transform: uppercase;
+    text-align: center; /* Centra il testo */
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s, transform 1s;
     margin-bottom: 10px;
 }
 
-.section h2 {
-    margin-bottom: 20px; /* Aggiunge uno spazio tra il titolo e il contenuto */
-}
-
 .content-text {
     font-size: 24px;
     line-height: 1.5;
-    text-align: center;
-    margin-top: 10px;
+    text-align: center; /* Assicura che il testo sia centrato */
+    margin-top: 10px; /* Spazio tra il titolo e il testo */
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1s, transform 1s;
 }
-
-/* Social Buttons */
-.social-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 50px;
-}
-
-.social-button {
-    background-color: #000 !important;
-    color: #fff !important;
-    border: 2px solid black;
-    padding: 12px 25px;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 1);
-    transition: all 0.3s ease-in-out;
-    display: inline-block;
-    text-align: center;
-}
-
-.social-button:hover, 
-.social-button:focus, 
-.social-button:active {
-    background-color: black!important;
-    color: #000 !important;
-    border: 2px solid black;
-    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.8);
-    transform: translateY(-2px);
-}
-
-footer {
-    border-top: 1px solid black;
-    padding-top: 20px;
-}
-
-/* Ottimizzazione per dispositivi mobili */
-@media (max-width: 768px) {
-    body {
-        height: auto;
-        padding: 20px;
-    }
-
-    header {
-        padding: 20px 10%;
-    }
-
-    nav ul {
-        flex-direction: row; /* Rende la navbar orizzontale anche sui dispositivi mobili */
-        justify-content: center; /* Le voci rimangono centrate */
-    }
-
-    nav ul li {
-        margin: 10px 15px;
-    }
-
-    .section {
-        font-size: 32px;
-        padding: 0 5%;
-        text-align: center;
-    }
-
-    .section h2 {
-        margin-bottom: 15px; /* Spazio tra titolo e testo per dispositivi mobili */
-    }
-
-    .content-text {
-        font-size: 18px;
-        padding: 0 5%;
-    }
-
-    .social-buttons {
-        flex-direction: row;
-    }
-}
-
-/* Ottimizzazione per schermi molto piccoli (mobile) */
-@media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-
-    header {
-        padding: 20px 5%;
-    }
-
-    .section {
-        font-size: 28px;
-        padding: 0 5%;
-    }
-
-    .section h2 {
-        margin-bottom: 15px;
-    }
-
-    .content-text {
-        font-size: 16px;
-        padding: 0 5%;
-    }
-
-    .social-buttons {
-        flex-direction: row;
-    }
-}
-
 
 /* Il resto del CSS rimane invariato */
 
@@ -370,6 +292,124 @@ footer {
             opacity: 1;
             transform: translateY(0);
         }
+        /* Media Queries per dispositivi mobili e tablet */
+
+/* Tablet: Schermi fino a 768px */
+@media (max-width: 768px) {
+    /* Imposta un layout più compatto per il header */
+    header {
+        padding: 10px 5%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    /* Sezione About, Services, e Contact */
+    .section {
+        font-size: 36px;
+        padding: 0 5%;
+    }
+
+    .content-text {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    /* Pacchetti */
+    #packages {
+        padding: 50px 5%;
+    }
+
+    .package-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .package {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .package .description {
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    /* Social Buttons */
+    .social-buttons {
+        margin-bottom: 30px;
+    }
+
+    .social-buttons a {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile: Schermi fino a 480px */
+@media (max-width: 480px) {
+    /* Header e navigation menu */
+    header {
+        padding: 8px 5%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    /* Sezione About, Services, e Contact */
+    .section {
+        font-size: 28px;
+        padding: 0 5%;
+    }
+
+    .content-text {
+        font-size: 16px;
+        margin-top: 8px;
+    }
+
+    /* Pacchetti */
+    #packages {
+        padding: 40px 5%;
+    }
+
+    .package-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .package {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .package .description {
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    /* Social Buttons */
+    .social-buttons a {
+        font-size: 1.8rem;
+    }
+
+    footer {
+        font-size: 14px;
+        padding-top: 20px;
+    }
+}
+
     </style>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
