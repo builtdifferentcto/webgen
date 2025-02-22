@@ -9,112 +9,127 @@
 
     <style>
         /* Ottimizzazione del contenuto della pagina per mobile */
+/* Ottimizzazione della Navbar su Mobile */
 @media (max-width: 768px) {
     body {
-        font-size: 14px; /* Ridurre la dimensione del font per dispositivi mobili */
-        line-height: 1.6; /* Aumentare l'altezza della riga per migliorare la leggibilità */
-        margin: 0;
-        padding: 0;
+        font-size: 14px;
+        line-height: 1.6;
     }
 
-    /* Centratura del contenuto */
-    .container, .content, .section {
+    /* Navbar mobile */
+    .navbar {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        padding: 20px;
-        margin: 10px 0;
+        background-color: #333; /* Colore di sfondo scuro per la navbar */
+        padding: 10px 20px;
+        position: relative;
+    }
+
+    .navbar .logo {
+        font-size: 20px;
+        color: white;
         text-align: center;
     }
 
-    .hero {
-        background-size: cover;
-        padding: 50px 0;
-        text-align: center;
-    }
-
-    .hero h1 {
-        font-size: 24px;
-    }
-
-    .content {
-        padding: 15px;
-    }
-
-    .card {
+    /* Hamburger Menu (Icona) */
+    .navbar .hamburger {
         display: block;
-        margin: 10px 0; /* Spaziatura tra le card */
-        text-align: center;
+        cursor: pointer;
     }
 
-    .card img {
-        max-width: 100%;
-        height: auto;
+    .navbar .hamburger div {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        margin: 6px 0;
     }
 
-    .button {
+    /* Menu a discesa */
+    .navbar .menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 0;
         width: 100%;
-        padding: 15px;
-        font-size: 16px;
+        background-color: #333;
+        text-align: center;
+        padding: 10px 0;
     }
 
-    /* Ottimizzazione delle tabelle */
+    .navbar .menu.active {
+        display: block;
+    }
+
+    .navbar .menu a {
+        display: block;
+        padding: 10px 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        border-bottom: 1px solid #444;
+    }
+
+    .navbar .menu a:hover {
+        background-color: #555;
+    }
+
+    /* Sezione attivazione hamburger */
+    .navbar .hamburger.active + .menu {
+        display: block;
+    }
+}
+
+/* Ottimizzazione delle Tabelle su Mobile */
+@media (max-width: 768px) {
+    /* Contenitore della tabella scorrevole */
+    .table-container {
+        overflow-x: auto;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
     table {
         width: 100%;
-        overflow-x: auto;
-        display: block;
-        margin-bottom: 20px;
-    }
-
-    table, th, td {
-        border: 1px solid #ddd;
+        table-layout: fixed; /* Impostazione fissa per le colonne */
         border-collapse: collapse;
     }
 
     th, td {
         padding: 8px;
         text-align: left;
+        border: 1px solid #ddd;
         word-wrap: break-word;
     }
 
-    /* Aggiunta della scrollbar orizzontale per le tabelle */
-    .table-container {
-        width: 100%;
-        overflow-x: auto;
+    th {
+        background-color: #f4f4f4;
+        color: #333;
+    }
+
+    td {
+        background-color: #fff;
+    }
+
+    /* Rimuove bordi per colonne con testo troppo lungo */
+    td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
-/* Ottimizzazione per tablet (fino a 1024px) */
+/* Navbar su Tablet (fino a 1024px) */
 @media (max-width: 1024px) {
-    body {
+    .navbar {
+        padding: 15px 25px;
+    }
+
+    .navbar .menu a {
         font-size: 16px;
     }
-
-    .hero h1 {
-        font-size: 30px; /* Più grande per tablet */
-    }
-
-    .card {
-        display: inline-block;
-        width: 45%;
-        margin: 2.5%;
-    }
-
-    .section {
-        padding: 30px;
-    }
-
-    .button {
-        width: auto;
-        padding: 12px 30px;
-    }
-
-    /* Ottimizzazione tabelle su tablet */
-    .table-container {
-        overflow-x: scroll;
-    }
 }
+
 
         * {
             margin: 0;
