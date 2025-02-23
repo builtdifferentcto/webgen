@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -280,6 +281,27 @@
         font-size: 12px;
       }
     }
+/* Stile per l'effetto ripple */
+.ripple {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* Animazione dell'onda */
+@keyframes rippleEffect {
+  to {
+    transform: scale(15);
+    opacity: 0;
+  }
+}
+
   </style>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -342,6 +364,24 @@
   </footer>
 
   <script>
+document.addEventListener("click", function (e) {
+    let ripple = document.createElement("span");
+    ripple.classList.add("ripple");
+    
+    document.body.appendChild(ripple);
+
+    // Posiziona il ripple esattamente al centro del click
+    let x = e.clientX - 5; // -5 per centrare rispetto alla larghezza (10px)
+    let y = e.clientY - 5; // -5 per centrare rispetto all'altezza (10px)
+
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    setTimeout(() => {
+        ripple.remove();
+    }, 600); // Rimuove l'elemento dopo l'animazione
+});
+
     function showPackage(type) {
       document.querySelectorAll(".package").forEach(pkg => {
         if (!pkg.classList.contains(type)) {
