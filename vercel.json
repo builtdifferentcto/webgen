@@ -1,9 +1,8 @@
 {
-  "redirects": [
+  "rewrites": [
     {
-      "source": "/",
-      "destination": "https://webgen.site",
-      "permanent": true
+      "source": "/(.*)",
+      "destination": "https://webgensol.vercel.app/$1"
     }
   ]
 }
