@@ -2,28 +2,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="https://imagizer.imageshack.com/img924/204/kjFzmV.png" type="image/png">
-  <link rel="apple-touch-icon" href="favicon.png">
   <meta charset="UTF-8">
+<link rel="icon" href="https://imagizer.imageshack.com/img924/204/kjFzmV.png" type="image/png">
+<link rel="apple-touch-icon" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>weBgen - Web Design Services</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=GupterS:wght@400;600&display=swap" rel="stylesheet">
   <style>
+
     /* Reset e font */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Gupter', sans-serif;
     }
     body {
-      background-image: url('https://imagizer.imageshack.com/img922/5593/sopTLO.jpg');
+      background-image: url('https://imagizer.imageshack.com/img923/1459/el5Wgq.jpg');
       background-repeat: no-repeat;
       background-position: center;
       background-attachment: fixed;
       background-size: cover;
-      color: black;
+      color: white;
       text-align: center;
       overflow-x: hidden;
     }
@@ -59,6 +60,7 @@
     nav ul li a:hover {
       opacity: 0.7;
     }
+
     /* Pulsante menu per mobile */
     .menu-toggle {
       display: none;
@@ -74,7 +76,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 48px;
+      font-size: 40px;
       font-weight: bold;
       padding: 0 10%;
       text-transform: uppercase;
@@ -89,7 +91,7 @@
       transform: translateY(0);
     }
     .content-text {
-      font-size: 24px;
+      font-size: 18px;
       line-height: 1.5;
       text-align: center;
       margin-top: 10px;
@@ -126,10 +128,10 @@
       justify-content: center;
       gap: 50px;
       position: relative;
-      margin-top: 30px;
+      margin-top: 40px;
     }
     .package {
-      width: 400px;
+      width: 600px;
       padding: 20px;
       text-align: center;
       border: 2px solid white;
@@ -167,7 +169,7 @@
     }
     .social-buttons a {
       font-size: 2.5rem;
-      color: black;
+      color: white;
       text-decoration: none;
     }
     .social-buttons a:hover {
@@ -303,7 +305,14 @@
     opacity: 0;
   }
 }
-
+.elegant-box {
+      background-color: rgba(0, 0, 0, 0.3); /* Sfondo nero con opacità trasparente */
+      border: 1px solid white;            /* Bordo bianco */
+      border-radius: 15px;                /* Angoli arrotondati */
+      padding: 20px;                      /* Spazio interno */
+      color: white;                       /* Colore del testo per contrasto */
+      max-width: 750px;                   /* Larghezza massima della cornice */
+      margin: 20px auto;                  /* Centrare la cornice nella pagina */
   </style>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -322,42 +331,46 @@
   </header>
 
   <div class="section" id="about">
-    We Create Unique Web Experiences
-    <div class="content-text">Transform clients' ideas into unique digital solutions, combining professional graphics and web development to create standout websites</div>
+     Create Unique Web Experiences
+ <section class="elegant-box">
+    <div class="content-text">My mission is to transform your vision into a digital masterpiece that not only meets your business objectives but also captivates your audience. I start by deeply understanding your ideas, brand identity, and target market. This insight drives my creative process, where iS blend innovative graphic design with robust web development techniques.</div>
   </div>
 
   <div class="section" id="services">
     Modern & Minimalistic Web Design
-    <div class="content-text">Responsive Websites, Meme websites, NFTs websites, Landing Pages, Logos</div>
+ <section class="elegant-box">
+    <div class="content-text">I create elegant, minimalist, and modern websites designed to deliver a seamless and engaging user experience. My approach blends refined design, intuitive interfaces, and mobile optimization to ensure a professional look and flawless navigation. Whether you need a showcase website, a personal portfolio, or an eye-catching landing page, I craft tailored solutions to enhance your digital identity.</div>
   </div>
 
   <!-- Sezione Packages (unica e completa) -->
   <section id="packages">
     <div class="section">
       Basic or Premium
-      <div class="content-text">Choose the package you prefer and take your project to the next level</div>
+ <section class="elegant-box">
+      <div class="content-text">Explore our range of meticulously crafted packages, each designed to meet your unique project needs. By selecting the one that perfectly aligns with your vision, you take the crucial step toward transforming your ideas into a standout digital experience. Let my expertise propel your project to unprecedented heights, combining cutting-edge technology and innovative design to set you apart in a competitive landscape.</div>
     </div>
     <div class="package-container">
       <div class="package basic" onmouseover="showPackage('basic')" onmouseout="resetPackages()">
         <h2>BASIC</h2>
-        <p class="description">Basic solutions for a simple and effective online presence.</p>
+        <p class="description">I provide basic solutions designed to establish a simple yet powerful online presence. I believe that clarity and minimalism are key to effective digital communication. With my approach, I strip away unnecessary complexities and focus on creating a clean, intuitive website that truly represents your brand. I work closely with you to understand your vision, ensuring that every element—from layout to functionality, enhances your message and engages your audience. By choosing my tailored solutions, you set the foundation for a digital experience that is both aesthetically pleasing and functionally robust, allowing you to connect effortlessly with your target market.</p>
       </div>
       <div class="package premium" onmouseover="showPackage('premium')" onmouseout="resetPackages()">
         <h2>PREMIUM</h2>
-        <p class="description">Advanced solutions with exclusive functionality and design.</p>
+        <p class="description">I offer advanced solutions that combine exclusive functionality with cutting-edge design, ensuring a seamless and high-performance digital experience. Every detail is crafted with precision to elevate your online presence, integrating innovative features that enhance usability, engagement, and efficiency. My approach focuses on delivering tailored solutions that not only reflect your brand’s uniqueness but also provide a competitive edge in the digital landscape. With a perfect balance of aesthetics and functionality, I create websites that captivate, perform, and adapt to your evolving needs.</p>
       </div>
     </div>
   </section>
 
   <div class="section" id="contact">
     Let's Build Something Great
+ <section class="elegant-box">
     <div class="content-text">Reach me out on X, Fiverr and Telegram</div>
   </div>
 
   <!-- Social Buttons -->
   <div class="social-buttons">
     <a href="https://twitter.com/weBgen_graphics" target="_blank"><i class="fab fa-x"></i></a>
-        <a href="https://www.fiverr.com/s/LdydBNY" target="_blank" style="font-size:2rem; color:black;  padding:5px 20px; border-radius:5px; text-decoration:none;">Fiverr</a>
+        <a href="https://www.fiverr.com/s/LdydBNY" target="_blank" style="font-size:2rem; color:white;  padding:5px 20px; border-radius:5px; text-decoration:none;">Fiverr</a>
     <a href="https://t.me/webGen87" target="_blank"><i class="fab fa-telegram"></i></a>
   </div>
 
