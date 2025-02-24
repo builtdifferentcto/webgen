@@ -257,6 +257,17 @@
         padding: 20px;
       }
     }
+    /* 🔹 MOBILE OPTIMIZATION */
+@media (max-width: 768px) {  
+  .banner {
+    height: 300px; /* Riduce l'altezza per mobile */
+  }
+  
+  .banner img {
+    object-fit: cover;
+    object-position: center center; /* Centra il soggetto */
+  }
+}
     @media (max-width: 480px) {
       header {
         padding: 10px;
