@@ -264,7 +264,7 @@
   }
 
   .banner img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: center center; /* Mantiene il focus */
   }
 }
@@ -272,6 +272,11 @@
 @media (max-width: 480px) {
   .banner {
     height: 250px; /* Ulteriore riduzione per schermi molto piccoli */
+    .banner img {
+    object-fit: contain;
+    object-position: center center; /* Mantiene il focus */
+  }
+}
   }
 }
     @media (max-width: 480px) {
