@@ -257,15 +257,21 @@
         padding: 20px;
       }
     }
-    /* 🔹 MOBILE OPTIMIZATION */
-@media (max-width: 768px) {  
+/* 🔹 Mobile Optimization */
+@media (max-width: 768px) {
   .banner {
-    height: 300px; /* Riduce l'altezza per mobile */
+    height: 350px; /* Riduce altezza del banner per schermi più piccoli */
   }
-  
+
   .banner img {
     object-fit: cover;
-    object-position: center center; /* Centra il soggetto */
+    object-position: center center; /* Mantiene il focus */
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    height: 250px; /* Ulteriore riduzione per schermi molto piccoli */
   }
 }
     @media (max-width: 480px) {
