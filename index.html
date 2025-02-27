@@ -28,16 +28,45 @@
   display: block;
 }
 
+body {
+  position: relative; /* Necessario per posizionare l'overlay */
+  background-image: url('https://imagizer.imageshack.com/img922/6286/F6FUZ.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Pseudo-elemento per l'overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://imagizer.imageshack.com/img923/9669/4U1EhQ.png') no-repeat center;
+  background-size: contain; /* Oppure 'cover' se preferisci che copra tutta l'area */
+  opacity: 0.5; /* Regola l'opacità a seconda delle preferenze */
+  pointer-events: none; /* Permette di cliccare gli elementi sottostanti */
+  z-index: 1; /* Assicura che l'overlay si posizioni sopra il background ma sotto il contenuto */
+}
+
+/* Assicurati che il contenuto abbia un indice z superiore */
+body > * {
+  position: relative;
+  z-index: 2;
+}
 
     /* Reset e font */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'roboto', sans-serif;
+      font-family: 'Roboto', sans-serif;
     }
     body {
-      background-image: url('https://imagizer.imageshack.com/img923/1459/el5Wgq.jpg');
+      background-image: url('https://imagizer.imageshack.com/img922/6286/F6FZUZ.jpg');
       background-repeat: no-repeat;
       background-position: center;
       background-attachment: fixed;
@@ -87,27 +116,140 @@
       color: white;
       padding: 10px;
     }
-    /* Sezioni e animazioni */
-    .section {
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      font-weight: bold;
-      padding: 0 10%;
-      text-transform: uppercase;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 1s, transform 1s;
-      margin-bottom: 10px;
-    }
-    .section.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+   /* Sezione con fade-in durante lo scroll */
+.section {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 0 10%;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  margin-bottom: 10px;
+}
+.section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+#scrollUpBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+#scrollUpBtn img {
+  width: 50px; /* Regola la larghezza se necessario */
+  height: 50px; /* Regola l'altezza se necessario */
+}
+
+/* Card dei pacchetti più moderne */
+.package {
+  width: 600px;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;  /* Aggiungi angoli arrotondati */
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5); /* Sfondo traslucido */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  box-sizing: border-box;
+}
+.package:hover {
+  transform: translateY(-10px); /* Leggera elevazione al passaggio del mouse */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); /* Ombra più intensa */
+}
+.package h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #FFF;
+  margin-bottom: 15px;
+}
+.package .description {
+  font-size: 18px;
+  color: #CCC;
+  display: none;
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.package:hover .description {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Transizioni al passaggio del mouse */
+.package-container:hover .package:not(:hover) h2 {
+  opacity: 0.5;  /* Ridurre l'opacità del titolo degli altri pacchetti */
+}
+
+/* Sfondo delle sezioni */
+#about, #services, #packages {
+  background: rgba(0, 0, 0, 0.2); /* Aggiungi un po' di trasparenza */
+  border-radius: 20px; /* Bordo arrotondato */
+  padding: 40px 5%;
+  margin-top: 20px;
+}
+
+/* Pulsante sociale */
+.social-buttons a {
+  font-size: 2.5rem;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.social-buttons a:hover {
+  color: #98AFC7;
+  transform: scale(1.2); /* Aumento dimensioni al passaggio del mouse */
+}
+
+/* Modifica le sezioni elegant-box */
+.elegant-box {
+  background-color: rgba(0, 0, 0, 0.2); /* Aggiungi sfondo più trasparente */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Bordo più sottile e traslucido */
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  max-width: 750px;
+  margin: 20px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.elegant-box:hover {
+  transform: scale(1.05); /* Leggera elevazione */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombra morbida */
+}
+
+/* Animazione ripple */
+.ripple {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: rippleEffect 0.6s linear;
+  pointer-events: none;
+  opacity: 1;
+}
+
+@keyframes rippleEffect {
+  to {
+    transform: scale(15);
+    opacity: 0;
+  }
+}
     .content-text {
       font-size: 18px;
       line-height: 1.5;
@@ -174,6 +316,14 @@
       font-size: 32px;
       font-weight: bold;
     }
+.package.basic h2,
+.package.premium h2,
+.package.basic .description,
+.package.premium .description {
+  font-weight: bold;
+  color: white;
+}
+
     /* Quando si passa sopra un package, nasconde il titolo degli altri */
     .package-container:hover .package:not(:hover) h2 {
       opacity: 0;
@@ -243,11 +393,11 @@
         padding: 20px;
       }
       .section {
-        font-size: 22px;
+        font-size: 32px;
         padding: 0 5%;
       }
       .content-text {
-        font-size: 14px;
+        font-size: 18px;
         padding: 0 5%;
       }
       .social-buttons a {
@@ -257,39 +407,15 @@
         padding: 20px;
       }
     }
-/* 🔹 Mobile Optimization */
-@media (max-width: 768px) {
-  .banner {
-    height: 350px; /* Riduce altezza del banner per schermi più piccoli */
-     margin-top: -80px; /* Avvicina il banner all'header */
-  }
-
-  .banner img {
-    object-fit: contain;
-    object-position: center center; /* Mantiene il focus */
-  }
-}
-
-@media (max-width: 480px) {
-  .banner {
-     margin-top: -80px; /* Avvicina il banner all'header */
-    height: 250px; /* Ulteriore riduzione per schermi molto piccoli */
-    .banner img {
-    object-fit: contain;
-    object-position: center center; /* Mantiene il focus */
-  }
-}
-  }
-}
     @media (max-width: 480px) {
       header {
         padding: 10px;
       }
       .section {
-        font-size: 22px;
+        font-size: 28px;
       }
       .content-text {
-        font-size: 14px;
+        font-size: 16px;
       }
       .social-buttons a {
         font-size: 1.8rem;
@@ -325,7 +451,7 @@
     }
     @media (max-width: 480px) {
       table th, table td {
-        font-size: 10px;
+        font-size: 12px;
       }
     }
 /* Stile per l'effetto ripple */
@@ -356,6 +482,7 @@
       color: white;                       /* Colore del testo per contrasto */
       max-width: 750px;                   /* Larghezza massima della cornice */
       margin: 20px auto;                  /* Centrare la cornice nella pagina */
+
   </style>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
@@ -373,7 +500,7 @@
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
   </header>
 <div class="banner">
-  <img src="https://imagizer.imageshack.com/img922/5924/YIVRuk.png" alt="Website Banner">
+  <img src="https://imagizer.imageshack.com/img923/5286/q4M8hh.png" alt="Website Banner">
 </div>
 
   <div class="section" id="about">
@@ -391,6 +518,7 @@
   <!-- Sezione Packages (unica e completa) -->
   <section id="packages">
     <div class="section">
+
       Basic or Premium
  <section class="elegant-box">
       <div class="content-text">Explore our range of meticulously crafted packages, each designed to meet your unique project needs. By selecting the one that perfectly aligns with your vision, you take the crucial step toward transforming your ideas into a standout digital experience. Let my expertise propel your project to unprecedented heights, combining cutting-edge technology and innovative design to set you apart in a competitive landscape.</div>
@@ -398,6 +526,7 @@
     <div class="package-container">
       <div class="package basic" onmouseover="showPackage('basic')" onmouseout="resetPackages()">
         <h2>BASIC</h2>
+
         <p class="description">I provide basic solutions designed to establish a simple yet powerful online presence. I believe that clarity and minimalism are key to effective digital communication. With my approach, I strip away unnecessary complexities and focus on creating a clean, intuitive website that truly represents your brand. I work closely with you to understand your vision, ensuring that every element—from layout to functionality, enhances your message and engages your audience. By choosing my tailored solutions, you set the foundation for a digital experience that is both aesthetically pleasing and functionally robust, allowing you to connect effortlessly with your target market.</p>
       </div>
       <div class="package premium" onmouseover="showPackage('premium')" onmouseout="resetPackages()">
@@ -442,6 +571,18 @@ document.addEventListener("click", function (e) {
         ripple.remove();
     }, 600); // Rimuove l'elemento dopo l'animazione
 });
+function scrollUp() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+window.addEventListener('scroll', function() {
+  var scrollUpBtn = document.getElementById('scrollUpBtn');
+  if (window.scrollY > 200) {
+    scrollUpBtn.style.display = 'block';
+  } else {
+    scrollUpBtn.style.display = 'none';
+  }
+});
 
     function showPackage(type) {
       document.querySelectorAll(".package").forEach(pkg => {
@@ -471,11 +612,17 @@ document.addEventListener("click", function (e) {
         if (rect.top < window.innerHeight * 0.8) {
           section.classList.add('show');
         }
+
       });
     });
     function toggleMenu() {
       document.querySelector('nav').classList.toggle('open');
     }
   </script>
+<!-- Bottone scroll up -->
+<button id="scrollUpBtn" onclick="scrollUp()" style="display: none;">
+  <img src="https://imagizer.imageshack.com/img923/9669/4U1EhQ.png" alt="Scroll Up">
+</button>
+
 </body>
 </html>
