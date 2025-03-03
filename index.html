@@ -10,21 +10,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=roboto:wght@400;600&display=swap" rel="stylesheet">
   <style>
+
+
 .banner {
-  width: 100%; /* Larghezza completa */
-  height: 300px; /* Altezza fissa (puoi modificarla) */
+  width: 100%;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Evita spazi extra */
-  margin-top: 10px; /* Distanza dall'header */
+  overflow: hidden;
+  margin-top: 10px;
 }
 
 .banner img {
-  width: 100%; /* Occupa tutta la larghezza */
-  height: 100%; /* Occupa tutta l'altezza */
-  object-fit: cover; /* Ritaglia mantenendo le proporzioni */
-  object-position: center; /* Centra l'immagine */
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
   display: block;
 }
 
@@ -403,6 +405,11 @@ body > * {
       .social-buttons a {
         font-size: 2rem;
       }
+.banner {
+  width: 100%;
+  height: 30vh; /* Adatta l'altezza in base alla viewport */
+}
+
       footer {
         padding: 20px;
       }
@@ -454,6 +461,15 @@ body > * {
         font-size: 12px;
       }
     }
+@media (max-width: 768px) {
+  .banner {
+    height: 200px; /* Puoi ridurre l'altezza per una migliore adattabilità */
+  }
+  .banner img {
+    object-fit: contain; /* Mantiene l'immagine visibile senza tagliarla */
+  }
+}
+
 /* Stile per l'effetto ripple */
 .ripple {
   position: fixed;
@@ -618,6 +634,8 @@ window.addEventListener('scroll', function() {
     function toggleMenu() {
       document.querySelector('nav').classList.toggle('open');
     }
+
+
   </script>
 <!-- Bottone scroll up -->
 <button id="scrollUpBtn" onclick="scrollUp()" style="display: none;">
