@@ -605,6 +605,9 @@ background-size: cover;
         preloader.style.visibility = 'hidden';
         document.body.style.opacity = 1;
       }, 4000);
+// Scrolla fino alla sezione "home"
+      const homeSection = document.getElementById('home');
+      homeSection.scrollIntoView({ behavior: 'smooth' });
     });
 
     // Mostra/nascondi il bottone Scroll Up al variare dello scroll
@@ -625,62 +628,65 @@ background-size: cover;
       });
     });
 const inputArea = document.getElementById('input');
-    const outputArea = document.getElementById('output');
-    const terminal = document.getElementById('terminal');
+const outputArea = document.getElementById('output');
+const terminal = document.getElementById('terminal');
 
-    // Object with the FAQ and their answers
-    const faqAnswers = {
-      "how can i contact you?": "You can contact me through the 'Contact' section of the website or by sending an email to info@example.com.",
-      "what services do you offer?": "We offer landing pages, websites, logos, templates for streamers, and much more in a retro style.",
-      "how much does a project cost?": "The cost varies based on your needs. Contact us for a personalized quote.",
-      "who are you?": "I am webGen, your assistant for retro-style web and graphic projects.",
-      "help": "Available commands: help, clear, or type a FAQ question like: 'How can I contact you?', 'What services do you offer?', 'How much does a project cost?', 'Who are you?'",
-      "faq": "Available FAQs: 'How can I contact you?', 'What services do you offer?', 'How much does a project cost?', 'Who are you?'"
-    };
+// Object with the FAQ and their answers
+const faqAnswers = {
+  "who are you?": "I am webGen, your assistant for retro-style web and graphic projects.",
+  "help": "Available commands: help, clear, contact, price, services, who are you",
+  "contact": "You can reach me via email at aiwebgen@gmail.com or by visiting my socials.",
+  "price": "The cost varies based on your needs. Contact us for a personalized quote.",
+  "services": "I offer landing pages, websites, logos, templates for streamers, and much more."
+};
 
-    // Function to add a line to the terminal
-    function addLine(text) {
-      const line = document.createElement('div');
-      line.className = 'line';
-      line.textContent = text;
-      outputArea.appendChild(line);
-      terminal.scrollTop = terminal.scrollHeight;
-    }
+// Function to add a line to the terminal
+function addLine(text) {
+  const line = document.createElement('div');
+  line.className = 'line';
+  line.textContent = text;
+  outputArea.appendChild(line);
+  terminal.scrollTop = terminal.scrollHeight;
+}
 
-    // Process the input command
-    function processCommand(command) {
-      addLine(`C:\\> ${command}`);
-      const cmd = command.trim().toLowerCase();
-      if (faqAnswers[cmd]) {
-        addLine(faqAnswers[cmd]);
-      } else if (cmd === "clear") {
-        outputArea.innerHTML = "";
-      } else if (cmd === "") {
-        // Do nothing if the input is empty
-      } else {
-        addLine(`Unrecognized command. Type "help" to see the available commands.`);
-      }
-    }
+// Process the input command
+function processCommand(command) {
+  addLine(`C:\\> ${command}`);
+  const cmd = command.trim().toLowerCase();
 
-    // Listen for Enter key to submit the command
-    inputArea.addEventListener('keydown', function(event) {
-      if (event.key === "Enter") {
-        event.preventDefault();
-        const command = inputArea.textContent;
-        processCommand(command);
-        inputArea.textContent = "";
-      }
-    });
+  // FAQ answers
+  if (faqAnswers[cmd]) {
+    addLine(faqAnswers[cmd]);
+  } else if (cmd === "clear") {
+    outputArea.innerHTML = "";
+  } else if (cmd === "projects") {
+    addLine("Current projects:\n1. Retro web design template\n2. Custom logo for streamers\n3. Game-themed website");
+  } else if (cmd === "contact info") {
+    addLine("You can reach us at: info@example.com. Visit our Contact page for more info.");
+  } else {
+    addLine(`Unrecognized command. Type "help" to see the available commands.`);
+  }
+}
 
-    // Focus input when clicking on the terminal
-    terminal.addEventListener('click', function() {
-      inputArea.focus();
-    });
+// Listen for Enter key to submit the command
+inputArea.addEventListener('keydown', function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    const command = inputArea.textContent;
+    processCommand(command);
+    inputArea.textContent = "";
+  }
+});
 
-    // Focus input when the page loads
-    window.addEventListener('load', function() {
-      inputArea.focus();
-    });
+// Focus input when clicking on the terminal
+terminal.addEventListener('click', function() {
+  inputArea.focus();
+});
+
+// Focus input when the page loads
+window.addEventListener('load', function() {
+  inputArea.focus();
+});
 </script>
 </body>
 </html>
