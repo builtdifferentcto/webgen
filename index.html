@@ -1,646 +1,470 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
-<link rel="icon" href="https://imagizer.imageshack.com/img924/204/kjFzmV.png" type="image/png">
-<link rel="apple-touch-icon" href="favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>weBgen - Web Design Services</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=roboto:wght@400;600&display=swap" rel="stylesheet">
+  <title>Landing Page Pixel Art - Responsive</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-
-.banner {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-.banner img {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  object-position: center;
-  display: block;
-}
-
-body {
-  position: relative; /* Necessario per posizionare l'overlay */
-  background-image: url('https://imagizer.imageshack.com/img922/6286/F6FUZ.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-/* Pseudo-elemento per l'overlay */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('https://imagizer.imageshack.com/img923/9669/4U1EhQ.png') no-repeat center;
-  background-size: contain; /* Oppure 'cover' se preferisci che copra tutta l'area */
-  opacity: 0.5; /* Regola l'opacità a seconda delle preferenze */
-  pointer-events: none; /* Permette di cliccare gli elementi sottostanti */
-  z-index: 1; /* Assicura che l'overlay si posizioni sopra il background ma sotto il contenuto */
-}
-
-/* Assicurati che il contenuto abbia un indice z superiore */
-body > * {
-  position: relative;
-  z-index: 2;
-}
-
-    /* Reset e font */
+    /* Reset e impostazioni base */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Press Start 2P', cursive;
     }
     body {
-      background-image: url('https://imagizer.imageshack.com/img922/6286/F6FZUZ.jpg');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      background-size: cover;
-      color: white;
+      background-color: black;
+      color: cyan;
       text-align: center;
-      overflow-x: hidden;
+      image-rendering: pixelated;
+      font-size: 16px;
     }
-    /* Header e Navbar */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 5%;
-      position: sticky;
+   /* Preloader - Console anni '80 */
+    #preloader {
+      position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
-      z-index: 1000;
-      transition: background 0.3s;
-    }
-    header.scrolled {
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-    }
-    nav ul {
-      list-style: none;
+      height: 100%;
+      background-color: black;
       display: flex;
-    }
-    nav ul li {
-      margin: 0 20px;
-    }
-    nav ul li a {
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 18px;
-      transition: opacity 0.3s;
-    }
-    nav ul li a:hover {
-      opacity: 0.7;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      font-size: 1.5em;
     }
 
-    /* Pulsante menu per mobile */
+    #preloader .console-text {
+      text-align: left;
+      padding: 10px;
+      white-space: pre-wrap;
+      font-family: 'Press Start 2P', cursive;
+      line-height: 1.5;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 50%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .console-text span {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid cyan;
+      animation: typing 2s steps(10, end) forwards, blink 0.8s infinite;
+    }
+
+    .console-text span:nth-child(1) {
+      animation-delay: 0s;
+    }
+  
+    /* Navbar e Menu Hamburger */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      background-color: rgba(255, 255, 255, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid cyan;
+      z-index: 1000;
+    }
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+    .nav-links a {
+      color: cyan;
+      text-decoration: none;
+      font-size: 1em;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover {
+      color: white;
+    }
+    /* Menu hamburger: visibile solo in mobile */
     .menu-toggle {
       display: none;
+      flex-direction: column;
       cursor: pointer;
-      font-size: 2rem;
-      color: white;
-      padding: 10px;
     }
-   /* Sezione con fade-in durante lo scroll */
-.section {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  font-weight: bold;
-  padding: 0 10%;
-  text-transform: uppercase;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 1s ease-out, transform 1s ease-out;
-  margin-bottom: 10px;
-}
-.section.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-#scrollUpBtn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  z-index: 1000;
-}
-#scrollUpBtn img {
-  width: 50px; /* Regola la larghezza se necessario */
-  height: 50px; /* Regola l'altezza se necessario */
-}
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background-color: cyan;
+      margin: 3px 0;
+      transition: all 0.3s;
+    }
 
-/* Card dei pacchetti più moderne */
-.package {
-  width: 600px;
-  padding: 20px;
-  text-align: center;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 15px;  /* Aggiungi angoli arrotondati */
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.5); /* Sfondo traslucido */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombra leggera */
-  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  box-sizing: border-box;
-}
-.package:hover {
-  transform: translateY(-10px); /* Leggera elevazione al passaggio del mouse */
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); /* Ombra più intensa */
-}
-.package h2 {
-  font-size: 32px;
-  font-weight: bold;
-  color: #FFF;
-  margin-bottom: 15px;
-}
-.package .description {
-  font-size: 18px;
-  color: #CCC;
-  display: none;
-  margin-top: 10px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.package:hover .description {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Transizioni al passaggio del mouse */
-.package-container:hover .package:not(:hover) h2 {
-  opacity: 0.5;  /* Ridurre l'opacità del titolo degli altri pacchetti */
-}
-
-/* Sfondo delle sezioni */
-#about, #services, #packages {
-  background: rgba(0, 0, 0, 0.2); /* Aggiungi un po' di trasparenza */
-  border-radius: 20px; /* Bordo arrotondato */
-  padding: 40px 5%;
-  margin-top: 20px;
-}
-
-/* Pulsante sociale */
-.social-buttons a {
-  font-size: 2.5rem;
-  color: white;
-  text-decoration: none;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-.social-buttons a:hover {
-  color: #98AFC7;
-  transform: scale(1.2); /* Aumento dimensioni al passaggio del mouse */
-}
-
-/* Modifica le sezioni elegant-box */
-.elegant-box {
-  background-color: rgba(0, 0, 0, 0.2); /* Aggiungi sfondo più trasparente */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Bordo più sottile e traslucido */
-  border-radius: 15px;
-  padding: 20px;
-  color: white;
-  max-width: 750px;
-  margin: 20px auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.elegant-box:hover {
-  transform: scale(1.05); /* Leggera elevazione */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Ombra morbida */
-}
-
-/* Animazione ripple */
-.ripple {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  transform: scale(0);
-  animation: rippleEffect 0.6s linear;
-  pointer-events: none;
-  opacity: 1;
-}
-
-@keyframes rippleEffect {
-  to {
-    transform: scale(15);
-    opacity: 0;
-  }
-}
-    .content-text {
-      font-size: 18px;
-      line-height: 1.5;
-      text-align: center;
-      margin-top: 10px;
+    /* Sezioni */
+    .section {
       opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 1s, transform 1s;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      padding: 80px 20px;
+      font-size: 1em;
+      text-align: center;
+      /* Aggiunta di margine superiore per evitare la sovrapposizione con la navbar fissa */
+      margin-top: 80px;
     }
-    .content-text.show {
+
+    h1, h2 {
+      margin-bottom: 20px;
+    }
+    .show {
       opacity: 1;
       transform: translateY(0);
     }
-    .icon-section {
-      height: 60vh;
+
+    /* Sezione Hero */
+    .hero {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      font-size: 100px;
-      opacity: 0;
-      transform: scale(0.8);
-      transition: opacity 1.5s, transform 1.5s;
+      padding: 80px 50px;
+      border-bottom: 2px solid cyan;
     }
-    .icon-section.show {
-      opacity: 1;
-      transform: scale(1);
+    .hero .image {
+      flex: 1;
+      text-align: left;
+      image-rendering: pixelated;
     }
-    /* Packages Section */
-    #packages {
-      padding: 70px 10%;
-      text-align: center;
-      margin-top: 20px;
+    .hero .image img {
+      max-width: 80%;
+      height: auto;
     }
-    .package-container {
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      position: relative;
-      margin-top: 40px;
-    }
-    .package {
-      width: 600px;
-      padding: 20px;
-      text-align: center;
-      border: 2px solid white;
-      cursor: pointer;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      position: relative;
-      box-sizing: border-box;
-    }
-    .package .description {
-      display: none;
-      font-size: 18px;
-      margin-top: 10px;
-    }
-    .package:hover {
-      transform: scale(1.1);
-      z-index: 2;
-    }
-    .package:hover .description {
-      display: block;
-    }
-    .package h2 {
-      font-size: 32px;
-      font-weight: bold;
-    }
-.package.basic h2,
-.package.premium h2,
-.package.basic .description,
-.package.premium .description {
-  font-weight: bold;
-  color: white;
+    .hero .text {
+  flex: 1;
+  text-align: left;
+  font-size: 1.2em;
+  max-width: 100%;
+  padding: 0 20px; /* Aggiunge spazio sui lati per evitare l'overflow */
+  box-sizing: border-box;
 }
 
-    /* Quando si passa sopra un package, nasconde il titolo degli altri */
-    .package-container:hover .package:not(:hover) h2 {
-      opacity: 0;
+
+    /* Sezione Servizi */
+    .full-section ul {
+      list-style-type: none;
+      padding: 0;
+      font-size: 1.2em;
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
     }
-    /* Social Buttons */
-    .social-buttons {
+    .full-section li {
+      margin: 10px 0;
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s, transform 0.5s;
+    }
+    .pixel-square {
+      width: 10px;
+      height: 10px;
+      background-color: cyan;
+      margin-right: 10px;
+      display: inline-block;
+    }
+
+    /* Sezione Socials */
+    .socials {
       display: flex;
       justify-content: center;
       gap: 15px;
-      margin: 10px 0 50px;
     }
-    .social-buttons a {
-      font-size: 2.5rem;
-      color: white;
+    .socials a {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      background: cyan;
+      color: black;
+      border-radius: 5px;
       text-decoration: none;
+      transition: 0.3s;
+      border: 2px solid black;
+      box-shadow: 2px 2px 0 cyan;
     }
-    .social-buttons a:hover {
-      color: #98AFC7;
+    .socials a:hover {
+      background: gray;
+      color: white;
     }
-    /* Footer */
-    footer {
-      border-top: 1px solid black;
-      padding-top: 20px;
-      text-align: center;
+
+   .typing-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap; /* Impedisce che il testo vada a capo durante l'animazione */
+  border-right: 2px solid cyan;
+  animation: typing 3s steps(40, end) forwards, blink 0.8s infinite; /* Ridotto a 3s per velocizzare l'animazione */
+}
+
+.typing-text.complete {
+  white-space: normal; /* Dopo l'animazione, consente al testo di andare a capo */
+  border-right: none; /* Rimuove il cursore lampeggiante */
+  animation: none; /* Ferma l'animazione */
+}
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
-    /* Media Queries */
-    @media (max-width: 768px) {
-      body {
-        background-size: auto;
-        background-position: center;
-      }
-      header {
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    .typing-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap; /* Impedisce che il testo vada a capo durante l'animazione */
+  border-right: 2px solid cyan;
+  animation: typing 6s steps(40, end) forwards, blink 0.8s infinite;
+  /* Impedisce il wrapping e mantiene l'animazione intatta */
+}
+
+.typing-text.complete {
+  white-space: normal; /* Dopo l'animazione, consente al testo di andare a capo */
+  border-right: none; /* Rimuove il cursore lampeggiante */
+  animation: none; /* Ferma l'animazione */
+}
+
+
+    /* Media Queries per dispositivi */
+    @media (max-width: 1024px) {
+      .navbar {
         padding: 20px;
-        text-align: center;
+        justify-content: space-evenly;
       }
-      nav ul {
+      .nav-links a {
+        margin: 5px;
+        font-size: 1.1em;
+      }
+      .hero {
         flex-direction: column;
-        align-items: center;
-        width: 100%;
+        padding: 40px 20px;
+      }
+      .hero .image img {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+      .hero .text {
+        text-align: center;
+        font-size: 1.1em;
+      }
+      .section {
+        padding: 60px 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+      }
+      /* Nasconde il menu di navigazione e mostra il menu hamburger */
+      .nav-links {
         display: none;
-        background-color: #333;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
         position: absolute;
         top: 60px;
         left: 0;
-        z-index: 1000;
-      }
-      nav ul li {
+        padding: 1rem;
         text-align: center;
-        width: 100%;
-        padding: 10px 0;
-        margin: 0;
+        z-index: 999;
       }
-      .menu-toggle {
-        display: block;
-      }
-      nav.open ul {
+      .navbar.active .nav-links {
         display: flex;
       }
-      .package-container {
-        flex-direction: column;
-        gap: 30px;
-        padding: 0 20px;
-      }
-
-      .package {
-        width: 100%;
-        padding: 20px;
-      }
-      .section {
-        font-size: 32px;
-        padding: 0 5%;
-      }
-      .content-text {
-        font-size: 18px;
-        padding: 0 5%;
-      }
-      .social-buttons a {
-        font-size: 2rem;
-      }
-.banner {
-  width: 100%;
-  height: 30vh; /* Adatta l'altezza in base alla viewport */
-}
-
-      footer {
-        padding: 20px;
-      }
-    }
-    @media (max-width: 480px) {
-      header {
-        padding: 10px;
-      }
-      .section {
-        font-size: 28px;
-      }
-      .content-text {
-        font-size: 16px;
-      }
-      .social-buttons a {
-        font-size: 1.8rem;
-      }
-      footer {
-        padding: 15px;
-        font-size: 14px;
-      }
-      nav ul li {
-        font-size: 16px;
-      }
       .menu-toggle {
-        font-size: 1.8rem;
+        display: flex;
       }
-      table th, table td {
-        font-size: 12px;
+      .nav-links a {
+        margin: 10px 0;
+        font-size: 1.1em;
+      }
+      .hero {
+        flex-direction: column;
+        padding: 40px 20px;
+      }
+      .hero .image img {
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+      .hero .text {
+        font-size: 1.1em;
+        text-align: center;
+      }
+      .section {
+        padding: 60px 20px;
+      }
+      .socials a {
+        font-size: 1em;
+        padding: 8px 15px;
+      }
+      h1, h2 {
+        margin-bottom: 10px;
       }
     }
-    @media (max-width: 768px) {
-      table {
-        width: 100%;
-        overflow-x: auto;
-        display: block;
-        -webkit-overflow-scrolling: touch;
-      }
-      th, td {
-        padding: 10px;
-        text-align: left;
-      }
-      table th, table td {
-        font-size: 14px;
-      }
-    }
+
     @media (max-width: 480px) {
-      table th, table td {
-        font-size: 12px;
+      .hero .image img {
+        max-width: 90%;
+      }
+      .hero .text {
+        font-size: 1em;
+      }
+      .full-section ul {
+        font-size: 1em;
+        padding-left: 10px;
+      }
+      .socials a {
+        font-size: 0.9em;
       }
     }
-@media (max-width: 768px) {
-  .banner {
-    height: 200px; /* Puoi ridurre l'altezza per una migliore adattabilità */
-  }
-  .banner img {
-    object-fit: contain; /* Mantiene l'immagine visibile senza tagliarla */
-  }
-}
-
-/* Stile per l'effetto ripple */
-.ripple {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  transform: scale(0);
-  animation: rippleEffect 0.6s linear;
-  pointer-events: none;
-  opacity: 1;
-}
-
-/* Animazione dell'onda */
-@keyframes rippleEffect {
-  to {
-    transform: scale(15);
-    opacity: 0;
-  }
-}
-.elegant-box {
-      background-color: rgba(0, 0, 0, 0.3); /* Sfondo nero con opacità trasparente */
-      border: 1px solid white;            /* Bordo bianco */
-      border-radius: 15px;                /* Angoli arrotondati */
-      padding: 20px;                      /* Spazio interno */
-      color: white;                       /* Colore del testo per contrasto */
-      max-width: 750px;                   /* Larghezza massima della cornice */
-      margin: 20px auto;                  /* Centrare la cornice nella pagina */
-
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <h1>weBgen</h1>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#contact">Contact me</a></li>
-      </ul>
-    </nav>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  </header>
-<div class="banner">
-  <img src="https://imagizer.imageshack.com/img923/5286/q4M8hh.png" alt="Website Banner">
-</div>
-
-  <div class="section" id="about">
-     Create Unique Web Experiences
- <section class="elegant-box">
-    <div class="content-text">My mission is to transform your vision into a digital masterpiece that not only meets your business objectives but also captivates your audience. I start by deeply understanding your ideas, brand identity, and target market. This insight drives my creative process, where iS blend innovative graphic design with robust web development techniques.</div>
-  </div>
-
-  <div class="section" id="services">
-    Modern & Minimalistic Web Design
- <section class="elegant-box">
-    <div class="content-text">I create elegant, minimalist, and modern websites designed to deliver a seamless and engaging user experience. My approach blends refined design, intuitive interfaces, and mobile optimization to ensure a professional look and flawless navigation. Whether you need a showcase website, a personal portfolio, or an eye-catching landing page, I craft tailored solutions to enhance your digital identity.</div>
-  </div>
-
-  <!-- Sezione Packages (unica e completa) -->
-  <section id="packages">
-    <div class="section">
-
-      Basic or Premium
- <section class="elegant-box">
-      <div class="content-text">Explore our range of meticulously crafted packages, each designed to meet your unique project needs. By selecting the one that perfectly aligns with your vision, you take the crucial step toward transforming your ideas into a standout digital experience. Let my expertise propel your project to unprecedented heights, combining cutting-edge technology and innovative design to set you apart in a competitive landscape.</div>
+<!-- Preloader - Console anni '80 -->
+  <div id="preloader">
+    <div class="console-text">
+      <span>Initializing...</span><br>
+      
     </div>
-    <div class="package-container">
-      <div class="package basic" onmouseover="showPackage('basic')" onmouseout="resetPackages()">
-        <h2>BASIC</h2>
-
-        <p class="description">I provide basic solutions designed to establish a simple yet powerful online presence. I believe that clarity and minimalism are key to effective digital communication. With my approach, I strip away unnecessary complexities and focus on creating a clean, intuitive website that truly represents your brand. I work closely with you to understand your vision, ensuring that every element—from layout to functionality, enhances your message and engages your audience. By choosing my tailored solutions, you set the foundation for a digital experience that is both aesthetically pleasing and functionally robust, allowing you to connect effortlessly with your target market.</p>
-      </div>
-      <div class="package premium" onmouseover="showPackage('premium')" onmouseout="resetPackages()">
-        <h2>PREMIUM</h2>
-        <p class="description">I offer advanced solutions that combine exclusive functionality with cutting-edge design, ensuring a seamless and high-performance digital experience. Every detail is crafted with precision to elevate your online presence, integrating innovative features that enhance usability, engagement, and efficiency. My approach focuses on delivering tailored solutions that not only reflect your brand’s uniqueness but also provide a competitive edge in the digital landscape. With a perfect balance of aesthetics and functionality, I create websites that captivate, perform, and adapt to your evolving needs.</p>
-      </div>
+  </div>
+  <!-- Navbar con menu hamburger -->
+  <nav class="navbar">
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#socials">Socials</a>
+    </div>
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+  
+  <!-- Sezione Hero -->
+  <section id="home" class="section hero">
+    <div class="text" style="text-align: left;">
+      <h1><span class="typing-text">Welcome!</span></h1>
+      <p><span class="typing-text">I'm webGen, im here to help you with your project.</span></p>
+    </div>
+    <div class="image">
+      <img src="https://imagizer.imageshack.com/img923/565/GHAYCA.png" alt="Pixel Art Image">
     </div>
   </section>
-
-  <div class="section" id="contact">
-    Let's Build Something Great
- <section class="elegant-box">
-    <div class="content-text">Reach me out on X, Fiverr and Telegram</div>
-  </div>
-
-  <!-- Social Buttons -->
-  <div class="social-buttons">
-    <a href="https://twitter.com/weBgen_graphics" target="_blank"><i class="fab fa-x"></i></a>
-        <a href="https://www.fiverr.com/s/LdydBNY" target="_blank" style="font-size:2rem; color:white;  padding:5px 20px; border-radius:5px; text-decoration:none;">Fiverr</a>
-    <a href="https://t.me/webGen87" target="_blank"><i class="fab fa-telegram"></i></a>
-  </div>
-
-  <footer>
-    <p>All rights reserved.<br>Copyright by weBgen</p>
-  </footer>
-
+  
+  <!-- Sezione Servizi -->
+  <section id="services" class="section full-section">
+    <h2><span class="typing-text">Services</span></h2>
+    <ul id="services-list">
+      <li><span class="pixel-square"></span>Landing pages</li>
+      <li><span class="pixel-square"></span>Websites</li>
+      <li><span class="pixel-square"></span>Logos</li>
+      <li><span class="pixel-square"></span>Streamers templates/Overlays</li>
+      <li><span class="pixel-square"></span>Animations</li>
+      <li><span class="pixel-square"></span>X Graphics</li>
+    </ul>
+  </section>
+  
+  <!-- Sezione Socials -->
+  <section id="socials" class="section">
+    <h2><span class="typing-text">Get in touch</span></h2>
+    <div class="socials">
+      <a href="https://x.com/weBgen_graphics" target="_blank">X</a>
+      <a href="https://t.me/webgen87" target="_blank">Telegram</a>
+    </div>
+  </section>
+  
   <script>
-document.addEventListener("click", function (e) {
-    let ripple = document.createElement("span");
-    ripple.classList.add("ripple");
-    
-    document.body.appendChild(ripple);
+    // Animazione di comparsa delle sezioni con Intersection Observer
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll(".section");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      }, { threshold: 0.1 });
+      sections.forEach(section => observer.observe(section));
+    });
 
-    // Posiziona il ripple esattamente al centro del click
-    let x = e.clientX - 5; // -5 per centrare rispetto alla larghezza (10px)
-    let y = e.clientY - 5; // -5 per centrare rispetto all'altezza (10px)
+    // Sequenza di animazione per la lista dei servizi
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll(".section");
+      const listItems = document.querySelectorAll("#services-list li");
+      let delay = 0;
 
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-
-    setTimeout(() => {
-        ripple.remove();
-    }, 600); // Rimuove l'elemento dopo l'animazione
-});
-function scrollUp() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-window.addEventListener('scroll', function() {
-  var scrollUpBtn = document.getElementById('scrollUpBtn');
-  if (window.scrollY > 200) {
-    scrollUpBtn.style.display = 'block';
-  } else {
-    scrollUpBtn.style.display = 'none';
-  }
-});
-
-    function showPackage(type) {
-      document.querySelectorAll(".package").forEach(pkg => {
-        if (!pkg.classList.contains(type)) {
-          pkg.style.opacity = "0";
-        } else {
-          pkg.style.opacity = "1";
-          pkg.style.zIndex = "2";
-        }
-      });
-    }
-    function resetPackages() {
-      document.querySelectorAll(".package").forEach(pkg => {
-        pkg.style.opacity = "1";
-        pkg.style.zIndex = "1";
-      });
-    }
-    window.addEventListener('scroll', function() {
-      const header = document.querySelector('header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+      function showSection(section, delay) {
+        setTimeout(() => {
+          section.classList.add("show");
+        }, delay);
       }
-      document.querySelectorAll('.section, .icon-section, .content-text').forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
-          section.classList.add('show');
-        }
 
+      // Mostra la sezione "home" subito
+      showSection(sections[0], delay);
+      delay += 3000; // Attesa per l'animazione di scrittura
+
+      // Anima ogni elemento della lista dei servizi
+      listItems.forEach((item) => {
+        setTimeout(() => {
+          item.style.opacity = 1;
+          item.style.transform = "translateY(0)";
+        }, delay);
+        delay += 500;
+      });
+
+      // Mostra le sezioni successive
+      showSection(sections[1], delay);
+      delay += 5000;
+      showSection(sections[2], delay);
+    });
+
+    // Rimuove l'effetto di scrittura (cursore) al termine dell'animazione
+    document.addEventListener("DOMContentLoaded", function() {
+      const typingTextElements = document.querySelectorAll('.typing-text');
+      typingTextElements.forEach(element => {
+        const typingDuration = 3000;
+        setTimeout(() => {
+          element.classList.add('complete');
+        }, typingDuration);
       });
     });
-    function toggleMenu() {
-      document.querySelector('nav').classList.toggle('open');
-    }
 
-
-  </script>
-<!-- Bottone scroll up -->
-<button id="scrollUpBtn" onclick="scrollUp()" style="display: none;">
-  <img src="https://imagizer.imageshack.com/img923/9669/4U1EhQ.png" alt="Scroll Up">
-</button>
-
+    // Toggle del menu hamburger per dispositivi mobili
+    document.addEventListener("DOMContentLoaded", function() {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navbar = document.querySelector('.navbar');
+      menuToggle.addEventListener('click', function() {
+        navbar.classList.toggle('active');
+      });
+    });
+ window.addEventListener("load", function() {
+      // Rimuovi il preloader dopo 9 secondi (tempo totale di caricamento delle righe)
+      setTimeout(function() {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = 0; // Rende trasparente il preloader
+        preloader.style.visibility = 'hidden'; // Nasconde il preloader
+        document.body.style.visibility = 'visible'; // Mostra il corpo della pagina dopo che il preloader è scomparso
+      }, 4000); // Il preloader rimane visibile per 9 secondi
+    });
+</script>
 </body>
 </html>
