@@ -229,7 +229,7 @@ background-size: cover;
     }
     .hero .image {
       flex: 1;
-      text-align: left;
+      text-align: right;
       image-rendering: pixelated;
     }
     .hero .image img {
@@ -291,6 +291,16 @@ background-size: cover;
       background: gray;
       color: white;
     }
+.image img {
+  width: 400px;       /* Imposta la larghezza fissa dell'immagine */
+  height: auto;       /* Mantieni le proporzioni originali */
+  opacity: 0;         /* L'immagine inizia completamente trasparente */
+  transition: opacity 2s ease-in-out; /* Applica una transizione all'opacità per il fade-in */
+}
+
+.image.show img {
+  opacity: 1;         /* L'immagine diventa visibile */
+}
 
    .typing-text {
   display: inline-block;
@@ -459,10 +469,7 @@ background-size: cover;
     <img src="https://imagizer.imageshack.com/img923/565/GHAYCA.png" alt="Scroll Up">
   </button>
 
-<!-- Preloader - Console anni '80 -->
-  <div id="preloader">
-    <div class="console-text">
-      <span>Initializing...</span><br>
+
       
     </div>
   </div>
@@ -559,9 +566,7 @@ background-size: cover;
         }, delay);
       }
 
-      // Mostra la sezione "home" subito
-      showSection(sections[0], delay);
-      delay += 3000; // Attesa per l'animazione di scrittura
+   
 
       // Anima ogni elemento della lista dei servizi
       listItems.forEach((item) => {
@@ -597,18 +602,6 @@ background-size: cover;
         navbar.classList.toggle('active');
       });
     });
-// Al termine del preloader (9 secondi totali per l'animazione) mostra il contenuto con una transizione
-    window.addEventListener("load", function() {
-      setTimeout(function() {
-        const preloader = document.getElementById('preloader');
-        preloader.style.opacity = 0;
-        preloader.style.visibility = 'hidden';
-        document.body.style.opacity = 1;
-      }, 4000);
-// Scrolla fino alla sezione "home"
-      const homeSection = document.getElementById('home');
-      homeSection.scrollIntoView({ behavior: 'smooth' });
-    });
 
     // Mostra/nascondi il bottone Scroll Up al variare dello scroll
     window.addEventListener('scroll', function() {
@@ -629,7 +622,7 @@ background-size: cover;
     });
 const inputArea = document.getElementById('input');
 const outputArea = document.getElementById('output');
-const terminal = document.getElementById('terminal');
+const terminal = document.getElementById('home');
 
 // Object with the FAQ and their answers
 const faqAnswers = {
@@ -678,15 +671,18 @@ inputArea.addEventListener('keydown', function(event) {
   }
 });
 
-// Focus input when clicking on the terminal
-terminal.addEventListener('click', function() {
-  inputArea.focus();
+
+window.addEventListener('load', function() {
+  const faqSection = document.getElementById('home');
+  faqSection.scrollIntoView({ behavior: 'smooth' });
+});
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.querySelector('.image').classList.add('show');
+  }, 2000); // Attendere 2 secondi (2000 ms) prima di far apparire l'immagine
 });
 
-// Focus input when the page loads
-window.addEventListener('load', function() {
-  inputArea.focus();
-});
+
 </script>
 </body>
 </html>
