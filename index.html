@@ -10,10 +10,9 @@
         width: 40px;
         height: 40px;
     }
-body {
-  font-size: calc(1vw + 1em); /* Font scales with viewport */
+body, html {
+  cursor: url('https://imagizer.imageshack.com/img924/7112/lHYQH2.png') 0 0, auto;
 }
-
 
      #terminal {
       width: 90%;
@@ -370,97 +369,99 @@ background-size: cover;
       }
     }
 
-    @media (max-width: 768px) {
-      .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
-      }
-      /* Nasconde il menu di navigazione e mostra il menu hamburger */
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        position: absolute;
-        top: 60px;
-        left: 0;
-        padding: 1rem;
-        text-align: center;
-        z-index: 999;
-      }
-      .navbar.active .nav-links {
+    /* Centrare tutto il contenuto e ridurre i titoli per dispositivi mobili */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Riduci la dimensione del testo di base */
         display: flex;
-      }
-      .menu-toggle {
-        display: flex;
-      }
-      .nav-links a {
-        margin: 10px 0;
-        font-size: 1.1em;
-      }
-      .hero {
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Assicura che il contenuto sia centrato verticalmente */
         flex-direction: column;
-        padding: 40px 20px;
-      }
-      .hero .image img {
-        max-width: 100%;
-        margin-bottom: 20px;
-      }
-      .hero .text {
-        font-size: 1.1em;
         text-align: center;
-      }
-      .section {
-        padding: 60px 20px;
-      }
-      .socials a {
-        font-size: 1em;
-        padding: 8px 15px;
-      }
-      h1, h2 {
-        margin-bottom: 10px;
-      }
+        padding: 0 20px; /* Padding per non toccare i bordi */
+        margin: 0;
     }
 
-    @media (max-width: 480px) {
-      .hero .image img {
-        max-width: 90%;
-      }
-      .hero .text {
-        font-size: 1em;
-      }
-      .full-section ul {
+    .navbar {
+        width: 100%;
+        justify-content: center; /* Centra la navbar */
+        padding: 15px;
+    }
+
+    .hero {
+        width: 100%;
+        text-align: center; /* Centra il testo nella sezione hero */
+        padding: 40px 20px;
+    }
+
+    .hero .image img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .hero .text {
+        font-size: 1.2em; /* Riduci la dimensione del testo nella sezione hero */
+    }
+
+    .section {
+        width: 100%;
+        padding: 60px 20px;
+        text-align: center; /* Centra il testo nelle sezioni */
+    }
+
+    h1, h2 {
+        font-size: 1.5em; /* Riduci la dimensione degli header */
+        margin-bottom: 10px;
+    }
+
+    .full-section ul {
         font-size: 1em;
         padding-left: 10px;
-      }
-      .socials a {
-        font-size: 0.9em;
-      }
+        list-style-position: inside;
+        text-align: center;
     }
-.footer {
-    background-color: black;
-    color: cyan;
-    text-align: center;
-    padding: 20px;
-    font-family: 'Press Start 2P', cursive;
-    border-top: 2px solid cyan;
+
+    .footer {
+        width: 100%;
+        padding: 20px;
+        font-size: 0.9em; /* Riduci la dimensione del testo nel footer */
+        text-align: center; /* Centra il testo nel footer */
+    }
+
+    .socials a {
+        font-size: 1em;
+        padding: 8px 15px;
+        text-align: center;
+    }
+
+    .full-section li {
+        font-size: 1.1em; /* Riduci la grandezza del testo per i servizi */
+        padding-left: 10px;
+        text-align: center;
+    }
 }
 
-.footer p {
-    margin-bottom: 10px;
+/* Aggiunta di un layout responsive per dispositivi molto piccoli */
+@media (max-width: 480px) {
+    h1, h2 {
+        font-size: 1.2em; /* Ancora più piccolo per schermi molto piccoli */
+    }
+
+    .hero .text {
+        font-size: 1em; /* Riduci ancora la dimensione del testo nella sezione hero */
+    }
+
+    .full-section ul {
+        font-size: 0.9em; /* Ulteriore riduzione per testi lunghi */
+    }
+
+    .footer {
+        font-size: 0.8em; /* Riduci la dimensione del testo nel footer */
+    }
 }
 
-.footer .footer-links a {
-    color: cyan;
-    text-decoration: none;
-    font-size: 1.1em;
-    transition: color 0.3s;
-}
-
-.footer .footer-links a:hover {
-    color: white;
-}
 
  ul li {
     transition: color 0.3s ease-in-out, transform 0.2s;
