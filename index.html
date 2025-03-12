@@ -6,7 +6,6 @@
   <title>Landing Page Pixel Art - Responsive</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 body, html {
   cursor: url('https://imagizer.imageshack.com/img924/7112/lHYQH2.png') 0 0, auto;
 }
@@ -185,6 +184,26 @@ background-size: cover;
     .nav-links a:hover {
       color: white;
     }
+
+.sol-logo {
+    position: fixed; /* Posiziona il logo sopra gli altri elementi */
+    top: 10px; /* Distanza dall'alto */
+    right: 20px; /* Distanza da destra */
+    width: 50px; /* Dimensione del logo */
+    height: auto;
+    z-index: 1000; /* Assicura che il logo sia sopra gli altri elementi */
+}
+
+ul li {
+    transition: color 0.3s ease-in-out, transform 0.2s;
+}
+
+ul li:hover {
+    color: violet; /* Cambia colore al passaggio del mouse */
+    transform: scale(1.1); /* Leggera ingranditura */
+    cursor: pointer; /* Cambia il cursore in una mano */
+}
+
     /* Menu hamburger: visibile solo in mobile */
     .menu-toggle {
       display: none;
@@ -458,37 +477,18 @@ background-size: cover;
     color: white;
 }
 
- . .price-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
-            position: relative;
-        }
+
         .sol-logo {
             width: 32px;
             height: 32px;
             margin-right: 10px;
         }
-        #sol-price {
-            position: relative;
-            transition: opacity 0.3s ease-in-out;
-        }
-        /* Effetto Glitch */
-        .glitch {
-            animation: glitch 0.3s steps(2, end);
-        }
-        @keyframes glitch {
-            0% { transform: translateX(2px) translateY(-2px); opacity: 0.8; color: #ff00ff; }
-            50% { transform: translateX(-2px) translateY(2px); opacity: 0.6; color: #00ffff; }
-            100% { transform: translateX(0) translateY(0); opacity: 1; color: #00ffcc; }
-        }
-
-  </style>
+          </style>
 </head>
 <body>
-
+<div class="navbar">
+    <img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=026" alt="Solana Logo" class="sol-logo">
+</div>
 
 <!-- Bottone Scroll Up -->
   <button id="scrollUp">
@@ -506,6 +506,7 @@ background-size: cover;
       <a href="#services">Services</a>
       <a href="#socials">Socials</a>
       <a href="#terminal">FAQ</a>
+
     </div>
     <div class="menu-toggle">
       <span></span>
@@ -524,12 +525,6 @@ background-size: cover;
       <img src="https://imagizer.imageshack.com/img923/565/GHAYCA.png" alt="Pixel Art Image">
     </div>
   </section>
-<br
-   <h2>Live Solana Price</h2>
-    <div class="price-container">
-        <img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=026" alt="Solana Logo" class="sol-logo">
-        <span id="sol-price">Loading...</span> USD
-    </div>
 
   <!-- Sezione Servizi -->
   <section id="services" class="section full-section">
@@ -542,7 +537,15 @@ background-size: cover;
       <li><span class="pixel-square"></span>Animations</li>
       <li><span class="pixel-square"></span>X Graphics</li>
     </ul>
+
   </section>
+<br
+   <h2>Live Solana Price</h2>
+    <div class="price-container">
+        <img src="https://cryptologos.cc/logos/solana-sol-logo.png?v=026" alt="Solana Logo" class="sol-logo">
+        <span id="sol-price">Loading...</span> USD
+    </div>
+
 <hr style="border: 1px solid cyan; margin: 50px 0;">
 <h2><span class="typing-text">FAQ terminal</span></h2>
   <div id="terminal">
@@ -555,6 +558,7 @@ background-size: cover;
       <span class="blinking-cursor"></span>
     </div>
   </div>
+Visitors: <span id="visitorCount">0</span>
   <!-- Sezione Socials -->
   <section id="socials" class="section">
     <h2><span class="typing-text">Get in touch</span></h2>
@@ -572,6 +576,7 @@ background-size: cover;
         <a href="#">Terms of Service</a> |
         <a href="#">Contact Us</a>
     </div>
+
 </footer>
 
   <script>
@@ -741,6 +746,16 @@ window.addEventListener('load', function() {
 
         fetchSolanaPrice();
         setInterval(fetchSolanaPrice, 5000); // Aggiorna ogni 5 secondi
+// Contatore visite con LocalStorage
+        if (localStorage.getItem("visitCount")) {
+            let count = parseInt(localStorage.getItem("visitCount"));
+            count++;
+            localStorage.setItem("visitCount", count);
+            document.getElementById("visitorCount").textContent = count;
+        } else {
+            localStorage.setItem("visitCount", 1);
+            document.getElementById("visitorCount").textContent = 1;
+        }
 </script>
 </body>
 </html>
