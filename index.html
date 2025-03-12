@@ -461,7 +461,16 @@ background-size: cover;
     color: white;
 }
 
- 
+ ul li {
+    transition: color 0.3s ease-in-out, transform 0.2s;
+}
+
+ul li:hover {
+    color: violet; /* Cambia colore al passaggio del mouse */
+    transform: scale(1.1); /* Leggera ingranditura */
+    cursor: pointer; /* Cambia il cursore in una mano */
+}
+
   </style>
 </head>
 <body>
