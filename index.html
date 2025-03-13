@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8"> 
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Landing Page Pixel Art - Responsive</title>
   <style>
@@ -470,14 +470,14 @@ ul li:hover {
     transform: scale(1.1); /* Leggera ingranditura */
     cursor: pointer; /* Cambia il cursore in una mano */
 }
-/* Base per il glitch */
+/* Effetto glitch per titoli */
 .glitch {
   position: relative;
   color: white;
+  font-size: 3em; /* Imposta la dimensione del font per i titoli */
   font-weight: bold;
   display: inline-block;
   overflow: hidden;
-  font-size: 5vw; /* Imposta la dimensione del font in base alla larghezza della viewport */
 }
 
 .glitch::before,
@@ -486,13 +486,13 @@ ul li:hover {
   position: absolute;
   top: 0;
   left: 0;
-  color: red;
+  color: red; /* Cambia il colore dell'effetto glitch */
   z-index: -1;
   animation: glitch-animation 1s infinite linear alternate-reverse;
 }
 
 .glitch::after {
-  color: blue;
+  color: blue; /* Cambia il secondo colore dell'effetto */
   animation: glitch-animation 1.5s infinite linear alternate-reverse;
 }
 
@@ -543,64 +543,69 @@ ul li:hover {
   }
 }
 
-/* Titoli con effetto glitch */
+/* Applicare l'effetto glitch sui titoli specifici (h1, h2, h3, ecc.) */
 h1.glitch, h2.glitch, h3.glitch, h4.glitch, h5.glitch, h6.glitch {
   display: inline-block;
   position: relative;
   overflow: hidden;
   color: white;
-  font-size: 5vw; /* Impostiamo un font responsive per i titoli */
 }
 
+/* Aggiungere gli altri stili per i titoli, se necessario */
 h1.glitch {
-  font-size: 6vw; /* Font più grande per h1 */
+  font-size: 3em;
 }
 
 h2.glitch {
-  font-size: 5.5vw;
+  font-size: 2.5em;
 }
 
 h3.glitch {
-  font-size: 5vw;
+  font-size: 2em;
+}
+/* Ridurre la dimensione del testo */
+body {
+  font-size: 14px; /* Font di dimensione più piccola */
 }
 
-/* Media queries per dispositivi mobili */
-@media (max-width: 768px) {
-  .glitch {
-    font-size: 8vw; /* Ridurre la dimensione del font su tablet */
-  }
-
-  h1.glitch {
-    font-size: 9vw;
-  }
-
-  h2.glitch {
-    font-size: 8vw;
-  }
-
-  h3.glitch {
-    font-size: 7vw;
-  }
+h1, h2, h3, h4, h5, h6 {
+  font-size: 18px; /* Titoli più piccoli */
 }
 
-@media (max-width: 480px) {
-  .glitch {
-    font-size: 10vw; /* Ancora più piccolo su mobile */
-  }
-
-  h1.glitch {
-    font-size: 12vw;
-  }
-
-  h2.glitch {
-    font-size: 10vw;
-  }
-
-  h3.glitch {
-    font-size: 9vw;
-  }
+p {
+  font-size: 15px; /* Paragrafi più piccoli */
 }
 
+button {
+  font-size: 12px; /* Bottoni più piccoli */
+}
+
+/* Ridurre la dimensione delle immagini */
+img {
+  width: 80%; /* Immagini più piccole */
+  height: auto;
+}
+
+/* Ridurre padding e margin */
+.container {
+  margin: 10px;
+  padding: 10px;
+}
+
+header, footer {
+  padding: 10px;
+}
+
+section {
+  margin: 10px;
+  padding: 8px;
+}
+
+/* Ridurre gli spazi nei pulsanti e nei form */
+input, button, select {
+  padding: 5px 8px;
+  font-size: 12px;
+}
   </style>
 </head>
 <body>
@@ -638,7 +643,7 @@ h3.glitch {
       <p><span class="typing-text">I'm webGen, im here to help you with your project.</span></p>
     </div>
     <div class="image">
-      <img src="https://imagizer.imageshack.com/img923/8436/UUzOqE.png" alt="Pixel Art Image">
+      <img src="https://imagizer.imageshack.com/img923/565/GHAYCA.png" alt="Pixel Art Image">
     </div>
   </section>
 
@@ -646,6 +651,8 @@ h3.glitch {
   <section id="services" class="section full-section">
 <h2><span class="typing-text glitch" data-text="Services">Services</span></h2>
    
+
+
 <ul id="services-list">
       <li><span class="pixel-square"></span>Landing pages</li>
       <li><span class="pixel-square"></span>Websites</li>
@@ -671,6 +678,7 @@ h3.glitch {
       <span class="blinking-cursor"></span>
     </div>
   </div>
+Visitors: <span id="visitorCount">0</span>
   <!-- Sezione Socials -->
   <section id="socials" class="section">
     <h2><span class="typing-text glitch" data-text="Socials">Socials</span></h2>
@@ -832,6 +840,139 @@ window.addEventListener('load', function() {
     document.querySelector('.image').classList.add('show');
   }, 2000); // Attendere 2 secondi (2000 ms) prima di far apparire l'immagine
 });
+ const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = 400;
+        canvas.height = 250;
+
+        let gameRunning = false;
+        let gamePaused = false;
+        let score = 0;
+        let playerSpeed = 2;
+        let obstacles = [];
+        let powerUps = [];
+        let player = { x: 50, y: canvas.height / 2, size: 15, speed: playerSpeed };
+
+        // Blocca lo scrolling della pagina quando si preme la Spacebar
+        window.addEventListener("keydown", function (e) {
+            if (e.code === "Space") {
+                e.preventDefault();
+                if (!gameRunning) {
+                    gameRunning = true;
+                    gameLoop();
+                } else {
+                    gamePaused = !gamePaused;
+                }
+            }
+        });
+
+        // Mostra la scritta "Press Spacebar" prima dell'inizio
+        function showStartText() {
+            ctx.fillStyle = "white";
+            ctx.font = "20px 'Press Start 2P'";
+            ctx.textAlign = "center";
+            ctx.fillText("Press Spacebar", canvas.width / 2, canvas.height / 2);
+        }
+
+        // Gestione ostacoli
+        function createObstacle() {
+            obstacles.push({ x: canvas.width, y: Math.random() * canvas.height, size: 20 });
+        }
+        setInterval(createObstacle, 2000);
+
+        // Gestione power-ups (rari)
+        function createPowerUp() {
+            if (Math.random() < 0.1) {
+                powerUps.push({ x: canvas.width, y: Math.random() * canvas.height, size: 15 });
+            }
+        }
+        setInterval(createPowerUp, 5000);
+
+        // Logica di gioco
+        function gameLoop() {
+            if (gamePaused) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Movimento player
+            if (gameRunning) {
+                player.x += player.speed;
+                player.speed += 0.002; // Aumento graduale velocità
+            }
+
+            // Disegna player
+            ctx.fillStyle = "white";
+            ctx.fillRect(player.x, player.y, player.size, player.size);
+
+            // Disegna ostacoli e collisione
+            ctx.fillStyle = "red";
+            obstacles.forEach((obstacle, index) => {
+                ctx.fillRect(obstacle.x, obstacle.y, obstacle.size, obstacle.size);
+                obstacle.x -= 3;
+                if (player.x < obstacle.x + obstacle.size &&
+                    player.x + player.size > obstacle.x &&
+                    player.y < obstacle.y + obstacle.size &&
+                    player.y + player.size > obstacle.y) {
+                    resetGame();
+                }
+                if (obstacle.x < 0) obstacles.splice(index, 1);
+            });
+
+            // Disegna power-ups
+            ctx.fillStyle = "yellow";
+            powerUps.forEach((powerUp, index) => {
+                ctx.fillRect(powerUp.x, powerUp.y, powerUp.size, powerUp.size);
+                powerUp.x -= 2;
+                if (player.x < powerUp.x + powerUp.size &&
+                    player.x + player.size > powerUp.x &&
+                    player.y < powerUp.y + powerUp.size &&
+                    player.y + player.size > powerUp.y) {
+                    score += 10;
+                    powerUps.splice(index, 1);
+                }
+                if (powerUp.x < 0) powerUps.splice(index, 1);
+            });
+
+            // Disegna punteggio
+            ctx.fillStyle = "white";
+            ctx.font = "14px Arial";
+            ctx.fillText("Score: " + Math.floor(score), 10, 20);
+
+            if (gameRunning) {
+                score += 0.05; // Rallenta accumulo punteggio
+                requestAnimationFrame(gameLoop);
+            }
+        }
+
+        // Reset del gioco
+        function resetGame() {
+            gameRunning = false;
+            player.x = 50;
+            player.y = canvas.height / 2;
+            player.speed = 2;
+            obstacles = [];
+            powerUps = [];
+            score = 0;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            showStartText();
+        }
+
+        // Bottone per mostrare/nascondere il gioco
+        document.getElementById("toggleGame").addEventListener("click", function () {
+            let gameSection = document.getElementById("gameSection");
+            if (gameSection.style.display === "none" || gameSection.style.display === "") {
+                gameSection.style.display = "flex";
+                this.textContent = "CLOSE GAME";
+                showStartText();
+            } else {
+                gameSection.style.display = "none";
+                this.textContent = "START GAME";
+            }
+        });
+
+        // Mostra la scritta iniziale
+        showStartText();
  </script>
 </body>
 </html>
