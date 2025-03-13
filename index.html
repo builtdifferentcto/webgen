@@ -273,26 +273,50 @@
       color: white;
     }
 
-    /* Footer */
-    .footer {
-      background-color: black;
-      color: cyan;
-      text-align: center;
-      padding: 1rem;
-      border-top: 2px solid cyan;
-    }
-    .footer p {
-      margin-bottom: 0.5rem;
-    }
-    .footer .footer-links a {
-      color: cyan;
-      text-decoration: none;
-      font-size: 1rem;
-      transition: color 0.3s;
-    }
-    .footer .footer-links a:hover {
-      color: white;
-    }
+ /* Footer con immagine come parte del background */
+.footer {
+  width: 1500px; /* Imposta la larghezza del footer a 1500px */
+  height: 200px; /* Imposta l'altezza del footer a 200px */
+  background-image: url('https://imagizer.imageshack.com/img924/479/ddAg1x.png');
+  background-size: cover; /* L'immagine copre l'intero footer */
+  background-position: center top; /* Posiziona l'immagine al centro in alto */
+  background-repeat: no-repeat; /* Non ripetere l'immagine */
+  position: relative;
+  text-align: center; /* Allinea il testo al centro */
+  color: white; /* Colore del testo */
+  padding: 20px 0; /* Aggiungi del padding per dare spazio intorno al testo */
+  margin: 0 auto; /* Centra il footer orizzontalmente */
+}
+
+/* Styling per il testo del footer */
+.footer p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Styling per i collegamenti del footer */
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Sezione dei social */
+.socials {
+  z-index: 2; /* I social sono sopra l'immagine */
+  margin-top: 10px; /* Distanzia i social dal testo */
+}
+
 
     /* Bottone Scroll Up */
     #scrollUp {
@@ -482,7 +506,7 @@
   </div>
 <!-- Banner tra Servizi e FAQ -->
 <div class="banner">
-  <img src="https://imagizer.imageshack.com/img922/8595/cKYZ3P.png" alt="Banner" />
+  <img src="https://imagizer.imageshack.com/img922/5403/MUurUU.png" alt="Banner" />
 </div>
 
   <!-- Sezione Socials -->
@@ -495,15 +519,16 @@
     <br><br>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2025 webG.site | All rights reserved.</p>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a> |
-      <a href="#">Terms of Service</a> |
-      <a href="#">Contact Us</a>
-    </div>
-  </footer>
+  <!-- Footer con immagine come sfondo -->
+<footer class="footer">
+  <p>© 2025 webG.site | All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a> |
+    <a href="#">Terms of Service</a> |
+    <a href="#">Contact Us</a>
+  </div>
+</footer>
+
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
