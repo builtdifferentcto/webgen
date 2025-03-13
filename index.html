@@ -8,19 +8,19 @@
     /* Importazione font */
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 /* Stili per il banner */
-.banner {
-  text-align: center;
-  margin: 50px 0;
+.banner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
 }
 
-.banner img {
-  width: 100%;
-  max-width: 1200px; /* Regola la larghezza massima */
-  height: auto;
-  border-radius: 10px; /* Aggiunge angoli arrotondati */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombra per un effetto visivo */
-}
-    /* Reset & Stili di Base */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}    /* Reset & Stili di Base */
     * {
       margin: 0;
       padding: 0;
@@ -513,10 +513,9 @@
   <!-- Sezione Socials -->
   <section id="socials" class="section">
     
-  <img src="https://imagizer.imageshack.com/img924/7892/4Zpc3Y.png" alt="Banner" />
-</div>
-</h2>
-    <div class="socials">
+<div class="banner-container">
+    <img src="https://imagizer.imageshack.com/img924/7892/4Zpc3Y.png" alt="Banner">
+</div>    <div class="socials">
       <a href="https://x.com/weBgen_graphics" target="_blank">X</a>
       <a href="https://t.me/webgen87" target="_blank">Telegram</a>
     </div>
