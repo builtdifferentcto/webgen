@@ -563,49 +563,53 @@ h2.glitch {
 h3.glitch {
   font-size: 2em;
 }
-/* Ridurre la dimensione del testo */
-body {
-  font-size: 14px; /* Font di dimensione più piccola */
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-size: 18px; /* Titoli più piccoli */
-}
-
-p {
-  font-size: 15px; /* Paragrafi più piccoli */
-}
-
-button {
-  font-size: 12px; /* Bottoni più piccoli */
-}
-
-/* Ridurre la dimensione delle immagini */
-img {
-  width: 80%; /* Immagini più piccole */
-  height: auto;
-}
-
-/* Ridurre padding e margin */
-.container {
-  margin: 10px;
-  padding: 10px;
-}
-
-header, footer {
-  padding: 10px;
-}
-
-section {
-  margin: 10px;
-  padding: 8px;
-}
-
-/* Ridurre gli spazi nei pulsanti e nei form */
-input, button, select {
-  padding: 5px 8px;
-  font-size: 12px;
-}
+#gameSection {
+            display: none;
+            width: 80%;
+            max-width: 800px;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .game-container {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .legend {
+            font-size: 14px;
+            width: 30%;
+            text-align: left;
+        }
+        .legend .color-box {
+            width: 14px;
+            height: 14px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .game-area {
+            width: 70%;
+            text-align: center;
+        }
+        canvas {
+            background: transparent;
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
   </style>
 </head>
 <body>
@@ -651,8 +655,6 @@ input, button, select {
   <section id="services" class="section full-section">
 <h2><span class="typing-text glitch" data-text="Services">Services</span></h2>
    
-
-
 <ul id="services-list">
       <li><span class="pixel-square"></span>Landing pages</li>
       <li><span class="pixel-square"></span>Websites</li>
@@ -678,7 +680,7 @@ input, button, select {
       <span class="blinking-cursor"></span>
     </div>
   </div>
-
+Visitors: <span id="visitorCount">0</span>
   <!-- Sezione Socials -->
   <section id="socials" class="section">
     <h2><span class="typing-text glitch" data-text="Socials">Socials</span></h2>
