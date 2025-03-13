@@ -273,42 +273,45 @@
       color: white;
     }
 
- /* Footer con immagine come parte del background */
-.footer {
-  width: 1500px; /* Imposta la larghezza del footer a 1500px */
-  height: 200px; /* Imposta l'altezza del footer a 200px */
-  background-image: url('https://imagizer.imageshack.com/img924/479/ddAg1x.png');
-  background-size: cover; /* L'immagine copre l'intero footer */
-  background-position: center top; /* Posiziona l'immagine al centro in alto */
-  background-repeat: no-repeat; /* Non ripetere l'immagine */
-  position: relative;
-  text-align: center; /* Allinea il testo al centro */
-  color: white; /* Colore del testo */
-  padding: 20px 0; /* Aggiungi del padding per dare spazio intorno al testo */
-  margin: 0 auto; /* Centra il footer orizzontalmente */
-}
+   /* Stili per il footer */
+  .footer {
+    position: fixed; /* Rende il footer fisso al fondo della pagina */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Sfondo semi-trasparente */
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    font-family: 'Press Start 2P', cursive;
+    z-index: 999; /* Assicura che il footer sia sopra ad altri contenuti */
+  }
 
-/* Styling per il testo del footer */
-.footer p {
-  margin: 0;
-  font-size: 16px;
-}
+  .footer-content p {
+    margin: 0;
+    font-size: 1rem;
+  }
 
-/* Styling per i collegamenti del footer */
-.footer-links {
-  margin-top: 10px;
-}
+  /* Rimuove i collegamenti ipertestuali nel footer */
+  .footer a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: white; /* Rende il testo dei collegamenti bianco */
+  }
 
-.footer-links a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
+  /* Immagine di sfondo del footer */
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://via.placeholder.com/1200x400'); /* Sostituisci con la tua immagine */
+    background-size: cover;
+    background-position: center;
+    z-index: -1; /* Mette l'immagine dietro al contenuto del footer */
+    opacity: 0.4; /* Trasparenza dell'immagine */
+  }
 
 
 /* Sezione dei social */
@@ -505,13 +508,14 @@
     </div>
   </div>
 <!-- Banner tra Servizi e FAQ -->
-<div class="banner">
-  <img src="https://imagizer.imageshack.com/img922/5403/MUurUU.png" alt="Banner" />
-</div>
+
 
   <!-- Sezione Socials -->
   <section id="socials" class="section">
-    <h2 class="glitch" data-text="Socials">Socials</h2>
+    
+  <img src="https://imagizer.imageshack.com/img924/7892/4Zpc3Y.png" alt="Banner" />
+</div>
+</h2>
     <div class="socials">
       <a href="https://x.com/weBgen_graphics" target="_blank">X</a>
       <a href="https://t.me/webgen87" target="_blank">Telegram</a>
@@ -519,16 +523,15 @@
     <br><br>
   </section>
 
-  <!-- Footer con immagine come sfondo -->
-<footer class="footer">
-  <p>© 2025 webG.site | All rights reserved.</p>
-  <div class="footer-links">
-    <a href="#">Privacy Policy</a> |
-    <a href="#">Terms of Service</a> |
-    <a href="#">Contact Us</a>
-  </div>
-</footer>
-
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2025 webG.site | All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Privacy Policy</a> |
+      <a href="#">Terms of Service</a> |
+      <a href="#">Contact Us</a>
+    </div>
+  </footer>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
