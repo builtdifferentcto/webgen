@@ -73,7 +73,7 @@
             flex-direction: column;
             justify-content: center;
             position: absolute;
-            bottom: 260px;
+            bottom: 230px;
             left: 20px;
             opacity: 0;
             transition: opacity 2s ease-in-out 2s; /* Fade in dei bottoni */
@@ -209,49 +209,11 @@
             font-size: 12px;
             color: black;
         }
- * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-        }
-        /* Preloader */
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
-        }
-        .preloader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-        .preloader img {
-            width: 200px; /* Dimensione regolabile */
-            cursor: pointer;
-        }
-        /* Contenuto del sito */
-        .content {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
+
     </style>
 </head>
 <body>
- <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <img src="https://imagizer.imageshack.com/img922/8595/psT9jr.png" alt="Loading" onclick="hidePreloader()">
-    </div>
+
     <!-- Logo principale -->
 <div class="logo-container">
     <a href="https://x.com/weBgen_graphics" class="logo">
@@ -363,17 +325,12 @@ document.body.addEventListener('click', function (event) {
     }, 400); // 400ms corrisponde alla durata dell'animazione
 });
 function hidePreloader() {
-            const preloader = document.getElementById('preloader');
-            const content = document.getElementById('content');
-            
-            preloader.classList.add('fade-out');
-
-            // Mostra il contenuto dopo il fade-out
+            document.getElementById("preloader").classList.add("hidden");
             setTimeout(() => {
-                preloader.style.display = 'none';
-                content.style.display = 'block';
-                document.body.style.overflow = 'auto'; // Rende possibile lo scroll
-            }, 1000);
-        }    </script>
+                document.getElementById("preloader").style.display = "none";
+                document.getElementById("content").style.display = "block";
+            }, 1000); // Attendi il fade-out prima di mostrare il contenuto
+        }
+    </script>
 </body>
 </html>
