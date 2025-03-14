@@ -3,30 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta Base -->
-<title>WebGen | Meme Landing Pages & Graphics for Crypto Projects</title>
-<meta name="description" content="Sviluppo landing pages, siti web e grafiche per progetti crypto e meme coin. Web design ad alte prestazioni per blockchain e Solana.">
-<meta name="keywords" content="grafica, landing pages, meme, meme coin, Solana, blockchain, crypto projects, web design, templates, NFT, token, crypto marketing">
-<meta name="author" content="WebGen">
-<meta name="robots" content="index, follow">
-
-<!-- Open Graph (Facebook, Discord, Telegram) -->
-<meta property="og:title" content="WebGen | Meme Landing Pages & Graphics for Crypto Projects">
-<meta property="og:description" content="Sviluppo landing pages e grafiche professionali per meme coin e progetti crypto su Solana e blockchain.">
-<meta property="og:image" content="https://imagizer.imageshack.com/img924/204/kjFzmV.png">
-<meta property="og:url" content="https://tuodominio.com">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WebGen | Meme Landing Pages & Graphics for Crypto Projects">
-<meta name="twitter:description" content="Landing pages e grafiche per progetti crypto, blockchain e Solana. Siti web veloci, ottimizzati e accattivanti.">
-<meta name="twitter:image" content="https://imagizer.imageshack.com/img924/204/kjFzmV.png">
-<meta name="twitter:site" content="@weBgen_graphics">
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="https://imagizer.imageshack.com/img924/2046/cgAvlJ.png">
-
+    <title>webG Official</title>
     <style>
         /* Importazione font */
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
@@ -56,17 +33,23 @@
             opacity: 1; /* Body visibile dopo il caricamento */
         }
 
-        .logo {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            z-index: 10; /* Aggiunto per garantire che il logo sia sopra gli altri elementi */
-        }
+       .logo-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px; /* Spazio tra i loghi */
+    z-index: 10;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
 
         .logo img {
-            width: 50px; /* Logo più piccolo */
+            width: 40px; /* Logo più piccolo */
             height: auto;
         }
 
@@ -90,7 +73,7 @@
             flex-direction: column;
             justify-content: center;
             position: absolute;
-            bottom: 330px;
+            bottom: 230px;
             left: 20px;
             opacity: 0;
             transition: opacity 2s ease-in-out 2s; /* Fade in dei bottoni */
@@ -219,7 +202,7 @@
 
         footer {
             position: absolute;
-            bottom: 30px;
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
@@ -230,10 +213,16 @@
     </style>
 </head>
 <body>
-    <!-- Logo -->
+    <!-- Logo principale -->
+<div class="logo-container">
     <a href="https://x.com/weBgen_graphics" class="logo">
-        <img src="https://imagizer.imageshack.com/img924/2046/cgAvlJ.png" alt="Logo">
+        <img src="https://imagizer.imageshack.com/img924/2046/cgAvlJ.png" alt="Logo principale">
     </a>
+    <a href="https://x.com/weBgen_graphics" class="logo">
+        <img src="https://imagizer.imageshack.com/img922/1356/PRzTSE.png" alt="Secondo logo">
+    </a>
+</div>
+
 
     <!-- Main content -->
     <div class="container">
