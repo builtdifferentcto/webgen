@@ -403,33 +403,35 @@ body {
 }
 /* Stile per il wallet status */
 #wallet-status {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     font-size: 16px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 5px 7 px;
-    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-trasparente per un effetto elegante */
+    padding: 10px 20px; /* Più spazio per rendere il box più grande e confortevole */
+    border-radius: 25px; /* Bordi arrotondati per un look più morbido */
     display: flex;
     align-items: center;
+    justify-content: center;
     z-index: 1000;
-    bottom: 20px; /* Sposta il box in basso */
+    position: fixed;
+    bottom: 10px; /* Posizionato in basso */
+    right: 10px;  /* Posizionato a destra */
+    top: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Aggiunta di ombra per dare profondità */
+    font-weight: bold; /* Rende il testo più evidente */
 }
 
-/* Stile del testo "Wallet Connected" */
-#wallet-text {
-    margin-right: 10px;
-}
-
-/* Stile del pallino verde lime lampeggiante */
-#wallet-dot {
+/* Stile per il pallino verde lampeggiante */
+#wallet-status .status-dot {
     width: 10px;
     height: 10px;
-    background-color: #00FF00; /* Lime */
+    background-color: limegreen;
     border-radius: 50%;
-    animation: blink 1s infinite;
+    margin-left: 10px;
+    animation: blink 1s infinite; /* Animazione per il pallino lampeggiante */
 }
 
-/* Animazione del pallino lampeggiante */
+/* Animazione per il pallino verde */
 @keyframes blink {
     0% {
         opacity: 1;
@@ -441,6 +443,7 @@ body {
         opacity: 1;
     }
 }
+
 
 
     </style>
