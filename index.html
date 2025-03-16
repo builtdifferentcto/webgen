@@ -382,67 +382,67 @@ body {
         opacity: 1;
     }
 }
-#connect-wallet {
-    position: fixed;
-    top: 20px; /* Distanza dal bordo superiore */
-    right: 20px; /* Distanza dal bordo destro */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 9999; /* Assicura che sia sopra gli altri elementi */
-}
-#solflare-logo {
-    width: 40px; /* Regola la dimensione */
-    height: 40px;
-    transition: transform 0.3s ease-in-out;
-}
+  /* Stile per il box di stato */
+        #wallet-status-box {
+            display: none;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            font-size: 18px;
+        }
 
-#connect-wallet:hover #solflare-logo {
-    transform: scale(1.1); /* Effetto hover */
-}
-#disconnect-wallet {
-    background: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    display: none; /* Nascondi il bottone inizialmente */
-}
+        /* Box quando wallet è disconnesso */
+        #disconnected-box {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
 
-#disconnect-wallet:hover {
-    background-color: #45a049;
-}
+        /* Box quando wallet è connesso */
+        #connected-box {
+            background-color: #d4edda;
+            color: #155724;
+        }
 
+        /* Pallino dello stato */
+        .status-dot {
+            height: 15px;
+            width: 15px;
+            border-radius: 50%;
+            margin-left: 10px;
+            display: inline-block;
+        }
 
+        /* Pallino verde lampeggiante (per connessione) */
+        .green-dot {
+            background-color: #28a745;
+            animation: blink 1s infinite;
+        }
 
-/* Stile per il pallino verde lampeggiante */
-#wallet-status .status-dot {
-    width: 10px;
-    height: 10px;
-    background-color: limegreen;
-    border-radius: 50%;
-    margin-left: 10px;
-    animation: blink 1s infinite; /* Animazione per il pallino lampeggiante */
-}
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.2;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
 
-/* Animazione per il pallino verde */
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-
-
+        /* Posizionamento del logo Solflare */
+        #solflare-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 <body>
@@ -452,14 +452,20 @@ body {
         <a id="follow-btn" href="https://twitter.com/webgen_graphics" target="_blank" class="twitter-follow-button">Follow</a>
     </div>
 </div>
-<button id="connect-wallet">
-    <img src="https://solflare.com/favicon.ico" alt="Solflare Logo" id="solflare-logo">
-</button>
-<div id="wallet-connected-box" class="wallet-connected-box" style="display:none;">
-    <p>Wallet Connected</p>
-</div>
+<!-- Logo Solflare in alto a destra -->
+    <img id="solflare-logo" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Solflare_logo.png" alt="Solflare Logo">
+
+    <!-- Box per mostrare lo stato del wallet -->
+    <div id="wallet-status-box">
+        <div id="disconnected-box">
+            <span>Disconnected</span>
+            <span class="status-dot" style="background-color: #6c757d;"></span> <!-- Pallino spento -->
+        </div>
+        <div id="connected-box" style="display: none;">
+            <span>Connected</span>
+            <span class="status-dot green-dot"></span> <!-- Pallino verde lampeggiante -->
+        </div>
     </div>
-</div>
 
     <!-- Logo principale -->
 <div class="logo-container">https://imagizer.imageshack.com/img924/2046/cgAvlJ.png
@@ -589,48 +595,34 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
-let inactivityTimeout;
+ // Funzione per gestire il click sul logo Solflare
+        document.getElementById("solflare-logo").addEventListener("click", async () => {
+            const walletStatusBox = document.getElementById("wallet-status-box");
+            const disconnectedBox = document.getElementById("disconnected-box");
+            const connectedBox = document.getElementById("connected-box");
 
-document.getElementById("connect-wallet").addEventListener("click", async () => {
-    if (window.solflare) {
-        try {
-            // Connetti il wallet
-            await window.solflare.connect();
-            const walletAddress = window.solflare.publicKey.toString();
-            document.getElementById("wallet-address").innerText = `Connected: ${walletAddress}`;
+            // Verifica se l'estensione Solflare è disponibile
+            if (window.solflare) {
+                try {
+                    // Connetti il wallet
+                    const response = await window.solflare.connect();
 
-            // Mostra il bottone "Wallet Connected"
-            document.getElementById("disconnect-wallet").style.display = "inline-block";
-
-            // Resetta il timeout di inattività ogni volta che l'utente interagisce
-            resetInactivityTimer();
-
-        } catch (error) {
-            console.error("Errore nella connessione del wallet", error);
-            alert("Errore nella connessione del wallet.");
-        }
-    } else {
-        console.error("Solflare non è disponibile.");
-        alert("Solflare non è disponibile nel tuo browser.");
-    }
-});
-
-// Aggiungi un event listener per il click sul pulsante di disconnessione
-document.getElementById("disconnect-wallet").addEventListener("click", () => {
-    if (window.solflare) {
-        window.solflare.disconnect(); // Disconnette il wallet
-        document.getElementById("wallet-address").innerText = "Wallet disconnected.";
-        document.getElementById("disconnect-wallet").style.display = "none"; // Nasconde il bottone di disconnessione
-    }
-});
-
-// Funzione per resettare il timer di inattività
-function resetInactivityTimer() {
-    clearTimeout(inactivityTimeout);
-    inactivityTimeout = setTimeout(() => {
-        alert("Sei stato inattivo troppo a lungo.");
-    }, 30000); // Imposta il tempo di inattività a 30 secondi
-}
+                    if (response.publicKey) {
+                        // Se wallet connesso, mostra box con stato 'Connected'
+                        walletStatusBox.style.display = "block";
+                        disconnectedBox.style.display = "none";
+                        connectedBox.style.display = "block";
+                    } else {
+                        alert("Connessione fallita.");
+                    }
+                } catch (error) {
+                    console.error("Errore nella connessione del wallet:", error);
+                    alert("Errore nella connessione del wallet.");
+                }
+            } else {
+                alert("Solflare wallet non disponibile. Assicurati di avere l'estensione Solflare installata.");
+            }
+        });
 
 </script>
 </body>
