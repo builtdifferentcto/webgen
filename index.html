@@ -401,20 +401,21 @@ body {
 #connect-wallet:hover #solflare-logo {
     transform: scale(1.1); /* Effetto hover */
 }
-/* Stile per il wallet status */
-.wallet-connected-box {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.7);
-    padding: 15px 25px;
-    border-radius: 10px;
+#disconnect-wallet {
+    background: #4CAF50;
     color: white;
-    font-size: 18px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: none; /* Nascondi il bottone inizialmente */
 }
+
+#disconnect-wallet:hover {
+    background-color: #45a049;
+}
+
 
 
 /* Stile per il pallino verde lampeggiante */
@@ -588,6 +589,8 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
+let inactivityTimeout;
+
 document.getElementById("connect-wallet").addEventListener("click", async () => {
     if (window.solflare) {
         try {
@@ -596,19 +599,38 @@ document.getElementById("connect-wallet").addEventListener("click", async () => 
             const walletAddress = window.solflare.publicKey.toString();
             document.getElementById("wallet-address").innerText = `Connected: ${walletAddress}`;
 
-            // Mostra il messaggio di wallet connesso
-            document.getElementById("wallet-connected-box").style.display = "block";
-
             // Mostra il bottone "Wallet Connected"
             document.getElementById("disconnect-wallet").style.display = "inline-block";
 
+            // Resetta il timeout di inattività ogni volta che l'utente interagisce
+            resetInactivityTimer();
+
         } catch (error) {
-            console.log("Error connecting to wallet:", error);
+            console.error("Errore nella connessione del wallet", error);
+            alert("Errore nella connessione del wallet.");
         }
+    } else {
+        console.error("Solflare non è disponibile.");
+        alert("Solflare non è disponibile nel tuo browser.");
     }
 });
 
+// Aggiungi un event listener per il click sul pulsante di disconnessione
+document.getElementById("disconnect-wallet").addEventListener("click", () => {
+    if (window.solflare) {
+        window.solflare.disconnect(); // Disconnette il wallet
+        document.getElementById("wallet-address").innerText = "Wallet disconnected.";
+        document.getElementById("disconnect-wallet").style.display = "none"; // Nasconde il bottone di disconnessione
+    }
+});
 
+// Funzione per resettare il timer di inattività
+function resetInactivityTimer() {
+    clearTimeout(inactivityTimeout);
+    inactivityTimeout = setTimeout(() => {
+        alert("Sei stato inattivo troppo a lungo.");
+    }, 30000); // Imposta il tempo di inattività a 30 secondi
+}
 
 </script>
 </body>
