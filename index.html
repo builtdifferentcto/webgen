@@ -3,11 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta per Google SEO -->
-    <meta name="description" content="Website/Landing pages , Meme coins website, graphics. webGen Design ">
-    <meta name="keywords" content="meme coins, Solana, SUI, ETH, BTC, cryptos, landing pages, websites, grafica, X followers, crypto, development, marketing, design">
-    <meta name="author" content="webGen">
-    <meta name="robots" content="index, follow">
     <title>webG Official</title>
     <style>
         /* Importazione font */
@@ -74,8 +69,8 @@ body.loaded {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) skewY(-2deg);
-    width: 60vw;
-    height: 60vh;
+    width: 50vw;
+    height: 45vh;
     background-size: contain;
     border-radius: 15px;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
@@ -151,8 +146,8 @@ background-attachment: fixed; /* Rende l'immagine fissa mentre si scorre */
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    bottom: 310px;
-    left: 180px;
+    bottom: 230px;
+    left: 150px;
     opacity: 0;
     transition: opacity 2s ease-in-out 2s;
 }
@@ -309,14 +304,95 @@ body {
     }
 
 }
+/* Sfondo semi-trasparente */
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
 
+/* Sfondo semi-trasparente */
+.popup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
 
+.popup-content {
+    background: url('https://imagizer.imageshack.com/img922/7830/seD5BR.png') no-repeat center center;
+    background-size: 60%;
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    width: 280px;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+    color: white; /* Testo bianco per visibilità */
+}
+/* Logo X sopra la scritta */
+.x-logo {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+/* Testo */
+.popup-content p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 60px;
+}
+
+/* Bottone Follow */
+.twitter-follow-button {
+    background: #1DA1F2;
+    color: white;
+    font-size: 16px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+.twitter-follow-button:hover {
+    background: #0d8bcb;
+}
+
+/* Animazione di fade-in */
+@keyframes fadeIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
     </style>
 </head>
 <body>
-
+<div id="twitter-popup" class="popup">
+    <div class="popup-content">
+                <p>Get in touch!</p>
+        <a id="follow-btn" href="https://twitter.com/webgen_graphics" target="_blank" class="twitter-follow-button">Follow</a>
+    </div>
+</div>
     <!-- Logo principale -->
-<div class="logo-container">
+<div class="logo-container">https://imagizer.imageshack.com/img924/2046/cgAvlJ.png
     <a href="https://x.com/weBgen_graphics" class="logo">
         <img src="https://imagizer.imageshack.com/img924/2046/cgAvlJ.png" alt="Logo principale">
   <a href="https://t.me/yourtelegram" class="logo">
@@ -337,16 +413,16 @@ body {
         </div>
         <div class="sections">
             <div class="section" id="section1">
-                <div class="section-title">Custom Ice Cream</div>
-                <p>I create high-quality websites and landing pages using HTML, CSS, and JS for crypto projects. Whether it's a meme coin or a blockchain initiative, I ensure your site stands out and grows with your project. </p>
+                <div class="section-title">About</div>
+                <p>Welcome to my site! Whether you're launching a meme coin, a new blockchain project, or any crypto-related initiative, I provide high-quality website and landing page development. Using HTML, CSS, and JS, I create stunning, functional, and responsive websites that help your project stand out in the crowded crypto space. My solutions are designed to be scalable, ensuring your project grows smoothly as your needs evolve.</p>
             </div>
             <div class="section" id="section2">
-                <div class="section-title">Ice Cream list</div>
+                <div class="section-title">Services</div>
                 <p>The services I offer are varied: Landing pages, websites, banner/templates graphics, streamer templates/posts, logos.</p>
             </div>
             <div class="section" id="section3">
-                <div class="section-title">About me</div>
-                <p>’m a graphic designer and web developer from Rome, passionate about sports and crypto. As a Solana degen, I’m always exploring new trends and engaging with the crypto community on Twitter.</p>
+                <div class="section-title">Products</div>
+                <p>The websites/landing pages I develop are in HTML, CSS, JS and offer high performance in terms of loading speed and graphic fluidity, lightweight code, and reliability. If requested, I can also provide custom domain acquisition.</p>
             </div>
             <div class="section" id="section4">
                 <div class="section-title">SEO</div>
@@ -433,6 +509,15 @@ function hidePreloader() {
                 document.getElementById("content").style.display = "block";
             }, 1000); // Attendi il fade-out prima di mostrare il contenuto
         }
-    </script>
+ document.addEventListener("DOMContentLoaded", function () {
+        if (!localStorage.getItem("followed")) {
+            document.getElementById("twitter-popup").style.display = "flex";
+        }
+
+        document.getElementById("follow-btn").addEventListener("click", function () {
+            localStorage.setItem("followed", "true");
+            document.getElementById("twitter-popup").style.display = "none";
+        });
+    });    </script>
 </body>
 </html>
