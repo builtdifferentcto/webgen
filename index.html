@@ -69,8 +69,8 @@ body.loaded {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) skewY(-2deg);
-    width: 60vw;
-    height: 60vh;
+    width: 50vw;
+    height: 45vh;
     background-size: contain;
     border-radius: 15px;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
@@ -146,8 +146,8 @@ background-attachment: fixed; /* Rende l'immagine fissa mentre si scorre */
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    bottom: 310px;
-    left: 180px;
+    bottom: 230px;
+    left: 150px;
     opacity: 0;
     transition: opacity 2s ease-in-out 2s;
 }
@@ -164,8 +164,8 @@ background-attachment: fixed; /* Rende l'immagine fissa mentre si scorre */
     transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.5s ease-in-out;
     opacity: 1;
     display: block;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
 background-image: url('https://imagizer.imageshack.com/img924/9084/wylADc.png');
     background-size: cover;
     background-position: center;
@@ -225,26 +225,7 @@ footer {
         opacity: 0;
     }
 }
-#connect-wallet {
-    position: fixed;
-    top: 20px; /* Distanza dal bordo superiore */
-    right: 20px; /* Distanza dal bordo destro */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 9999; /* Assicura che sia sopra gli altri elementi */
-}
 
-#solflare-logo {
-    width: 40px; /* Regola la dimensione */
-    height: 40px;
-    transition: transform 0.3s ease-in-out;
-}
-
-#connect-wallet:hover #solflare-logo {
-    transform: scale(1.1); /* Effetto hover */
-}
 /* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
 body {
@@ -354,7 +335,7 @@ body {
     text-align: center;
     border-radius: 12px;
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    width: 600px;
+    width: 400px;
     position: relative;
     animation: fadeIn 0.5s ease-in-out;
     color: white; /* Testo bianco per visibilità */
@@ -401,20 +382,40 @@ body {
         opacity: 1;
     }
 }
+#connect-wallet {
+    position: fixed;
+    top: 20px; /* Distanza dal bordo superiore */
+    right: 20px; /* Distanza dal bordo destro */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 9999; /* Assicura che sia sopra gli altri elementi */
+}
+#solflare-logo {
+    width: 40px; /* Regola la dimensione */
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#connect-wallet:hover #solflare-logo {
+    transform: scale(1.1); /* Effetto hover */
+}
+
     </style>
 </head>
 <body>
-    <button id="connect-wallet">
-    <img src="https://solflare.com/favicon.ico" alt="Solflare Logo" id="solflare-logo">
-</button>
-<p id="wallet-address"></p>
-
 <div id="twitter-popup" class="popup">
     <div class="popup-content">
                 <p>Get in touch!</p>
         <a id="follow-btn" href="https://twitter.com/webgen_graphics" target="_blank" class="twitter-follow-button">Follow</a>
     </div>
 </div>
+<button id="connect-wallet">
+    <img src="https://solflare.com/favicon.ico" alt="Solflare Logo" id="solflare-logo">
+</button>
+<p id="wallet-address"></p>
+
     <!-- Logo principale -->
 <div class="logo-container">https://imagizer.imageshack.com/img924/2046/cgAvlJ.png
     <a href="https://x.com/weBgen_graphics" class="logo">
@@ -543,23 +544,20 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
-    #connect-wallet {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-}
+document.getElementById("connect-wallet").addEventListener("click", async () => {
+    if (window.solflare) {
+        try {
+            await window.solflare.connect(); // Richiede il permesso di connessione
+            const walletAddress = window.solflare.publicKey.toString();
+            document.getElementById("wallet-address").innerText = `Connected: ${walletAddress}`;
+        } catch (error) {
+            console.error("Connection failed:", error);
+        }
+    } else {
+        alert("Solflare extension not found! Install it from https://solflare.com/");
+    }
+});
 
-#solflare-logo {
-    width: 40px; /* Regola la dimensione */
-    height: 40px;
-    transition: transform 0.3s ease-in-out;
-}
-
-#connect-wallet:hover #solflare-logo {
-    transform: scale(1.1); /* Effetto hover */
-}
-
-    </script>
+</script>
 </body>
 </html>
