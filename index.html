@@ -402,28 +402,20 @@ body {
     transform: scale(1.1); /* Effetto hover */
 }
 /* Stile per il wallet status */
-#wallet-status {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-trasparente per un effetto elegante */
-    padding: 10px 20px; /* Più spazio per rendere il box più grande e confortevole */
-    border-radius: 25px; /* Bordi arrotondati per un look più morbido */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+.wallet-connected-box {
     position: fixed;
-    bottom: 10px; /* Posizionato in basso */
-    right: 10px;  /* Posizionato a destra */
-    top: auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Aggiunta di ombra per dare profondità */
-    font-weight: bold; /* Rende il testo più evidente */
-    max-width: 200px; /* Limita la larghezza massima */
-    width: auto; /* La larghezza si adatta al contenuto */
-    height: auto; /* Altezza si adatta al contenuto */
-    white-space: nowrap; /* Evita il ritorno a capo del testo */
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 25px;
+    border-radius: 10px;
+    color: white;
+    font-size: 18px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
+
 
 /* Stile per il pallino verde lampeggiante */
 #wallet-status .status-dot {
@@ -596,8 +588,6 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
-let inactivityTimeout;
-
 document.getElementById("connect-wallet").addEventListener("click", async () => {
     if (window.solflare) {
         try {
@@ -606,49 +596,18 @@ document.getElementById("connect-wallet").addEventListener("click", async () => 
             const walletAddress = window.solflare.publicKey.toString();
             document.getElementById("wallet-address").innerText = `Connected: ${walletAddress}`;
 
-            // Mostra il bottone "Wallet Connected" e il pallino lampeggiante
-            document.getElementById("wallet-status").style.display = "flex";
+            // Mostra il messaggio di wallet connesso
+            document.getElementById("wallet-connected-box").style.display = "block";
 
-            // Resetta il timeout di inattività ogni volta che l'utente interagisce
-            resetInactivityTimer();
+            // Mostra il bottone "Wallet Connected"
+            document.getElementById("disconnect-wallet").style.display = "inline-block";
 
         } catch (error) {
-            console.error("Connection failed:", error);
+            console.log("Error connecting to wallet:", error);
         }
-    } else {
-        alert("Solflare extension not found! Install it from https://solflare.com/");
     }
 });
 
-// Disconnetti il wallet quando clicchi su "Wallet Connected"
-document.getElementById("disconnect-wallet").addEventListener("click", async () => {
-    if (window.solflare) {
-        await window.solflare.disconnect();
-        document.getElementById("wallet-address").innerText = "Wallet disconnected";
-        document.getElementById("wallet-status").style.display = "none"; // Nascondi il testo
-    }
-});
-
-// Funzione per resettare il timer di inattività
-function resetInactivityTimer() {
-    clearTimeout(inactivityTimeout);
-    inactivityTimeout = setTimeout(() => {
-        disconnectWallet(); // Disconnetti il wallet dopo 60 secondi di inattività
-    }, 60000); // 60 secondi di inattività
-}
-
-// Funzione per disconnettere il wallet
-function disconnectWallet() {
-    if (window.solflare) {
-        window.solflare.disconnect();
-        document.getElementById("wallet-address").innerText = "Wallet disconnected";
-        document.getElementById("wallet-status").style.display = "none"; // Nascondi il testo
-    }
-}
-
-// Resetta il timer ogni volta che l'utente interagisce
-window.addEventListener("mousemove", resetInactivityTimer);
-window.addEventListener("click", resetInactivityTimer);
 
 
 </script>
