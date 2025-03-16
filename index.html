@@ -407,7 +407,7 @@ body {
     font-size: 16px;
     color: white;
     background-color: rgba(0, 0, 0, 0.8); /* Fondo semi-trasparente per un effetto elegante */
-    padding: 5px 5px; /* Più spazio per rendere il box più grande e confortevole */
+    padding: 10px 20px; /* Più spazio per rendere il box più grande e confortevole */
     border-radius: 25px; /* Bordi arrotondati per un look più morbido */
     display: flex;
     align-items: center;
@@ -417,9 +417,12 @@ body {
     bottom: 10px; /* Posizionato in basso */
     right: 10px;  /* Posizionato a destra */
     top: auto;
-    height: auto; /* Altezza si adatta al contenuto */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Aggiunta di ombra per dare profondità */
     font-weight: bold; /* Rende il testo più evidente */
+    max-width: 200px; /* Limita la larghezza massima */
+    width: auto; /* La larghezza si adatta al contenuto */
+    height: auto; /* Altezza si adatta al contenuto */
+    white-space: nowrap; /* Evita il ritorno a capo del testo */
 }
 
 /* Stile per il pallino verde lampeggiante */
