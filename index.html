@@ -225,7 +225,26 @@ footer {
         opacity: 0;
     }
 }
+#connect-wallet {
+    position: fixed;
+    top: 20px; /* Distanza dal bordo superiore */
+    right: 20px; /* Distanza dal bordo destro */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 9999; /* Assicura che sia sopra gli altri elementi */
+}
 
+#solflare-logo {
+    width: 40px; /* Regola la dimensione */
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#connect-wallet:hover #solflare-logo {
+    transform: scale(1.1); /* Effetto hover */
+}
 /* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
 body {
@@ -385,6 +404,11 @@ body {
     </style>
 </head>
 <body>
+    <button id="connect-wallet">
+    <img src="https://solflare.com/favicon.ico" alt="Solflare Logo" id="solflare-logo">
+</button>
+<p id="wallet-address"></p>
+
 <div id="twitter-popup" class="popup">
     <div class="popup-content">
                 <p>Get in touch!</p>
@@ -518,6 +542,24 @@ function hidePreloader() {
             localStorage.setItem("followed", "true");
             document.getElementById("twitter-popup").style.display = "none";
         });
-    });    </script>
+    });    
+    #connect-wallet {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#solflare-logo {
+    width: 40px; /* Regola la dimensione */
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+#connect-wallet:hover #solflare-logo {
+    transform: scale(1.1); /* Effetto hover */
+}
+
+    </script>
 </body>
 </html>
