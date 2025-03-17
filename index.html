@@ -423,7 +423,33 @@ body {
 #wallet-indicator {
     display: none; /* Nascondi inizialmente */
 }
+#wallet-status {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease-in-out;
+}
 
+#wallet-status .indicator {
+    width: 10px;
+    height: 10px;
+    background-color: lime;
+    border-radius: 50%;
+    margin-left: 8px;
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
     </style>
 </head>
 <body>
@@ -436,8 +462,10 @@ body {
 <button id="connect-wallet">
     <img src="https://solflare.com/favicon.ico" alt="Solflare Logo" id="solflare-logo">
 </button>
-<p id="wallet-address"></p>
-<button id="disconnect-wallet" style="display:none;">Wallet Connected</button>
+<div id="wallet-status">
+    <span>Wallet Connected</span>
+    <div class="indicator"></div>
+</div>
 
     <!-- Logo principale -->
 <div class="logo-container">https://imagizer.imageshack.com/img924/2046/cgAvlJ.png
@@ -564,42 +592,17 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
-let inactivityTimeout;
-
-document.getElementById("connect-wallet").addEventListener("click", async () => {
-    if (window.solflare) {
-        try {
-            // Connetti il wallet
-            await window.solflare.connect();
-            const walletAddress = window.solflare.publicKey.toString();
-            document.getElementById("wallet-address").innerText = `Connected: ${walletAddress}`;
-
-// Funzione per mostrare l'indicatore quando il wallet è connesso
-function showWalletIndicator() {
-    document.getElementById("wallet-indicator").style.display = "flex";
-}
-
-// Funzione per nascondere l'indicatore quando il wallet è disconnesso
-function hideWalletIndicator() {
-    document.getElementById("wallet-indicator").style.display = "none";
-}
-
-// Esempio di connessione wallet (da sostituire con la tua logica)
-async function connectWallet() {
-    try {
-        // Simulazione connessione wallet (sostituiscila con il tuo provider)
-        const walletConnected = true; // Questo valore dovrebbe arrivare dalla tua logica di connessione
-
-        if (walletConnected) {
-            showWalletIndicator();
-        } else {
-            hideWalletIndicator();
-        }
-    } catch (error) {
-        console.error("Errore nella connessione del wallet:", error);
-        hideWalletIndicator();
+function updateWalletStatus(isConnected) {
+    const walletStatus = document.getElementById('wallet-status');
+    if (isConnected) {
+        walletStatus.style.display = 'flex';
+    } else {
+        walletStatus.style.display = 'none';
     }
 }
+
+// Esempio di attivazione (simula la connessione)
+setTimeout(() => updateWalletStatus(true), 2000);
 
 // Simula il controllo dello stato del wallet all'avvio della pagina
 window.onload = function() {
