@@ -647,6 +647,19 @@ function disconnectWallet() {
 // Resetta il timer ogni volta che l'utente interagisce
 window.addEventListener("mousemove", resetInactivityTimer);
 window.addEventListener("click", resetInactivityTimer);
+function updateWalletUI(isConnected) {
+    if (isConnected) {
+        document.getElementById("wallet-container").style.display = "block";
+        document.getElementById("wallet-status").style.display = "block";
+    } else {
+        document.getElementById("wallet-container").style.display = "none";
+        document.getElementById("wallet-status").style.display = "none";
+    }
+}
+
+// Simula connessione del wallet (sostituisci con la tua logica)
+const walletConnected = true; // Cambia dinamicamente in base allo stato del wallet
+updateWalletUI(walletConnected);
 
 </script>
 </body>
