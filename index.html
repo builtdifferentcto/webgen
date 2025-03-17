@@ -260,18 +260,15 @@ footer {
     100% { opacity: 1; }
 }
 
-/* Nasconde il testo e mostra il pallino su mobile */
+/* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
-    #disconnect-wallet {
+        #disconnect-wallet {
         display: none;
     }
     #wallet-status {
         display: block;
     }
 }
-
-/* 🔹 RESPONSIVE DESIGN 🔹 */
-@media (max-width: 768px) {
 body {
         overflow: hidden; /* Disabilita lo scroll su mobile */
     }
@@ -305,6 +302,13 @@ body {
 }
 
 @media (max-width: 480px) {
+        #disconnect-wallet {
+        display: none;
+    }
+    #wallet-status {
+        display: block;
+    }
+}
 body {
         overflow: hidden; /* Disabilita lo scroll su mobile */
     }
