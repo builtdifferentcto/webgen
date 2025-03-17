@@ -260,7 +260,12 @@ body {
         font-size: 14px;
     }
 }
-
+#disconnect-wallet {
+        display: none;
+    }
+    #wallet-status {
+        display: block;
+    }
 @media (max-width: 480px) {
 body {
         overflow: hidden; /* Disabilita lo scroll su mobile */
@@ -270,7 +275,12 @@ body {
         height: 35vh; /* Ridotta di 10vh */
         margin-top: 20px;
     }
-
+#disconnect-wallet {
+        display: none;
+    }
+    #wallet-status {
+        display: block;
+    }
     .buttons {
         flex-direction: row;
         justify-content: center;
@@ -405,7 +415,7 @@ body {
     transform: scale(1.1); /* Effetto hover */
 }
 #disconnect-wallet {
-   position: fixed;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     background: #4CAF50;
@@ -416,6 +426,26 @@ body {
     cursor: pointer;
     font-size: 16px;
     display: none;
+}
+
+/* Stile per il pallino lampeggiante su mobile */
+#wallet-status {
+    display: none; /* Nascondi di default */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 15px;
+    height: 15px;
+    background-color: lime;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+/* Animazione lampeggiante */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
 }
 #disconnect-wallet:hover {
     background-color: #45a049;
@@ -476,6 +506,7 @@ body {
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 webG.site | All rights reserved</p>
+        
     </footer>
 
     <script>
