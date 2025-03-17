@@ -262,13 +262,9 @@ footer {
 
 /* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
-        #disconnect-wallet {
+       #wallet-text {
         display: none;
     }
-    #wallet-status {
-        display: block;
-    }
-}
 body {
         overflow: hidden; /* Disabilita lo scroll su mobile */
     }
@@ -302,13 +298,9 @@ body {
 }
 
 @media (max-width: 480px) {
-        #disconnect-wallet {
+#wallet-text {
         display: none;
     }
-    #wallet-status {
-        display: block;
-    }
-}
 body {
         overflow: hidden; /* Disabilita lo scroll su mobile */
     }
@@ -451,35 +443,40 @@ body {
 #connect-wallet:hover #solflare-logo {
     transform: scale(1.1); /* Effetto hover */
 }
-/* Stile del pulsante Wallet Connected (Desktop) */
-#disconnect-wallet {
+/* Contenitore fisso per il wallet */
+#wallet-indicator {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #4CAF50;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999; /* Sempre sopra altri elementi */
+    pointer-events: none; /* Evita che interferisca con il touch */
 }
 
-/* Stile per il pallino lampeggiante (Mobile) */
-#wallet-status {
-    display: none; /* Nasconde di default */
-    position: fixed;
-    bottom: 20px;
-    right: 25px;
-    width: 15px;
-    height: 15px;
+/* Stile del testo "Wallet Connected" (Solo Desktop) */
+#wallet-text {
+    background: rgba(76, 175, 80, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+}
+
+/* Stile del pallino verde lime lampeggiante */
+#wallet-dot {
+    width: 12px;
+    height: 12px;
     background-color: lime;
     border-radius: 50%;
-    box-shadow: 0 0 10px lime;
+    box-shadow: 0 0 8px lime;
     animation: blink 1s infinite;
 }
 
-/* Animazione lampeggiante */
+/* Animazione del pallino lampeggiante */
 @keyframes blink {
     0% { opacity: 1; }
     50% { opacity: 0.3; }
