@@ -226,30 +226,36 @@ footer {
         opacity: 0;
     }
 }
-#disconnect-wallet {
+/* Contenitore fisso per il wallet */
+#wallet-indicator {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #4CAF50;
-    color: black;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    display: none;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999; /* Sempre sopra altri elementi */
+    pointer-events: none; /* Evita che interferisca con il touch */
 }
 
-/* Stile per il pallino lampeggiante su mobile */
-#wallet-status {
-    display: none; /* Nascondi di default */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 15px;
-    height: 15px;
+/* Stile del testo "Wallet Connected" (Solo Desktop) */
+#wallet-text {
+    background: rgba(76, 175, 80, 0.9);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+}
+
+/* Stile del pallino verde lime lampeggiante */
+#wallet-dot {
+    width: 12px;
+    height: 12px;
     background-color: lime;
     border-radius: 50%;
+    box-shadow: 0 0 8px lime;
     animation: blink 1s infinite;
 }
 
@@ -537,8 +543,10 @@ body {
             </div>
         </div>
     </div>
-<button id="disconnect-wallet">Wallet Connected</button>
-<div id="wallet-status"></div>
+<div id="wallet-indicator">
+    <span id="wallet-text">Wallet Connected</span>
+    <div id="wallet-dot"></div>
+</div>
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 webG.site | All rights reserved</p>
