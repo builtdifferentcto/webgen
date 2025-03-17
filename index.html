@@ -458,7 +458,8 @@ body {
     align-items: center;
     gap: 10px;
     z-index: 9999; /* Sempre sopra altri elementi */
-    pointer-events: none; /* Evita che interferisca con il touch */
+    pointer-events: none;
+    display: none;/* Evita che interferisca con il touch */
 }
 
 /* Stile del testo "Wallet Connected" (Solo Desktop) */
@@ -544,7 +545,6 @@ body {
         </div>
     </div>
 <div id="wallet-indicator">
-    <span id="wallet-text">Wallet Connected</span>
     <div id="wallet-dot"></div>
 </div>
     <!-- Footer -->
@@ -635,59 +635,38 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
-let inactivityTimeout;
+// Funzione per mostrare l'indicatore quando il wallet è connesso
+function showWalletIndicator() {
+    document.getElementById("wallet-indicator").style.display = "flex";
+}
 
-document.getElementById("connect-wallet").addEventListener("click", async () => {
-    if (window.solflare) {
-        try {
-            // Connetti il wallet
-            await window.solflare.connect();
-            const walletAddress = window.solflare.publicKey.toString();
-            document.getElementById("wallet-address").innerText = `Connected: ${walletAddress}`;
+// Funzione per nascondere l'indicatore quando il wallet è disconnesso
+function hideWalletIndicator() {
+    document.getElementById("wallet-indicator").style.display = "none";
+}
 
-            // Mostra il bottone "Wallet Connected"
-            document.getElementById("disconnect-wallet").style.display = "inline-block";
+// Esempio di connessione wallet (da sostituire con la tua logica)
+async function connectWallet() {
+    try {
+        // Simulazione connessione wallet (sostituiscila con il tuo provider)
+        const walletConnected = true; // Questo valore dovrebbe arrivare dalla tua logica di connessione
 
-            // Resetta il timeout di inattività ogni volta che l'utente interagisce
-            resetInactivityTimer();
-
-        } catch (error) {
-            console.error("Connection failed:", error);
+        if (walletConnected) {
+            showWalletIndicator();
+        } else {
+            hideWalletIndicator();
         }
-    } else {
-        alert("Solflare extension not found! Install it from https://solflare.com/");
-    }
-});
-
-// Disconnetti il wallet quando clicchi su "Wallet Connected"
-document.getElementById("disconnect-wallet").addEventListener("click", async () => {
-    if (window.solflare) {
-        await window.solflare.disconnect();
-        document.getElementById("wallet-address").innerText = "Wallet disconnected";
-        document.getElementById("disconnect-wallet").style.display = "none"; // Nascondi il bottone
-    }
-});
-
-// Funzione per resettare il timer di inattività
-function resetInactivityTimer() {
-    clearTimeout(inactivityTimeout);
-    inactivityTimeout = setTimeout(() => {
-        disconnectWallet(); // Disconnetti il wallet dopo 60 secondi di inattività
-    }, 60000); // 60 secondi di inattività
-}
-
-// Funzione per disconnettere il wallet
-function disconnectWallet() {
-    if (window.solflare) {
-        window.solflare.disconnect();
-        document.getElementById("wallet-address").innerText = "Wallet disconnected";
-        document.getElementById("disconnect-wallet").style.display = "none"; // Nascondi il bottone
+    } catch (error) {
+        console.error("Errore nella connessione del wallet:", error);
+        hideWalletIndicator();
     }
 }
 
-// Resetta il timer ogni volta che l'utente interagisce
-window.addEventListener("mousemove", resetInactivityTimer);
-window.addEventListener("click", resetInactivityTimer);
+// Simula il controllo dello stato del wallet all'avvio della pagina
+window.onload = function() {
+    connectWallet(); // Chiama questa funzione quando la pagina si carica
+};
+
 
 </script>
 </body>
