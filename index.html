@@ -451,6 +451,7 @@ body {
 #connect-wallet:hover #solflare-logo {
     transform: scale(1.1); /* Effetto hover */
 }
+/* Stile del pulsante Wallet Connected (Desktop) */
 #disconnect-wallet {
     position: fixed;
     bottom: 20px;
@@ -462,19 +463,19 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    display: none;
 }
 
-/* Stile per il pallino lampeggiante su mobile */
+/* Stile per il pallino lampeggiante (Mobile) */
 #wallet-status {
-    display: none; /* Nascondi di default */
+    display: none; /* Nasconde di default */
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    right: 25px;
     width: 15px;
     height: 15px;
     background-color: lime;
     border-radius: 50%;
+    box-shadow: 0 0 10px lime;
     animation: blink 1s infinite;
 }
 
@@ -539,11 +540,11 @@ body {
             </div>
         </div>
     </div>
-
+<button id="disconnect-wallet">Wallet Connected</button>
+<div id="wallet-status"></div>
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 webG.site | All rights reserved</p>
-        <div id="wallet-status"></div>
     </footer>
 
     <script>
