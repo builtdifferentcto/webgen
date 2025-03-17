@@ -540,6 +540,29 @@ body {
                 currentSection.style.display = 'block';
             }
         }
+let inactivityTimeout;
+
+document.getElementById("connect-wallet").addEventListener("click", async () => {
+    if (window.solflare) {
+        try {
+            // Connetti il wallet
+            await window.solflare.connect();
+            const walletAddress = window.solflare.publicKey.toString();
+            document.getElementById("wallet-address").innerText = `Connected: ${walletAddress}`;
+
+            // Mostra il bottone "Wallet Connected"
+            document.getElementById("disconnect-wallet").style.display = "inline-block";
+
+            // Resetta il timeout di inattività ogni volta che l'utente interagisce
+            resetInactivityTimer();
+
+        } catch (error) {
+            console.error("Connection failed:", error);
+        }
+    } else {
+        alert("Solflare extension not found! Install it from https://solflare.com/");
+    }
+});
 
         // Close sections when clicking outside
         document.addEventListener('click', function(event) {
