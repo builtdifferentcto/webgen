@@ -226,51 +226,9 @@ footer {
         opacity: 0;
     }
 }
-/* Contenitore fisso per il wallet */
-#wallet-indicator {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 9999; /* Sempre sopra altri elementi */
-    pointer-events: none; /* Evita che interferisca con il touch */
-}
-
-/* Stile del testo "Wallet Connected" (Solo Desktop) */
-#wallet-text {
-    background: rgba(76, 175, 80, 0.9);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    display: block;
-}
-
-/* Stile del pallino verde lime lampeggiante */
-#wallet-dot {
-    width: 12px;
-    height: 12px;
-    background-color: lime;
-    border-radius: 50%;
-    box-shadow: 0 0 8px lime;
-    animation: blink 1s infinite;
-}
-
-/* Animazione lampeggiante */
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0.3; }
-    100% { opacity: 1; }
-}
 
 /* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
-       #wallet-text {
-        display: none;
-    }
 body {
         overflow: hidden; /* Disabilita lo scroll su mobile */
     }
@@ -304,9 +262,6 @@ body {
 }
 
 @media (max-width: 480px) {
-#wallet-text {
-        display: none;
-    }
 body {
         overflow: hidden; /* Disabilita lo scroll su mobile */
     }
@@ -449,45 +404,18 @@ body {
 #connect-wallet:hover #solflare-logo {
     transform: scale(1.1); /* Effetto hover */
 }
-/* Contenitore fisso per il wallet */
-#wallet-indicator {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 9999; /* Sempre sopra altri elementi */
-    pointer-events: none;
-    display: none;/* Evita che interferisca con il touch */
-}
-
-/* Stile del testo "Wallet Connected" (Solo Desktop) */
-#wallet-text {
-    background: rgba(76, 175, 80, 0.9);
-    color: white;
-    padding: 6px 12px;
+#disconnect-wallet {
+   position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: black;
+    border: none;
+    padding: 10px 20px;
     border-radius: 5px;
-    font-size: 14px;
-    font-weight: bold;
-    display: block;
-}
-
-/* Stile del pallino verde lime lampeggiante */
-#wallet-dot {
-    width: 12px;
-    height: 12px;
-    background-color: lime;
-    border-radius: 50%;
-    box-shadow: 0 0 8px lime;
-    animation: blink 1s infinite;
-}
-
-/* Animazione del pallino lampeggiante */
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0.3; }
-    100% { opacity: 1; }
+    cursor: pointer;
+    font-size: 16px;
+    display: none;
 }
 #disconnect-wallet:hover {
     background-color: #45a049;
@@ -544,9 +472,7 @@ body {
             </div>
         </div>
     </div>
-<div id="wallet-indicator">
-    <div id="wallet-dot"></div>
-</div>
+
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 webG.site | All rights reserved</p>
@@ -635,38 +561,59 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
-// Funzione per mostrare l'indicatore quando il wallet è connesso
-function showWalletIndicator() {
-    document.getElementById("wallet-indicator").style.display = "flex";
-}
+let inactivityTimeout;
 
-// Funzione per nascondere l'indicatore quando il wallet è disconnesso
-function hideWalletIndicator() {
-    document.getElementById("wallet-indicator").style.display = "none";
-}
+document.getElementById("connect-wallet").addEventListener("click", async () => {
+    if (window.solflare) {
+        try {
+            // Connetti il wallet
+            await window.solflare.connect();
+            const walletAddress = window.solflare.publicKey.toString();
+            document.getElementById("wallet-address").innerText = `Connected: ${walletAddress}`;
 
-// Esempio di connessione wallet (da sostituire con la tua logica)
-async function connectWallet() {
-    try {
-        // Simulazione connessione wallet (sostituiscila con il tuo provider)
-        const walletConnected = true; // Questo valore dovrebbe arrivare dalla tua logica di connessione
+            // Mostra il bottone "Wallet Connected"
+            document.getElementById("disconnect-wallet").style.display = "inline-block";
 
-        if (walletConnected) {
-            showWalletIndicator();
-        } else {
-            hideWalletIndicator();
+            // Resetta il timeout di inattività ogni volta che l'utente interagisce
+            resetInactivityTimer();
+
+        } catch (error) {
+            console.error("Connection failed:", error);
         }
-    } catch (error) {
-        console.error("Errore nella connessione del wallet:", error);
-        hideWalletIndicator();
+    } else {
+        alert("Solflare extension not found! Install it from https://solflare.com/");
+    }
+});
+
+// Disconnetti il wallet quando clicchi su "Wallet Connected"
+document.getElementById("disconnect-wallet").addEventListener("click", async () => {
+    if (window.solflare) {
+        await window.solflare.disconnect();
+        document.getElementById("wallet-address").innerText = "Wallet disconnected";
+        document.getElementById("disconnect-wallet").style.display = "none"; // Nascondi il bottone
+    }
+});
+
+// Funzione per resettare il timer di inattività
+function resetInactivityTimer() {
+    clearTimeout(inactivityTimeout);
+    inactivityTimeout = setTimeout(() => {
+        disconnectWallet(); // Disconnetti il wallet dopo 60 secondi di inattività
+    }, 60000); // 60 secondi di inattività
+}
+
+// Funzione per disconnettere il wallet
+function disconnectWallet() {
+    if (window.solflare) {
+        window.solflare.disconnect();
+        document.getElementById("wallet-address").innerText = "Wallet disconnected";
+        document.getElementById("disconnect-wallet").style.display = "none"; // Nascondi il bottone
     }
 }
 
-// Simula il controllo dello stato del wallet all'avvio della pagina
-window.onload = function() {
-    connectWallet(); // Chiama questa funzione quando la pagina si carica
-};
-
+// Resetta il timer ogni volta che l'utente interagisce
+window.addEventListener("mousemove", resetInactivityTimer);
+window.addEventListener("click", resetInactivityTimer);
 
 </script>
 </body>
