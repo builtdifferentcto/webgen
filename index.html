@@ -220,11 +220,18 @@ header {
     height: 70px;
 }
 
+/* Sezione contenitore */
+.content-section {
+    position: relative; /* Necessario per posizionare il banner in modo assoluto */
+    width: 100%;
+    height: 100vh; /* Per occupare tutta l'altezza della pagina */
+}
+
 /* Fumetto - Pulsante */
 .candy-banner {
-    position: relative; /* Cambiato da absolute a relative */
-    top: 30px;
-    right: 50px;
+    position: absolute; /* Posizioniamo il banner in alto a destra */
+    top: 20px; /* Distanza dalla parte superiore */
+    right: 20px; /* Distanza dal bordo destro */
     background: #ffaad4; /* Rosa candy */
     padding: 15px 30px;
     border-radius: 30px;
@@ -295,7 +302,6 @@ header {
         font-size: 16px;
     }
 }
-
 
 
 
@@ -463,22 +469,21 @@ body {
     </style>
 </head>
 <body>
-  <header>
-    
-  <div class="candy-banner" id="menuToggle">
-    <h1 class="fade-title">webGen</h1>
-</div>
+  <section class="content-section">
+    <!-- Banner in alto a destra -->
+    <div class="candy-banner" id="menuToggle">
+        webGen
+    </div>
 
-<!-- Menu a tendina -->
-<div class="dropdown-menu" id="dropdownMenu">
-    <ul>
-        <li><a href="#about">About me</a></li>
-        <li><a href="#contacts">Contacts</a></li>
-        <li><a href="https://twitter.com/webgen_graphics" target="_blank">Follow</a></li>
-    </ul>
-</div>
-</header>
-
+    <!-- Menu a tendina -->
+    <div class="dropdown-menu" id="dropdownMenu">
+        <ul>
+            <li><a href="#">Vision</a></li>
+            <li><a href="#">About me</a></li>
+            <li><a href="#">Follow</a></li>
+        </ul>
+    </div>
+</section>
 
 <div id="twitter-popup" class="popup">
     <div class="popup-content">
@@ -616,7 +621,7 @@ window.addEventListener("load", function() {
         document.getElementById("twitter-popup").style.display = "none";
     }
 });
-// Toggle il menu a tendina
+/// Toggle il menu a tendina
 document.getElementById("menuToggle").addEventListener("click", function () {
     const dropdownMenu = document.getElementById("dropdownMenu");
     const isVisible = dropdownMenu.style.display === "block";
@@ -625,6 +630,7 @@ document.getElementById("menuToggle").addEventListener("click", function () {
     dropdownMenu.style.display = isVisible ? "none" : "block";
     dropdownMenu.style.opacity = isVisible ? "0" : "1";
 });
+
 
 
 /* Chiude il menu se si clicca fuori */
