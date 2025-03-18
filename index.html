@@ -613,27 +613,37 @@ window.addEventListener("load", function() {
         document.getElementById("twitter-popup").style.display = "none";
     }
 });
-document.getElementById("menuToggle").addEventListener("click", function() {
-    let menu = document.getElementById("dropdownMenu");
-    if (menu.style.display === "block") {
-        menu.style.opacity = "0";
-        setTimeout(() => { menu.style.display = "none"; }, 300);
-    } else {
-        menu.style.display = "block";
-        setTimeout(() => { menu.style.opacity = "1"; }, 10);
-    }
-});
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.getElementById("menuToggle");
+        const dropdownMenu = document.getElementById("dropdownMenu");
 
-/* Chiude il menu se si clicca fuori */
-document.addEventListener("click", function(event) {
-    let menu = document.getElementById("dropdownMenu");
-    let banner = document.getElementById("menuToggle");
+        menuToggle.addEventListener("click", function () {
+            if (dropdownMenu.style.display === "block") {
+                dropdownMenu.style.opacity = "0";
+                setTimeout(() => {
+                    dropdownMenu.style.display = "none";
+                }, 300); // Aspetta che l'animazione finisca
+            } else {
+                dropdownMenu.style.display = "block";
+                setTimeout(() => {
+                    dropdownMenu.style.opacity = "1";
+                }, 10);
+            }
+        });
 
-    if (!menu.contains(event.target) && !banner.contains(event.target)) {
-        menu.style.opacity = "0";
-        setTimeout(() => { menu.style.display = "none"; }, 300);
-    }
-});
+        // Chiudi il menu cliccando fuori
+        document.addEventListener("click", function (event) {
+            if (!menuToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.style.opacity = "0";
+                setTimeout(() => {
+                    dropdownMenu.style.display = "none";
+                }, 300);
+            }
+        });
+    });
+</script>
+
 
 
 </script>
