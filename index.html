@@ -226,11 +226,11 @@ header {
     padding-top: 20px; /* Spazio per il banner */
 }
 
-/* Bottone verticale per il menu */
+/* Bottone segnalibro a filo margine destro */
 .menu-toggle {
-    position: absolute;
+    position: fixed;
     top: 20px;
-    right: 20px;
+    right: 0;
     width: 50px;
     height: 200px;
     background-color: #ffaad4;
@@ -243,6 +243,7 @@ header {
     transition: all 0.3s ease;
 }
 
+/* Quando si passa sopra il bottone del menu */
 .menu-toggle:hover {
     transform: scale(1.1);
 }
@@ -256,7 +257,7 @@ header {
     color: #ff4d94;
 }
 
-/* Box del menu che scorre */
+/* Box del menu elegante che scorre */
 .menu-box {
     position: fixed;
     top: 0;
@@ -302,6 +303,16 @@ header {
     opacity: 0.6;
 }
 
+/* Footer */
+.footer {
+    text-align: center;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    position: relative;
+    margin-top: 50px; /* Spazio per evitare sovrapposizione con il menu */
+}
+
 /* Media query per dispositivi mobili */
 @media (max-width: 600px) {
     .menu-toggle {
@@ -317,10 +328,6 @@ header {
         font-size: 16px;
     }
 }
-
-
-
-
 
 /* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
@@ -486,10 +493,9 @@ body {
     </style>
 </head>
 <body>
-  <!-- Sezione del banner e menu -->
 <!-- Sezione del menu -->
 <section class="menu-section">
-    <!-- Bottone per aprire il menu, scritto in verticale -->
+    <!-- Bottone del menu a filo margine destro, scritto in verticale -->
     <div class="menu-toggle" id="menuToggle">
         <span class="menu-text">Menu</span>
     </div>
@@ -668,11 +674,6 @@ document.addEventListener("click", function (event) {
         menuBox.classList.remove("show");
     }
 });
-
-
-
-
-
 
 
 </script>
