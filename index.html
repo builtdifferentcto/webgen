@@ -220,67 +220,76 @@ header {
     height: 70px;
 }
 
-/* Sezione menu e banner */
+/* Sezione del menu */
 .menu-section {
     position: relative;
-    width: 100%;
-    padding-top: 20px; /* Spazio per il banner in alto */
+    padding-top: 20px; /* Spazio per il banner */
 }
 
-/* Fumetto - Pulsante */
-.candy-banner {
-    position: absolute; /* Posizionato in alto a destra */
+/* Bottone verticale per il menu */
+.menu-toggle {
+    position: absolute;
     top: 20px;
     right: 20px;
-    background: #ffaad4;
-    padding: 15px 30px;
-    border-radius: 30px;
-    display: inline-block;
+    width: 50px;
+    height: 200px;
+    background-color: #ffaad4;
+    border-radius: 15px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Scritta Menu verticale */
+.menu-text {
+    writing-mode: vertical-rl;
     text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4d94;
 }
 
-.candy-banner:hover {
-    transform: scale(1.05);
-}
-
-/* Menu a tendina */
-.dropdown-menu {
-    position: absolute;
-    top: 50px; /* Posizioniamo il menu sotto il banner */
-    right: 20px; /* Menu in alto a destra */
+/* Box del menu che scorre */
+.menu-box {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Posizione iniziale fuori dalla vista */
+    width: 300px;
+    height: 100%;
     background: #ffdef2;
-    padding: 10px 20px;
-    border-radius: 20px;
+    padding: 20px;
+    border-radius: 20px 0 0 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    width: 200px;
-    max-width: 90%;
-    z-index: 999;
+    z-index: 9999;
+    transition: right 0.5s ease-in-out; /* Transizione scorrevole da destra verso sinistra */
 }
 
-/* Menu a tendina visibile */
-.dropdown-menu.show {
+/* Menu visibile */
+.menu-box.show {
     display: block;
-    opacity: 1;
+    right: 0; /* Quando il menu è visibile, si sposta a sinistra */
 }
 
-.dropdown-menu ul {
+.menu-box ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.dropdown-menu li {
-    padding: 10px;
+.menu-box li {
+    padding: 15px;
     text-align: center;
 }
 
-.dropdown-menu li a {
+.menu-box li a {
     text-decoration: none;
     color: #ff4d94;
     font-weight: bold;
@@ -289,7 +298,7 @@ header {
     transition: opacity 0.3s;
 }
 
-.dropdown-menu li a:hover {
+.menu-box li a:hover {
     opacity: 0.6;
 }
 
@@ -305,23 +314,20 @@ header {
 
 /* Media query per dispositivi mobili */
 @media (max-width: 600px) {
-    /* Modifiche per il banner su mobile */
-    .candy-banner {
-        font-size: 14px;
-        padding: 10px 20px;
+    .menu-toggle {
+        width: 40px;
+        height: 150px;
     }
 
-    /* Menu a tendina su mobile in alto a destra */
-    .dropdown-menu {
-        top: 60px; /* Posizionamento sotto il banner */
-        right: 10px; /* In alto a destra su mobile */
-        width: 90%;
+    .menu-box {
+        width: 250px;
     }
 
-    .dropdown-menu li a {
+    .menu-text {
         font-size: 16px;
     }
 }
+
 
 
 
@@ -642,32 +648,34 @@ window.addEventListener("load", function() {
         document.getElementById("twitter-popup").style.display = "none";
     }
 });
-// Toggle il menu a tendina
+// Toggle il menu elegante con effetto scorrevole
 document.getElementById("menuToggle").addEventListener("click", function () {
-    const dropdownMenu = document.getElementById("dropdownMenu");
-    const isVisible = dropdownMenu.classList.contains("show");
+    const menuBox = document.getElementById("menuBox");
+    const isVisible = menuBox.classList.contains("show");
 
     // Aggiungi o rimuovi la classe 'show' per mostrare o nascondere il menu
     if (isVisible) {
-        dropdownMenu.classList.remove("show");
+        menuBox.classList.remove("show");
     } else {
-        dropdownMenu.classList.add("show");
+        menuBox.classList.add("show");
+    }
+});
+
+// Chiudi il menu se si clicca fuori dal box
+document.addEventListener("click", function (event) {
+    const menuBox = document.getElementById("menuBox");
+    const menuToggle = document.getElementById("menuToggle");
+
+    // Se si clicca fuori dal menu e dal bottone, nascondi il menu
+    if (!menuBox.contains(event.target) && !menuToggle.contains(event.target)) {
+        menuBox.classList.remove("show");
     }
 });
 
 
 
 
-/* Chiude il menu se si clicca fuori */
-document.addEventListener("click", function(event) {
-    let menu = document.getElementById("dropdownMenu");
-    let banner = document.getElementById("menuToggle");
 
-    if (!menu.contains(event.target) && !banner.contains(event.target)) {
-        menu.style.opacity = "0";
-        setTimeout(() => { menu.style.display = "none"; }, 300);
-    }
-});
 
 
 </script>
