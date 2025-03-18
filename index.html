@@ -490,6 +490,17 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
+document.getElementById("follow-btn").addEventListener("click", function() {
+    localStorage.setItem("followedOnTwitter", "true"); // Salva lo stato di follow
+    document.getElementById("twitter-popup").style.display = "none"; // Chiude il popup
+});
+
+// Controlla se l'utente ha già seguito su Twitter
+window.addEventListener("load", function() {
+    if (localStorage.getItem("followedOnTwitter") === "true") {
+        document.getElementById("twitter-popup").style.display = "none";
+    }
+});
 
 </script>
 </body>
