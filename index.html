@@ -242,9 +242,9 @@ header {
 /* Menu a tendina */
 .dropdown-menu {
     position: absolute;
-    top: 100%; /* Default su mobile: si apre sotto il banner */
+    top: 100%; /* Sempre sotto il banner */
     left: 50%;
-    transform: translateX(100%);
+    transform: translateX(-50%);
     background: #ffdef2;
     padding: 10px 20px;
     border-radius: 20px;
@@ -254,15 +254,6 @@ header {
     transition: opacity 0.3s ease-in-out;
     width: 200px;
     max-width: 90%;
-}
-
-/* Menu a tendina su Desktop: posizione sotto il fumetto */
-@media (min-width: 1024px) {
-    .dropdown-menu {
-        top: 120%; /* Spostiamo il menu sotto il fumetto su desktop */
-        left: 50%;
-        transform: translateX(-50%);
-    }
 }
 
 .dropdown-menu ul {
@@ -304,6 +295,7 @@ header {
         font-size: 16px;
     }
 }
+
 
 
 /* 🔹 RESPONSIVE DESIGN 🔹 */
