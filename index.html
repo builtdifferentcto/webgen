@@ -220,7 +220,7 @@ header {
     height: 70px;
 }
 
-/* Stile del fumetto */
+/* FUMETTO - PULSANTE */
 .candy-banner {
     background: #ffaad4; /* Rosa candy */
     padding: 15px 30px;
@@ -229,16 +229,17 @@ header {
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.2s;
+    text-align: center;
 }
 
 .candy-banner:hover {
     transform: scale(1.05);
 }
 
-/* Stile del menu a tendina */
+/* MENU A TENDINA */
 .dropdown-menu {
     position: absolute;
-    top: 70px;
+    top: 100%; /* Si apre sotto il fumetto */
     left: 50%;
     transform: translateX(-50%);
     background: #ffdef2;
@@ -248,8 +249,11 @@ header {
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    width: 200px; /* Larghezza fissa per evitare distorsioni */
+    max-width: 90%;
 }
 
+/* LISTA MENU */
 .dropdown-menu ul {
     list-style: none;
     padding: 0;
@@ -272,6 +276,22 @@ header {
 
 .dropdown-menu li a:hover {
     opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .candy-banner {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .dropdown-menu {
+        width: 90%;
+    }
+
+    .dropdown-menu li a {
+        font-size: 16px;
+    }
 }
 
 
@@ -448,6 +468,8 @@ body {
     <div class="candy-banner" id="menuToggle">
         <h1 class="fade-title">webGen</h1>
     </div>
+    <h1 class="fade-title">Space Runner</h1>
+    </div>
     <div class="dropdown-menu" id="dropdownMenu">
         <ul>
             <li><a href="#about">About me</a></li>
@@ -615,6 +637,7 @@ document.addEventListener("click", function(event) {
         setTimeout(() => { menu.style.display = "none"; }, 300);
     }
 });
+
 
 </script>
 </body>
