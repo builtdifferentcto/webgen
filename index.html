@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>webG Official</title>
+     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@solana/wallet-adapter-wallets"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@solana/wallet-adapter-react"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js"></script>
     <style>
         /* Importazione font */
         /* Importazione font */
@@ -458,16 +462,17 @@ body {
     </style>
 </head>
 <body>
+    <header>
+        <button id="connect-wallet" class="wallet-button">Connect Wallet</button>
+        <div id="wallet-status" class="wallet-status"></div>
+    </header>
 <div id="twitter-popup" class="popup">
     <div class="popup-content">
                 <p>Get in touch!</p>
         <a id="follow-btn" href="https://twitter.com/webgen_graphics" target="_blank" class="twitter-follow-button">Follow</a>
     </div>
 </div>
-<div id="wallet-container" style="display:none;">
-    <p id="wallet-address"></p>
-    <button id="disconnect-wallet">Wallet Connected</button>
-</div>
+
 
 
     <!-- Logo principale -->
@@ -595,72 +600,66 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
-let inactivityTimeout;
-
-document.getElementById("connect-wallet").addEventListener("click", async () => {
-    if (window.solflare) {
-        try {
-            // Connetti il wallet
-            await window.solflare.connect();
-            const walletAddress = window.solflare.publicKey.toString();
-            document.getElementById("wallet-address").innerText = `Connected: ${walletAddress}`;
-
-            // Mostra il bottone "Wallet Connected"
-            document.getElementById("disconnect-wallet").style.display = "inline-block";
-
-            // Resetta il timeout di inattività ogni volta che l'utente interagisce
-            resetInactivityTimer();
-
-        } catch (error) {
-            console.error("Connection failed:", error);
+document.addEventListener("DOMContentLoaded", async function() {
+            const button = document.getElementById("connect-wallet");
+            const status = document.getElementById("wallet-status");
+            
+            if (!window.solana) {
+                button.textContent = "Phantom Wallet Not Installed";
+                button.disabled = true;
+                return;
+            }
+            
+            async function connectWallet() {
+                try {
+                    const response = await window.solana.connect();
+                    button.textContent = "Wallet Connected";
+                    button.classList.add("connected");
+                    status.innerHTML = `<span class='wallet-indicator'></span> ${response.publicKey.toString().slice(0, 4)}...${response.publicKey.toString().slice(-4)}`;
+                } catch (err) {
+                    console.error("Wallet connection failed", err);
+                }
+            }
+            
+            button.addEventListener("click", connectWallet);
+            
+            if (window.solana.isConnected) {
+                button.textContent = "Wallet Connected";
+                button.classList.add("connected");
+                status.innerHTML = `<span class='wallet-indicator'></span> ${window.solana.publicKey.toString().slice(0, 4)}...${window.solana.publicKey.toString().slice(-4)}`;
+            }
+        });
+    </script>
+    <style>
+        .wallet-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
         }
-    } else {
-        alert("Solflare extension not found! Install it from https://solflare.com/");
-    }
-});
-
-// Disconnetti il wallet quando clicchi su "Wallet Connected"
-document.getElementById("disconnect-wallet").addEventListener("click", async () => {
-    if (window.solflare) {
-        await window.solflare.disconnect();
-        document.getElementById("wallet-address").innerText = "Wallet disconnected";
-        document.getElementById("disconnect-wallet").style.display = "none"; // Nascondi il bottone
-    }
-});
-
-// Funzione per resettare il timer di inattività
-function resetInactivityTimer() {
-    clearTimeout(inactivityTimeout);
-    inactivityTimeout = setTimeout(() => {
-        disconnectWallet(); // Disconnetti il wallet dopo 60 secondi di inattività
-    }, 60000); // 60 secondi di inattività
-}
-
-// Funzione per disconnettere il wallet
-function disconnectWallet() {
-    if (window.solflare) {
-        window.solflare.disconnect();
-        document.getElementById("wallet-address").innerText = "Wallet disconnected";
-        document.getElementById("disconnect-wallet").style.display = "none"; // Nascondi il bottone
-    }
-}
-
-// Resetta il timer ogni volta che l'utente interagisce
-window.addEventListener("mousemove", resetInactivityTimer);
-window.addEventListener("click", resetInactivityTimer);
-function updateWalletUI(isConnected) {
-    if (isConnected) {
-        document.getElementById("wallet-container").style.display = "block";
-        document.getElementById("wallet-status").style.display = "block";
-    } else {
-        document.getElementById("wallet-container").style.display = "none";
-        document.getElementById("wallet-status").style.display = "none";
-    }
-}
-
-// Simula connessione del wallet (sostituisci con la tua logica)
-const walletConnected = true; // Cambia dinamicamente in base allo stato del wallet
-updateWalletUI(walletConnected);
+        .wallet-button.connected {
+            background-color: #2196F3;
+        }
+        .wallet-status {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #fff;
+        }
+        .wallet-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-color: green;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        @media (max-width: 600px) {
+            .wallet-button {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+        }
 
 </script>
 </body>
