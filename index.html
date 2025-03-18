@@ -220,50 +220,58 @@ header {
     height: 70px;
 }
 
-/* Banner in stile candy con forma nuvola */
+/* Stile del fumetto */
 .candy-banner {
-    background: linear-gradient(to right, #ff9eb3, #ffb3d9, #ff80bf); /* Colori pastello */
-    border-radius: 50% 50% 30% 30%; /* Forma rotonda con effetto nuvola */
-    padding: 20px 50px;
-    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5); /* Ombra soffusa */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #ffaad4; /* Rosa candy */
+    padding: 15px 30px;
+    border-radius: 30px;
+    display: inline-block;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
 }
 
-/* Titolo con effetto fade-in */
-.fade-title {
-    color: white;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 24px;
+.candy-banner:hover {
+    transform: scale(1.05);
+}
+
+/* Stile del menu a tendina */
+.dropdown-menu {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffdef2;
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
     opacity: 0;
-    animation: fadeIn 1.5s ease-in forwards;
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 }
 
-/* Quando il mouse passa sopra, il testo diventa più trasparente */
-.fade-title:hover {
-    opacity: 0.3;
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* Animazione fade-in all'avvio */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.dropdown-menu li {
+    padding: 10px;
+    text-align: center;
 }
 
-/* Rispetto per dispositivi mobili */
-@media (max-width: 768px) {
-    .candy-banner {
-        padding: 15px 30px;
-    }
-    .fade-title {
-        font-size: 18px;
-    }
+.dropdown-menu li a {
+    text-decoration: none;
+    color: #ff4d94;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    transition: opacity 0.3s;
+}
+
+.dropdown-menu li a:hover {
+    opacity: 0.6;
 }
 
 
@@ -584,6 +592,27 @@ document.getElementById("follow-btn").addEventListener("click", function() {
 window.addEventListener("load", function() {
     if (localStorage.getItem("followedOnTwitter") === "true") {
         document.getElementById("twitter-popup").style.display = "none";
+    }
+});
+document.getElementById("menuToggle").addEventListener("click", function() {
+    let menu = document.getElementById("dropdownMenu");
+    if (menu.style.display === "block") {
+        menu.style.opacity = "0";
+        setTimeout(() => { menu.style.display = "none"; }, 300);
+    } else {
+        menu.style.display = "block";
+        setTimeout(() => { menu.style.opacity = "1"; }, 10);
+    }
+});
+
+/* Chiude il menu se si clicca fuori */
+document.addEventListener("click", function(event) {
+    let menu = document.getElementById("dropdownMenu");
+    let banner = document.getElementById("menuToggle");
+
+    if (!menu.contains(event.target) && !banner.contains(event.target)) {
+        menu.style.opacity = "0";
+        setTimeout(() => { menu.style.display = "none"; }, 300);
     }
 });
 
