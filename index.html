@@ -199,6 +199,50 @@ footer {
         opacity: 0;
     }
 }
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to right, #0ff, #00f);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
+    z-index: 1000;
+}
+
+.logo img {
+    height: 40px;
+}
+
+/* Titolo con effetto fade-in */
+.fade-title {
+    color: #fff;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    opacity: 0;  /* Inizialmente invisibile */
+    animation: fadeIn 1.5s ease-in forwards; /* Fade-in all'avvio */
+    transition: opacity 0.5s ease-in-out; /* Transizione fluida */
+}
+
+/* Quando il mouse passa sopra, il testo diventa più trasparente */
+.fade-title:hover {
+    opacity: 0.3;
+}
+
+/* Animazione fade-in all'avvio */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
 /* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
@@ -364,7 +408,13 @@ body {
     </style>
 </head>
 <body>
-   
+   <header>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <h1 class="fade-title">Space Runner</h1>
+</header>
+
 <div id="twitter-popup" class="popup">
     <div class="popup-content">
                 <p>Get in touch!</p>
