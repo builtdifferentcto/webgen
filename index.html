@@ -242,7 +242,7 @@ header {
 /* Menu a tendina */
 .dropdown-menu {
     position: absolute;
-    top: 30px; /* Posiziona il menu sotto il banner */
+    top: 100%; /* Default su mobile: si apre sotto il banner */
     left: 50%;
     transform: translateX(-50%);
     background: #ffdef2;
@@ -252,8 +252,17 @@ header {
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    width: 200px; /* Larghezza fissa per evitare distorsioni */
-    max-width: 90%; /* Limita la larghezza al 90% dello schermo */
+    width: 200px;
+    max-width: 90%;
+}
+
+/* Menu a tendina su Desktop: posizione sotto il fumetto */
+@media (min-width: 1024px) {
+    .dropdown-menu {
+        top: 120%; /* Spostiamo il menu sotto il fumetto su desktop */
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
 
 .dropdown-menu ul {
@@ -288,13 +297,14 @@ header {
     }
 
     .dropdown-menu {
-        width: 90%; /* Rende il menu largo quanto il 90% dello schermo */
+        width: 90%;
     }
 
     .dropdown-menu li a {
         font-size: 16px;
     }
 }
+
 
 /* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
@@ -462,7 +472,7 @@ body {
 <body>
   <header>
     
-    <div class="candy-banner" id="menuToggle">
+  <div class="candy-banner" id="menuToggle">
     <h1 class="fade-title">webGen</h1>
 </div>
 
