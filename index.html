@@ -220,7 +220,7 @@ header {
     height: 70px;
 }
 
-/* FUMETTO - PULSANTE */
+/* Fumetto - Pulsante */
 .candy-banner {
     position: absolute;
     top: 30px;
@@ -239,10 +239,10 @@ header {
     transform: scale(1.05);
 }
 
-/* MENU A TENDINA */
+/* Menu a tendina */
 .dropdown-menu {
     position: absolute;
-    top: 100%; /* Si apre sotto il fumetto */
+    top: 100%; /* Posiziona il menu sotto il banner */
     left: 50%;
     transform: translateX(-50%);
     background: #ffdef2;
@@ -253,10 +253,9 @@ header {
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
     width: 200px; /* Larghezza fissa per evitare distorsioni */
-    max-width: 90%;
+    max-width: 90%; /* Limita la larghezza al 90% dello schermo */
 }
 
-/* LISTA MENU */
 .dropdown-menu ul {
     list-style: none;
     padding: 0;
@@ -281,7 +280,7 @@ header {
     opacity: 0.6;
 }
 
-/* RESPONSIVE */
+/* Media query per dispositivi mobili */
 @media (max-width: 600px) {
     .candy-banner {
         font-size: 14px;
@@ -289,14 +288,13 @@ header {
     }
 
     .dropdown-menu {
-        width: 90%;
+        width: 90%; /* Rende il menu largo quanto il 90% dello schermo */
     }
 
     .dropdown-menu li a {
         font-size: 16px;
     }
 }
-
 
 /* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
@@ -465,15 +463,17 @@ body {
   <header>
     
     <div class="candy-banner" id="menuToggle">
-        <h1 class="fade-title">webGen</h1>
-    </div>
-    <div class="dropdown-menu" id="dropdownMenu">
-        <ul>
-            <li><a href="#about">About me</a></li>
-            <li><a href="#contacts">Contacts</a></li>
-            <li><a href="#readme">Readme</a></li>
-        </ul>
-    </div>
+    <h1 class="fade-title">webGen</h1>
+</div>
+
+<!-- Menu a tendina -->
+<div class="dropdown-menu" id="dropdownMenu">
+    <ul>
+        <li><a href="#about">About me</a></li>
+        <li><a href="#contacts">Contacts</a></li>
+        <li><a href="https://twitter.com/webgen_graphics" target="_blank">Follow</a></li>
+    </ul>
+</div>
 </header>
 
 
@@ -613,16 +613,16 @@ window.addEventListener("load", function() {
         document.getElementById("twitter-popup").style.display = "none";
     }
 });
-document.getElementById("menuToggle").addEventListener("click", function() {
-    let menu = document.getElementById("dropdownMenu");
-    if (menu.style.display === "block") {
-        menu.style.opacity = "0";
-        setTimeout(() => { menu.style.display = "none"; }, 300);
-    } else {
-        menu.style.display = "block";
-        setTimeout(() => { menu.style.opacity = "1"; }, 10);
-    }
+// Toggle il menu a tendina
+document.getElementById("menuToggle").addEventListener("click", function () {
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const isVisible = dropdownMenu.style.display === "block";
+
+    // Mostra o nascondi il menu
+    dropdownMenu.style.display = isVisible ? "none" : "block";
+    dropdownMenu.style.opacity = isVisible ? "0" : "1";
 });
+
 
 /* Chiude il menu se si clicca fuori */
 document.addEventListener("click", function(event) {
