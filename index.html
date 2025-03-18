@@ -220,19 +220,19 @@ header {
     height: 70px;
 }
 
-/* Sezione contenitore */
-.content-section {
-    position: relative; /* Necessario per posizionare il banner in modo assoluto */
+/* Sezione menu e banner */
+.menu-section {
+    position: relative;
     width: 100%;
-    height: 100vh; /* Per occupare tutta l'altezza della pagina */
+    padding-top: 20px; /* Spazio per il banner in alto */
 }
 
 /* Fumetto - Pulsante */
 .candy-banner {
-    position: absolute; /* Posizioniamo il banner in alto a destra */
-    top: 20px; /* Distanza dalla parte superiore */
-    right: 20px; /* Distanza dal bordo destro */
-    background: #ffaad4; /* Rosa candy */
+    position: absolute; /* Posizionato in alto a destra */
+    top: 20px;
+    right: 20px;
+    background: #ffaad4;
     padding: 15px 30px;
     border-radius: 30px;
     display: inline-block;
@@ -261,6 +261,7 @@ header {
     transition: opacity 0.3s ease-in-out;
     width: 200px;
     max-width: 90%;
+    z-index: 999;
 }
 
 .dropdown-menu ul {
@@ -285,6 +286,16 @@ header {
 
 .dropdown-menu li a:hover {
     opacity: 0.6;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    position: relative;
+    margin-top: 50px; /* Spazio per evitare sovrapposizione con il menu */
 }
 
 /* Media query per dispositivi mobili */
@@ -469,22 +480,22 @@ body {
     </style>
 </head>
 <body>
-  <section class="content-section">
+  <!-- Sezione del banner e menu -->
+<section class="menu-section">
     <!-- Banner in alto a destra -->
     <div class="candy-banner" id="menuToggle">
-        webGen
+        Segui per aggiornamenti
     </div>
 
     <!-- Menu a tendina -->
     <div class="dropdown-menu" id="dropdownMenu">
         <ul>
-            <li><a href="#">Vision</a></li>
-            <li><a href="#">About me</a></li>
             <li><a href="#">Follow</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
         </ul>
     </div>
 </section>
-
 <div id="twitter-popup" class="popup">
     <div class="popup-content">
                 <p>Get in touch!</p>
