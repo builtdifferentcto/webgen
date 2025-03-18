@@ -201,32 +201,44 @@ footer {
 }
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+/* Header */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: linear-gradient(to right, #0ff, #00f);
+    background: transparent;
     padding: 15px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
     z-index: 1000;
 }
 
+/* Logo */
 .logo img {
     height: 40px;
 }
 
+/* Banner in stile candy con forma nuvola */
+.candy-banner {
+    background: linear-gradient(to right, #ff9eb3, #ffb3d9, #ff80bf); /* Colori pastello */
+    border-radius: 50% 50% 30% 30%; /* Forma rotonda con effetto nuvola */
+    padding: 20px 50px;
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.5); /* Ombra soffusa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Titolo con effetto fade-in */
 .fade-title {
-    color: #fff;
+    color: white;
     font-family: 'Press Start 2P', cursive;
-    font-size: 18px;
-    opacity: 0;  /* Inizialmente invisibile */
-    animation: fadeIn 1.5s ease-in forwards; /* Fade-in all'avvio */
-    transition: opacity 0.5s ease-in-out; /* Transizione fluida */
+    font-size: 24px;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in forwards;
+    transition: opacity 0.5s ease-in-out;
 }
 
 /* Quando il mouse passa sopra, il testo diventa più trasparente */
@@ -243,6 +255,17 @@ header {
         opacity: 1;
     }
 }
+
+/* Rispetto per dispositivi mobili */
+@media (max-width: 768px) {
+    .candy-banner {
+        padding: 15px 30px;
+    }
+    .fade-title {
+        font-size: 18px;
+    }
+}
+
 
 /* 🔹 RESPONSIVE DESIGN 🔹 */
 @media (max-width: 768px) {
@@ -408,12 +431,15 @@ body {
     </style>
 </head>
 <body>
-   <header>
+  <header>
     <div class="logo">
         <img src="logo.png" alt="Logo">
     </div>
-    <h1 class="fade-title">Space Runner</h1>
+    <div class="candy-banner">
+        <h1 class="fade-title">webGen </h1>
+    </div>
 </header>
+
 
 <div id="twitter-popup" class="popup">
     <div class="popup-content">
