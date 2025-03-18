@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>webG Official</title>
-     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/@solana/wallet-adapter-wallets"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@solana/wallet-adapter-react"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js"></script>
     <style>
         /* Importazione font */
         /* Importazione font */
@@ -39,34 +35,7 @@ body.loaded {
     opacity: 1;
 }
 
-.logo-container {
-    position: absolute;
-    top: 20px;
-    right: 80px;
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-}
 
-.logo img {
-    width: 50px;
-    height: auto;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-    padding: 50px;
-    opacity: 0;
-    transition: opacity 2s ease-in-out 1s;
-}
-
-.container.loaded {
-    opacity: 1;
-}
 
 /* Box elegante */
 .background-box {
@@ -389,101 +358,19 @@ body {
         opacity: 1;
     }
 }
-#connect-wallet {
-    position: fixed;
-    top: 20px; /* Distanza dal bordo superiore */
-    right: 20px; /* Distanza dal bordo destro */
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 9999; /* Assicura che sia sopra gli altri elementi */
-}
-#solflare-logo {
-    width: 40px; /* Regola la dimensione */
-    height: 40px;
-    transition: transform 0.3s ease-in-out;
-}
 
-#connect-wallet:hover #solflare-logo {
-    transform: scale(1.1); /* Effetto hover */
-}
-/* Stile per il pallino su mobile */
-#wallet-status {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    width: 12px;
-    height: 12px;
-    background-color: lime;
-    border-radius: 50%;
-    animation: blink 1s infinite alternate;
-    display: none;
-}
-
-/* Stile per la scritta su desktop */
-#wallet-container {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    color: white;
-    display: none;
-}
-
-/* Animazione del pallino lampeggiante */
-@keyframes blink {
-    0% { opacity: 1; }
-    100% { opacity: 0.5; }
-}
-
-/* Mostra il pallino solo su mobile */
-@media (max-width: 768px) {
-    #wallet-status {
-        display: block;
-    }
-    #wallet-container {
-        display: none;
-    }
-}
-
-/* Mostra la scritta solo su desktop */
-@media (min-width: 769px) {
-    #wallet-status {
-        display: none;
-    }
-    #wallet-container {
-        display: block;
-    }
-}
 
 
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-        </div>
-        <button id="connect-wallet" class="wallet-button">
-            <img src="https://solflare.com/favicon.ico" alt="Solflare Logo" class="wallet-logo"> 
-        </button>
+   
 <div id="twitter-popup" class="popup">
     <div class="popup-content">
                 <p>Get in touch!</p>
         <a id="follow-btn" href="https://twitter.com/webgen_graphics" target="_blank" class="twitter-follow-button">Follow</a>
     </div>
 </div>
-
-
-
-    <!-- Logo principale -->
-<div class="logo-container">https://imagizer.imageshack.com/img924/2046/cgAvlJ.png
-    <a href="https://x.com/weBgen_graphics" class="logo">
-        <img src="https://imagizer.imageshack.com/img924/2046/cgAvlJ.png" alt="Logo principale">
-    </a>
-    </div>
 
 <div class="background-box"></div>
 
@@ -603,66 +490,6 @@ function hidePreloader() {
             document.getElementById("twitter-popup").style.display = "none";
         });
     });    
-document.addEventListener("DOMContentLoaded", async function() {
-            const button = document.getElementById("connect-wallet");
-            const status = document.getElementById("wallet-status");
-            
-            if (!window.solana) {
-                button.textContent = "Phantom Wallet Not Installed";
-                button.disabled = true;
-                return;
-            }
-            
-            async function connectWallet() {
-                try {
-                    const response = await window.solana.connect();
-                    button.textContent = "Wallet Connected";
-                    button.classList.add("connected");
-                    status.innerHTML = `<span class='wallet-indicator'></span> ${response.publicKey.toString().slice(0, 4)}...${response.publicKey.toString().slice(-4)}`;
-                } catch (err) {
-                    console.error("Wallet connection failed", err);
-                }
-            }
-            
-            button.addEventListener("click", connectWallet);
-            
-            if (window.solana.isConnected) {
-                button.textContent = "Wallet Connected";
-                button.classList.add("connected");
-                status.innerHTML = `<span class='wallet-indicator'></span> ${window.solana.publicKey.toString().slice(0, 4)}...${window.solana.publicKey.toString().slice(-4)}`;
-            }
-        });
-    </script>
-    <style>
-        .wallet-button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .wallet-button.connected {
-            background-color: #2196F3;
-        }
-        .wallet-status {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #fff;
-        }
-        .wallet-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            background-color: green;
-            border-radius: 50%;
-            margin-right: 5px;
-        }
-        @media (max-width: 600px) {
-            .wallet-button {
-                font-size: 12px;
-                padding: 8px 16px;
-            }
-        }
 
 </script>
 </body>
