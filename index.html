@@ -5,88 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page - webGen</title>
     <link rel="stylesheet" href="styles.css">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-        
-        body {
-             margin: 0;
-    padding: 0;
-    font-family: 'Bebas Neue', sans-serif;
-    background-color: black;
-    color: white;
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh; /* Impostiamo altezza minima per permettere al footer di rimanere in fondo */
-}
-        }
 
-  
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Bebas Neue', sans-serif;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
 
         /* Effetto glitch modificato */
         @keyframes glitch-effect {
-            0% {
-                transform: translate(0) scale(1);
-                opacity: 1;
-            }
-            20% {
-                transform: translate(-5px, 0) scale(1.1);
-                opacity: 0.8;
-            }
-            40% {
-                transform: translate(5px, 0) scale(1.1);
-                opacity: 0.8;
-            }
-            60% {
-                transform: translate(-5px, 0) scale(1.1);
-                opacity: 0.7;
-            }
-            80% {
-                transform: translate(5px, 0) scale(1.1);
-                opacity: 0.7;
-            }
-            100% {
-                transform: translate(0) scale(1);
-                opacity: 1;
-            }
+            0% { transform: translate(0) scale(1); opacity: 1; }
+            20% { transform: translate(-5px, 0) scale(1.1); opacity: 0.8; }
+            40% { transform: translate(5px, 0) scale(1.1); opacity: 0.8; }
+            60% { transform: translate(-5px, 0) scale(1.1); opacity: 0.7; }
+            80% { transform: translate(5px, 0) scale(1.1); opacity: 0.7; }
+            100% { transform: translate(0) scale(1); opacity: 1; }
         }
 
-        /* Sezione con animazione glitch */
         .section {
             width: 100%;
-            padding: 160px 20px; /* Aumentato di 10px */
+            padding: 160px 20px;
             background-color: black;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeIn 1s ease-out forwards;
             display: flex;
-            align-items: center; /* Allinea verticalmente */
-            justify-content: center; /* Allinea orizzontalmente */
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
         }
 
         .section h2 {
             font-size: 6em;
-max-width: 600px; /* Larghezza fissa */
-
+            max-width: 600px;
             font-weight: bold;
             color: white;
             text-transform: uppercase;
-            animation: glitch-animation 2s infinite linear alternate-reverse;
+            animation: glitch-effect 2s infinite linear alternate-reverse;
         }
 
         .section p {
-    font-size: 1,8
-    color: #ccc;
-    line-height: 1.6;
-    max-width: 700px; /* Larghezza fissa */
-    margin: 0 auto;
-    text-align: justify; /* Allineamento giustificato */
-    word-wrap: break-word;
-    opacity: 0;
-    animation: fadeInText 1s ease-out 1s forwards;
-}
-
+            font-size: 1.8em;
+            color: #ccc;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: justify;
+            word-wrap: break-word;
+            opacity: 0;
+            animation: fadeInText 1s ease-out 1s forwards;
+        }
 
         @keyframes fadeIn {
             to {
@@ -100,254 +78,168 @@ max-width: 600px; /* Larghezza fissa */
                 opacity: 1;
             }
         }
-@keyframes fadeOutText {
-    to {
-        opacity: 0;
-        visibility: hidden;
-    }
-}
 
-.word-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 300px; /* Modifica l'altezza per centrare meglio */
-        position: relative;
-    }
-
-    .glitch {
-        font-size: 8em;
-        font-weight: bold;
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        color: white;
-        position: absolute;
-        opacity: 0;
-        visibility: hidden;
-        animation: glitch-effect 1.5s infinite;
-        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-    }
-
-    @keyframes glitch-effect {
-        0% { transform: translate(0) scale(1); opacity: 1; }
-        20% { transform: translate(-3px, 2px) scale(1.1); opacity: 0.8; }
-        40% { transform: translate(3px, -2px) scale(1.1); opacity: 0.8; }
-        60% { transform: translate(-3px, 2px) scale(1.1); opacity: 0.7; }
-        80% { transform: translate(3px, -2px) scale(1.1); opacity: 0.7; }
-        100% { transform: translate(0) scale(1); opacity: 1; }
-    }
-.word-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 300px;
-        position: relative;
-    }
-
-    .glitch {
-        font-size: 8em;
-        font-weight: bold;
-        letter-spacing: 6px;
-        text-transform: uppercase;
-        color: white;
-        position: absolute;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
-    }
-
-    /* Nuovo effetto glitch RGB */
-    .glitch::before,
-    .glitch::after {
-        content: attr(data-text);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: -1;
-    }
-
-    .glitch::before {
-        color: red;
-        transform: translate(-2px, -2px);
-        opacity: 0.8;
-    }
-
-    .glitch::after {
-        color: cyan;
-        transform: translate(2px, 2px);
-        opacity: 0.8;
-    }
-
-    @keyframes glitch-effect {
-        0% { transform: translate(0, 0); }
-        20% { transform: translate(-3px, 2px); }
-        40% { transform: translate(3px, -2px); }
-        60% { transform: translate(-3px, 2px); }
-        80% { transform: translate(3px, -2px); }
-        100% { transform: translate(0, 0); }
-    }
- /* Effetto di scuotimento (shake) */
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
+        .word-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            position: relative;
+            flex-wrap: wrap;
         }
 
-        /* Effetto glitch */
-        @keyframes glitch {
-            0% { transform: translate(0) scale(1); opacity: 1; }
-            20% { transform: translate(-3px, 2px) scale(1.1); opacity: 0.8; }
-            40% { transform: translate(3px, -2px) scale(1.1); opacity: 0.8; }
-            60% { transform: translate(-3px, 2px) scale(1.1); opacity: 0.7; }
-            80% { transform: translate(3px, -2px) scale(1.1); opacity: 0.7; }
-            100% { transform: translate(0) scale(1); opacity: 1; }
+        .glitch {
+            font-size: 8em;
+            font-weight: bold;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: white;
+            position: absolute;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
         }
 
-        /* Effetto combinato di glitch e shake al passaggio del mouse */
-        .section h2:hover {
-            animation: shake 0.5s linear, glitch 1.5s infinite alternate-reverse;
-            color: cyan; /* Cambio colore durante l'effetto */
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
         }
-    .glitch {
-        animation: glitch-effect 0.8s infinite alternate;
-    }
-        /* Footer fisso in basso */
+
+        .glitch::before {
+            color: red;
+            transform: translate(-2px, -2px);
+            opacity: 0.8;
+        }
+
+        .glitch::after {
+            color: cyan;
+            transform: translate(2px, 2px);
+            opacity: 0.8;
+        }
+
         footer {
-            position: fixed;
-            bottom: 0;
+            position: relative;
             width: 100%;
             text-align: center;
-            padding: 20px;
-            background: #222;
+            padding: 10px 0;
+            background-color: #222;
             color: white;
             z-index: 10;
-margin-left: 0cm;
+            box-sizing: border-box;
+            margin-top: 20px;
         }
 
-       footer {
-    position: relative;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0; /* Ridotto padding */
-    background-color: #222;
-    color: white;
-    z-index: 10;
-    box-sizing: border-box; /* Assicuriamoci che il padding non influisca sulla larghezza */
-    margin-top: 20px; /* Può essere utile per fare spazio tra l'ultimo contenuto e il footer */
-}
+        footer p {
+            margin: 0;
+        }
 
-/* Centrare il testo nel footer */
-footer p {
-    margin: 0;
-}
+        footer a {
+            text-decoration: none;
+            color: #007bff;
+        }
 
-footer a {
-    text-decoration: none;
-    color: #007bff;
-}
-.top-banner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: black;
-    padding: 10px 0;
-    text-align: center;
-    z-index: 9999;
-    transition: opacity 0.5s ease-in-out;
-}
+        .top-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: black;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-in-out;
+        }
 
-.top-banner img {
-    max-width: 100%;
-    height: auto;
-}
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-}
-.spacer {
-    height: 200px; /* Spazio extra per evitare sovrapposizioni */
-}
+        .top-banner img {
+            max-width: 100%;
+            height: auto;
+        }
 
-.image-section {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: black;
-    padding: 20px 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-}
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
 
-.bottom-image {
-    max-width: 100%;
-    height: auto;
-}
+        .spacer {
+            height: 200px;
+        }
 
-/* Utilizzare box-sizing per assicurarsi che il padding non influenzi la larghezza */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
+        .image-section {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            padding: 20px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        }
 
-/* Impostiamo il layout responsivo per tutti i dispositivi */
-@media (max-width: 1200px) {
-    body {
-        margin-left: 1cm; /* Stessa distanza anche per schermi più piccoli */
-    }
+        .bottom-image {
+            max-width: 100%;
+            height: auto;
+        }
 
-    .container, .section {
-        padding-left: 1cm; /* Assicurati che i contenuti all'interno non tocchino il margine */
-        padding-right: 1cm; /* Aggiungiamo anche un po' di margine a destra */
-    }
-}
+        /* Impostiamo il layout responsivo per tutti i dispositivi */
+        @media (max-width: 1200px) {
+            .container, .section {
+                padding-left: 1cm;
+                padding-right: 1cm;
+            }
+            .section h2 {
+                font-size: 5em;
+            }
+        }
 
-/* Media query per schermi più piccoli (come smartphone) */
-@media (max-width: 768px) {
-    body {
-        margin-left: 1cm; /* Assicuriamoci che resti distanziato dal bordo sinistro */
-    }
+        /* Media query per schermi più piccoli (come smartphone) */
+        @media (max-width: 768px) {
+            .container, .section {
+                padding-left: 1em;
+                padding-right: 1em;
+            }
+            .section h2 {
+                font-size: 4em;
+            }
+            .section p {
+                font-size: 1.5em;
+            }
+        }
 
-    .container, .section {
-        padding-left: 1cm; /* Aggiungiamo padding per dispositivi più piccoli */
-        padding-right: 1cm;
-    }
-}
-
-/* Assicurati che il contenuto occupi tutto lo spazio disponibile su schermi più larghi */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Per schermate molto piccole (come i dispositivi mobili) */
-@media (max-width: 480px) {
-    body {
-        margin-left: 1cm; /* Mantieni la distanza dal bordo sinistro */
-    }
-
-    .container {
-        padding-left: 1cm;
-        padding-right: 1cm;
-    }
-}
-</style>
+        /* Media query per schermi molto piccoli */
+        @media (max-width: 480px) {
+            .section h2 {
+                font-size: 3em;
+            }
+            .section p {
+                font-size: 1.2em;
+            }
+            .word-container {
+                flex-direction: column;
+                height: auto;
+            }
+            .glitch {
+                font-size: 5em;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="top-banner" id="topBanner">
-    <img src="https://imagizer.imageshack.com/img924/6306/1nJpr7.png" alt="Banner" />
-</div>
+    <div class="top-banner" id="topBanner">
+        <img src="https://imagizer.imageshack.com/img924/6306/1nJpr7.png" alt="Banner" />
+    </div>
 
-<br>
+    <br>
     <!-- Sezione parole con effetto glitch -->
     <div class="word-container">
         <div class="glitch" id="word1" data-text="BE A REPLY GUY">BE A REPLY GUY</div>
@@ -357,99 +249,79 @@ footer a {
         <div class="glitch" id="word5" data-text="NETWORK">NETWORK</div>
     </div>
 
-<!-- Nuova sezione con transizione glitch e sfondo nero -->
     <div class="section">
         <h2>Services</h2>
         <p>Custom landing pages, websites, banners, and ads are essential tools for growing a personal profile on X. A well-crafted profile boosts engagement, attracts followers, and builds valuable connections. By creating unique content and leveraging growth strategies, users can optimize their presence, enhance visibility, and accelerate growth. Hire me to transform your online presence and achieve success!</p>
     </div>
 
-    <!-- Nuova sezione con transizione glitch e sfondo nero -->
     <div class="section">
-        <h2>Become a Reply guy</h2>
+        <h2>Become a Reply Guy</h2>
         <p>Learn how to grow on X by replying creatively and strategically! Become an active Reply Guy, gain followers, build connections, and boost engagement with relevant content. Interact with the community, join interesting conversations, and stay consistent. Follow me to discover all the secrets to success!</p>
     </div>
 
- <!-- Sezione parole con effetto glitch -->
-    <div class="word-container">
-        <div class="glitch" id="word1" data-text="BE A REPLY GUY">BE A REPLY GUY</div>
-        <div class="glitch" id="word2" data-text="MANIFEST">MANIFEST</div>
-        <div class="glitch" id="word3" data-text="ENGAGE">ENGAGE</div>
-        <div class="glitch" id="word4" data-text="CONNECT">CONNECT</div>
-        <div class="glitch" id="word5" data-text="NETWORK">NETWORK</div>
+    <div class="section">
+        <a href="https://x.com/webgen_graphics">
+            <h2>FOLLOW ME</h2>
+        </a>
+        <p>Follow me on X and learn how to grow by leveraging the algorithm! Master strategies to boost your engagement, optimize your personal profile, and make every interaction count. Expand with targeted content, reply strategically, and attract new followers. Become a Reply Guy and dominate engagement!</p>
     </div>
 
-
- <div class="section">
-	<a href="https://x.com/webgen_graphics">
-        <h2>FOLLOW ME</h2>
-	</a>
-        <p>Follow me on X and learn how to grow by leveraging the algorithm! Master strategies to boost your engagement, optimize your personal profile, and make every interaction count. Expand with targeted content, reply strategically, and attract new followers. Become a Reply Guy and dominate engagement! </p>
+    <div class="image-section">
+        <img src="https://imagizer.imageshack.com/img923/6449/D33uud.png" class="bottom-image" alt="Banner">
     </div>
-<div class="image-section">
-    <img src="https://imagizer.imageshack.com/img923/6449/D33uud.png" class="bottom-image" alt="Banner">
-</div>
-<div class="spacer"></div>
-<div class="image-section">
-    <img src="https://imagizer.imageshack.com/img924/1014/bwj5Cw.png" class="bottom-image" alt="Banner">
-</div>
 
-        <footer>
+    <div class="spacer"></div>
+
+    <div class="image-section">
+        <img src="https://imagizer.imageshack.com/img924/1014/bwj5Cw.png" class="bottom-image" alt="Banner">
+    </div>
+
+    <footer>
         <p>Copyrights bla bla by <a href="https://x.com/webgen_graphics" target="_blank">webGen</a></p>
     </footer>
 
     <script>
-       let words = document.querySelectorAll(".glitch");
-let currentIndex = 0;
+        let words = document.querySelectorAll(".glitch");
+        let currentIndex = 0;
 
-function showWord(index) {
-    words.forEach(word => {
-        word.style.opacity = "0";
-        word.style.visibility = "hidden";
-        word.style.animation = "none"; // Resetta l'animazione
-    });
+        function showWord(index) {
+            words.forEach(word => {
+                word.style.opacity = "0";
+                word.style.visibility = "hidden";
+                word.style.animation = "none";
+            });
 
-    words[index].style.opacity = "1";
-    words[index].style.visibility = "visible";
-    words[index].style.animation = "glitch-effect 1.5s infinite alternate"; // Riattiva l'effetto glitch
-
-    setTimeout(() => {
-        words[index].style.opacity = "0";
-        words[index].style.visibility = "hidden";
-    }, 3000); // Nasconde la parola dopo 3 secondi
-
-    // Passa alla parola successiva ciclicamente
-    currentIndex = (currentIndex + 1) % words.length;
-    setTimeout(() => showWord(currentIndex), 4000); // Cambia parola ogni 4 secondi
-}
-
-// Avvia il loop
-showWord(0);
-
-let banner = document.getElementById("topBanner");
-let timeout;
-
-window.addEventListener("scroll", () => {
-    banner.classList.add("hidden");
-
-    clearTimeout(timeout); // Reset timer se l'utente continua a scorrere
-
-    timeout = setTimeout(() => {
-        banner.classList.remove("hidden");
-    }, 3000); // Dopo 3 secondi di inattività, il banner riappare
-});
- window.addEventListener("scroll", function() {
-        let scrollPosition = window.innerHeight + window.scrollY;
-        let documentHeight = document.documentElement.scrollHeight;
-        let imageSection = document.querySelector(".image-section");
-
-        if (scrollPosition >= documentHeight) {
-            imageSection.style.opacity = "1";
-            imageSection.style.visibility = "visible";
-        } else {
-            imageSection.style.opacity = "0";
-            imageSection.style.visibility = "hidden";
+            words[index].style.opacity = "1";
+            words[index].style.visibility = "visible";
+            words[index].style.animation = "glitch-effect 2s infinite linear alternate-reverse";
         }
-    });
+
+        setInterval(() => {
+            showWord(currentIndex);
+            currentIndex = (currentIndex + 1) % words.length;
+        }, 2000);
+
+        let topBanner = document.getElementById("topBanner");
+        let timeout;
+        let isScrolling = false;
+
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                topBanner.classList.add("hidden");
+                isScrolling = true;
+
+                clearTimeout(timeout);
+
+                timeout = setTimeout(() => {
+                    topBanner.classList.remove("hidden");
+                    isScrolling = false;
+                }, 3000);
+            }
+        });
+
+        topBanner.addEventListener("click", function() {
+            this.classList.add("hidden");
+        });
     </script>
 </body>
 </html>
