@@ -1,707 +1,455 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>webG Official</title>
-    <meta name="description" content="I create landing pages for crypto, meme, and Web3 projects. Check out my X profile and my work on Solana, Ethereum, AVAX, Sui, TON, and more blockchains!">
-    <meta name="keywords" content="meme, memecoin, Solana, Ethereum, AVAX, Sui, TON, blockchain, crypto, Web3, developer, landing page, website, X, HTML, CSS, JavaScript, responsive">
-    <meta name="author" content="webGen">
-    
-    <!-- Open Graph (for social media) -->
-    <meta property="og:title" content="Web3 Dev | Meme, Crypto & Landing Pages">
-    <meta property="og:description" content="I create landing pages for crypto, meme, and Web3 projects. Check out my X profile and my work on blockchains!">
-    <meta property="og:image" content="http://imageshack.com/f/pmseD5BRp">
-    <meta property="og:url" content="https://webg.site">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Card (for X) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Web3 Dev | Meme, Crypto & Landing Pages">
-    <meta name="twitter:description" content="I create landing pages for crypto, meme, and Web3 projects. Check out my X profile and my work!">
-    <meta name="twitter:image" content="http://imageshack.com/f/pmseD5BRp">
-    <meta name="twitter:site" content="@webgen_graphics">
+    <title>Landing Page - webGen</title>
+    <link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="http://imageshack.com/f/pmpsT9jrp">
     <style>
-        /* Importazione font */
-        /* Importazione font */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-* {
-    margin: 0;
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+        
+        body {
+             margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Press Start 2P', sans-serif;
-    background: url('https://imagizer.imageshack.com/img922/9163/FCfUyj.png') no-repeat center center fixed;
-    background-size: 50%;
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: black;
     color: white;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-position: center center;
-    flex-direction: column;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-}
-
-body.loaded {
-    opacity: 1;
-}
-
-
-
-/* Box elegante */
-.background-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) skewY(-2deg);
-    width: 5vw;
-    height: 60vh;
-    background-size: contain;
-    border-radius: 15px;
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-background-attachment: fixed; /* Rende l'immagine fissa mentre si scorre */
-}
-
-/* Sezioni */
-.sections {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 2s ease-in-out 3s;
-}
-
-.sections.loaded {
-    opacity: 1;
-}
-
-.section {
-    display: none;
-    margin-top: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 70px;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    width: 500px;
-    height: auto;
-    transition: all 0.5s ease-in-out;
-    transform: scale(0);
-    opacity: 0;
-    letter-spacing: 1px;
-    
-}
-p {
-    word-spacing: 8px; /* Aumenta la distanza tra le parole */
-}
-
-.section.show {
-    transform: scale(1);
-    opacity: 1;
-}
-
-.section-title {
-    font-size: 28px;
-    color: #00bcd4;
-    margin-bottom: 15px;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Effetto bounce */
-@keyframes bounce {
-    0% {
-        transform: scale(0.9);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-.section.show {
-    animation: bounce 1s ease-out forwards;
-}
-
-/* Bottoni */
-.buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: absolute;
-    bottom: 180px;
-    left: 185px;
-    opacity: 0;
-    transition: opacity 2s ease-in-out 2s;
-}
-
-.buttons.loaded {
-    opacity: 1;
-}
-
-.btn {
-    margin: 10px;
-    padding: 0;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, opacity 0.5s ease-in-out;
-    opacity: 1;
-    display: block;
-    width: 80px;
-    height: 80px;
-background-image: url('https://imagizer.imageshack.com/img924/9084/wylADc.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 100%;
+    overflow-x: hidden;
     position: relative;
+    min-height: 100vh; /* Impostiamo altezza minima per permettere al footer di rimanere in fondo */
+}
+        }
+
+  
+
+        /* Effetto glitch modificato */
+        @keyframes glitch-effect {
+            0% {
+                transform: translate(0) scale(1);
+                opacity: 1;
+            }
+            20% {
+                transform: translate(-5px, 0) scale(1.1);
+                opacity: 0.8;
+            }
+            40% {
+                transform: translate(5px, 0) scale(1.1);
+                opacity: 0.8;
+            }
+            60% {
+                transform: translate(-5px, 0) scale(1.1);
+                opacity: 0.7;
+            }
+            80% {
+                transform: translate(5px, 0) scale(1.1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Sezione con animazione glitch */
+        .section {
+            width: 100%;
+            padding: 160px 20px; /* Aumentato di 10px */
+            background-color: black;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeIn 1s ease-out forwards;
+            display: flex;
+            align-items: center; /* Allinea verticalmente */
+            justify-content: center; /* Allinea orizzontalmente */
+        }
+
+        .section h2 {
+            font-size: 6em;
+max-width: 600px; /* Larghezza fissa */
+
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            animation: glitch-animation 2s infinite linear alternate-reverse;
+        }
+
+        .section p {
+    font-size: 1,8
+    color: #ccc;
+    line-height: 1.6;
+    max-width: 700px; /* Larghezza fissa */
+    margin: 0 auto;
+    text-align: justify; /* Allineamento giustificato */
+    word-wrap: break-word;
+    opacity: 0;
+    animation: fadeInText 1s ease-out 1s forwards;
 }
 
- .btn:nth-child(1) {
-            background-image: url('https://imagizer.imageshack.com/img924/2840/Q5cxRb.png');
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .btn:nth-child(2) {
-            background-image: url('https://imagizer.imageshack.com/img922/728/ub8mcK.png');
+        @keyframes fadeInText {
+            to {
+                opacity: 1;
+            }
         }
-
-        .btn:nth-child(3) {
-            background-image: url('https://imagizer.imageshack.com/img922/834/8mtlN5.png');
-        }
-
-        .btn:nth-child(4) {
-            background-image: url('https://imagizer.imageshack.com/img922/5057/44ukM5.png');
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-        }
-.btn:hover {
-    background-color: #fff;
-    color: #000;
-    transform: translateY(-5px);
-}
-
-/* Footer */
-footer {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 12px;
-    color: black;
-}
-
-/* Ripple Effect */
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(0, 188, 212, 0.7);
-    transform: scale(0);
-    animation: ripple-animation 0.6s linear;
-}
-
-@keyframes ripple-animation {
+@keyframes fadeOutText {
     to {
-        transform: scale(4);
         opacity: 0;
+        visibility: hidden;
     }
 }
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* Header */
-header {
+.word-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px; /* Modifica l'altezza per centrare meglio */
+        position: relative;
+    }
+
+    .glitch {
+        font-size: 8em;
+        font-weight: bold;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: white;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        animation: glitch-effect 1.5s infinite;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    }
+
+    @keyframes glitch-effect {
+        0% { transform: translate(0) scale(1); opacity: 1; }
+        20% { transform: translate(-3px, 2px) scale(1.1); opacity: 0.8; }
+        40% { transform: translate(3px, -2px) scale(1.1); opacity: 0.8; }
+        60% { transform: translate(-3px, 2px) scale(1.1); opacity: 0.7; }
+        80% { transform: translate(3px, -2px) scale(1.1); opacity: 0.7; }
+        100% { transform: translate(0) scale(1); opacity: 1; }
+    }
+.word-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        position: relative;
+    }
+
+    .glitch {
+        font-size: 8em;
+        font-weight: bold;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: white;
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    }
+
+    /* Nuovo effetto glitch RGB */
+    .glitch::before,
+    .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .glitch::before {
+        color: red;
+        transform: translate(-2px, -2px);
+        opacity: 0.8;
+    }
+
+    .glitch::after {
+        color: cyan;
+        transform: translate(2px, 2px);
+        opacity: 0.8;
+    }
+
+    @keyframes glitch-effect {
+        0% { transform: translate(0, 0); }
+        20% { transform: translate(-3px, 2px); }
+        40% { transform: translate(3px, -2px); }
+        60% { transform: translate(-3px, 2px); }
+        80% { transform: translate(3px, -2px); }
+        100% { transform: translate(0, 0); }
+    }
+ /* Effetto di scuotimento (shake) */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Effetto glitch */
+        @keyframes glitch {
+            0% { transform: translate(0) scale(1); opacity: 1; }
+            20% { transform: translate(-3px, 2px) scale(1.1); opacity: 0.8; }
+            40% { transform: translate(3px, -2px) scale(1.1); opacity: 0.8; }
+            60% { transform: translate(-3px, 2px) scale(1.1); opacity: 0.7; }
+            80% { transform: translate(3px, -2px) scale(1.1); opacity: 0.7; }
+            100% { transform: translate(0) scale(1); opacity: 1; }
+        }
+
+        /* Effetto combinato di glitch e shake al passaggio del mouse */
+        .section h2:hover {
+            animation: shake 0.5s linear, glitch 1.5s infinite alternate-reverse;
+            color: cyan; /* Cambio colore durante l'effetto */
+        }
+    .glitch {
+        animation: glitch-effect 0.8s infinite alternate;
+    }
+        /* Footer fisso in basso */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            color: white;
+            z-index: 10;
+margin-left: 0cm;
+        }
+
+       footer {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0; /* Ridotto padding */
+    background-color: #222;
+    color: white;
+    z-index: 10;
+    box-sizing: border-box; /* Assicuriamoci che il padding non influisca sulla larghezza */
+    margin-top: 20px; /* Può essere utile per fare spazio tra l'ultimo contenuto e il footer */
+}
+
+/* Centrare il testo nel footer */
+footer p {
+    margin: 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: #007bff;
+}
+.top-banner {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background: transparent;
-    padding: 15px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-}
-
-/* Logo */
-.logo img {
-    height: 70px;
-}
-
-/* Sezione del menu */
-.menu-section {
-    position: relative;
-    padding-top: 20px; /* Spazio per il banner */
-}
-
-/* Bottone segnalibro a filo margine destro */
-.menu-toggle {
-    position: fixed;
-    top: 20px;
-    right: 0;
-    width: 50px;
-    height: 200px;
-    background-color: #ffaad4;
-    border-radius: 15px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-/* Quando si passa sopra il bottone del menu */
-.menu-toggle:hover {
-    transform: scale(1.1);
-}
-
-/* Scritta Menu verticale */
-.menu-text {
-    writing-mode: vertical-rl;
+    background: black;
+    padding: 10px 0;
     text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: #ff4d94;
-}
-
-/* Box del menu elegante che scorre */
-.menu-box {
-    position: fixed;
-    top: 0;
-    right: -300px; /* Posizione iniziale fuori dalla vista */
-    width: 300px;
-    height: 60%;
-    background: #ffdef2 ;
-    padding: 20px;
-    border-radius: 20px 0 0 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    display: none;
     z-index: 9999;
-    transition: right 0.5s ease-in-out; /* Transizione scorrevole da destra verso sinistra */
+    transition: opacity 0.5s ease-in-out;
 }
 
-/* Menu visibile */
-.menu-box.show {
-    display: block;
-    right: 0; /* Quando il menu è visibile, si sposta a sinistra */
+.top-banner img {
+    max-width: 100%;
+    height: auto;
+}
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+.spacer {
+    height: 200px; /* Spazio extra per evitare sovrapposizioni */
 }
 
-.menu-box ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.image-section {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    padding: 20px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
-.menu-box li {
-    padding: 15px;
-    text-align: center;
+.bottom-image {
+    max-width: 100%;
+    height: auto;
 }
 
-.menu-box li a {
-    text-decoration: none;
-    color: #ff4d94;
-    font-weight: bold;
-    font-size: 18px;
-    display: block;
-    transition: opacity 0.3s;
+/* Utilizzare box-sizing per assicurarsi che il padding non influenzi la larghezza */
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-.menu-box li a:hover {
-    opacity: 0.6;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    background: #333;
-    color: #fff;
-    padding: 20px;
-    position: relative;
-    margin-top: 50px; /* Spazio per evitare sovrapposizione con il menu */
-}
-
-/* Media query per dispositivi mobili */
-@media (max-width: 600px) {
-    .menu-toggle {
-        width: 40px;
-        height: 150px;
+/* Impostiamo il layout responsivo per tutti i dispositivi */
+@media (max-width: 1200px) {
+    body {
+        margin-left: 1cm; /* Stessa distanza anche per schermi più piccoli */
     }
 
-    .menu-box {
-        width: 250px;
-    }
-
-    .menu-text {
-        font-size: 16px;
+    .container, .section {
+        padding-left: 1cm; /* Assicurati che i contenuti all'interno non tocchino il margine */
+        padding-right: 1cm; /* Aggiungiamo anche un po' di margine a destra */
     }
 }
 
-/* 🔹 RESPONSIVE DESIGN 🔹 */
+/* Media query per schermi più piccoli (come smartphone) */
 @media (max-width: 768px) {
-body {
-        overflow: hidden; /* Disabilita lo scroll su mobile */
-    }
-     h1 {
-        font-size: 1.8rem;
+    body {
+        margin-left: 1cm; /* Assicuriamoci che resti distanziato dal bordo sinistro */
     }
 
-    #vision-text {
-        font-size: 1rem;
-    }
-
-    .expandable-box {
-        padding: 10px;
-        min-height: 80px;
-    }
-}
-    .background-box {
-        width: 60vw;
-        height: 60vh; /* Ridotta di 5vh */
-    }
-
-
-
-    .btn {
-        width: 600px;
-        height: 60px;
-        margin: 5px;
-    }
-
-    .section {
-        width: 90%;
-        padding: 25px;
-        font-size: 14px;
+    .container, .section {
+        padding-left: 1cm; /* Aggiungiamo padding per dispositivi più piccoli */
+        padding-right: 1cm;
     }
 }
 
+/* Assicurati che il contenuto occupi tutto lo spazio disponibile su schermi più larghi */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Per schermate molto piccole (come i dispositivi mobili) */
 @media (max-width: 480px) {
-body {
-        overflow: hidden; /* Disabilita lo scroll su mobile */
-    }
-     h1 {
-        font-size: 1.5rem;
+    body {
+        margin-left: 1cm; /* Mantieni la distanza dal bordo sinistro */
     }
 
-    #vision-text {
-        font-size: 0.9rem;
-    }
-
-    .expandable-box {
-        padding: 8px;
-        min-height: 70px;
+    .container {
+        padding-left: 1cm;
+        padding-right: 1cm;
     }
 }
-   
-
-    .buttons {
-        flex-direction: row;
-        justify-content: center;
-        gap: 8px;
-        width: 100%;
-        position: absolute;
-        bottom: 50px; /* Sempre sopra il footer */
-        left: 50%;
-        transform: translateX(-50%);
-        margin-bottom: 10px;
-    }
-
-    .btn {
-        width: 60px;
-        height: 60px;
-        margin: 5px;
-    }
-
-    .section {
-        width: 90%;
-        padding: 15px;
-        font-size: 14px;
-        margin-top: 15px;
-    }
-
-
-
-}
-/* Sfondo semi-trasparente */
-.popup {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
-
-/* Sfondo semi-trasparente */
-.popup {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
-
-.popup-content {
-    background: url('https://imagizer.imageshack.com/img924/5778/jpmw9t.png') no-repeat center center;
-    background-size: 60%;
-    padding: 30px;
-    text-align: center;
-    border-radius: 12px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    width: 400px;
-    position: relative;
-    animation: fadeIn 0.5s ease-in-out;
-    color: white; /* Testo bianco per visibilità */
-}
-/* Logo X sopra la scritta */
-.x-logo {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
-    right: 80px;
-}
-
-/* Testo */
-.popup-content p {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 60px;
-}
-
-/* Bottone Follow */
-.twitter-follow-button {
-    background: #1DA1F2;
-    color: white;
-    font-size: 16px;
-    padding: 10px 18px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    transition: background 0.3s ease;
-}
-
-.twitter-follow-button:hover {
-    background: #0d8bcb;
-}
-
-/* Animazione di fade-in */
-@keyframes fadeIn {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-
-
-    </style>
+</style>
 </head>
 <body>
-<!-- Sezione del menu -->
-<section class="menu-section">
-    <!-- Bottone del menu a filo margine destro, scritto in verticale -->
-    <div class="menu-toggle" id="menuToggle">
-        <span class="menu-text">Menu</span>
-    </div>
-
-    <!-- Box del menu elegante che scorre -->
-    <div class="menu-box" id="menuBox">
-        <ul>
-            <li><a href="https://vision.webg.site">Vision</a></li>
-            <li><a href="https://x.com/weBgen_graphics">Follow</a></li>
-            <li><a href="#">Coming soon..</a></li>
-        </ul>
-    </div>
-</section>
-
-<div id="twitter-popup" class="popup">
-    <div class="popup-content">
-                <p>Get in touch!</p>
-        <a id="follow-btn" href="https://twitter.com/webgen_graphics" target="_blank" class="twitter-follow-button">Follow</a>
-    </div>
+<div class="top-banner" id="topBanner">
+    <img src="https://imagizer.imageshack.com/img924/6306/1nJpr7.png" alt="Banner" />
 </div>
 
-<div class="background-box"></div>
-
-    <!-- Main content -->
-    <div class="container">
-        <div class="buttons">
-            <button class="btn" onclick="toggleSection('section1')"></button>
-            <button class="btn" onclick="toggleSection('section2')"></button>
-            <button class="btn" onclick="toggleSection('section3')"></button>
-            <button class="btn" onclick="toggleSection('section4')"></button> <!-- Aggiunto quarto pallino -->
-        </div>
-        <div class="sections">
-            <div class="section" id="section1">
-                <div class="section-title">WELCOME  MFREN</div>
-                <p>Keep clicking</p>
-            </div>
-            <div class="section" id="section2">
-                <div class="section-title">MFREN MEME</div>
-                <p>Need a landing page for your meme? Hit my dm on X</p>
-            </div>
-            <div class="section" id="section3">
-                <div class="section-title">LANGUAGE USED</div>
-                <p>HTML,CSS,JAVASCRIPT</p>
-            </div>
-            <div class="section" id="section4">
-                <div class="section-title">MFREN OPTIMIZED</div>
-                <p>SEO & metadatas optimiziation for search engines.</p>
-            </div>
-        </div>
+<br>
+    <!-- Sezione parole con effetto glitch -->
+    <div class="word-container">
+        <div class="glitch" id="word1" data-text="BE A REPLY GUY">BE A REPLY GUY</div>
+        <div class="glitch" id="word2" data-text="MANIFEST">MANIFEST</div>
+        <div class="glitch" id="word3" data-text="ENGAGE">ENGAGE</div>
+        <div class="glitch" id="word4" data-text="CONNECT">CONNECT</div>
+        <div class="glitch" id="word5" data-text="NETWORK">NETWORK</div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 webG.site | All rights reserved</p>
+<!-- Nuova sezione con transizione glitch e sfondo nero -->
+    <div class="section">
+        <h2>Services</h2>
+        <p>Custom landing pages, websites, banners, and ads are essential tools for growing a personal profile on X. A well-crafted profile boosts engagement, attracts followers, and builds valuable connections. By creating unique content and leveraging growth strategies, users can optimize their presence, enhance visibility, and accelerate growth. Hire me to transform your online presence and achieve success!</p>
+    </div>
+
+    <!-- Nuova sezione con transizione glitch e sfondo nero -->
+    <div class="section">
+        <h2>Become a Reply guy</h2>
+        <p>Learn how to grow on X by replying creatively and strategically! Become an active Reply Guy, gain followers, build connections, and boost engagement with relevant content. Interact with the community, join interesting conversations, and stay consistent. Follow me to discover all the secrets to success!</p>
+    </div>
+
+ <!-- Sezione parole con effetto glitch -->
+    <div class="word-container">
+        <div class="glitch" id="word1" data-text="BE A REPLY GUY">BE A REPLY GUY</div>
+        <div class="glitch" id="word2" data-text="MANIFEST">MANIFEST</div>
+        <div class="glitch" id="word3" data-text="ENGAGE">ENGAGE</div>
+        <div class="glitch" id="word4" data-text="CONNECT">CONNECT</div>
+        <div class="glitch" id="word5" data-text="NETWORK">NETWORK</div>
+    </div>
+
+
+ <div class="section">
+	<a href="https://x.com/webgen_graphics">
+        <h2>FOLLOW ME</h2>
+	</a>
+        <p>Follow me on X and learn how to grow by leveraging the algorithm! Master strategies to boost your engagement, optimize your personal profile, and make every interaction count. Expand with targeted content, reply strategically, and attract new followers. Become a Reply Guy and dominate engagement! </p>
+    </div>
+<div class="image-section">
+    <img src="https://imagizer.imageshack.com/img923/6449/D33uud.png" class="bottom-image" alt="Banner">
+</div>
+<div class="spacer"></div>
+<div class="image-section">
+    <img src="https://imagizer.imageshack.com/img924/1014/bwj5Cw.png" class="bottom-image" alt="Banner">
+</div>
+
+        <footer>
+        <p>Copyrights bla bla by <a href="https://x.com/webgen_graphics" target="_blank">webGen</a></p>
     </footer>
 
     <script>
-        window.onload = () => {
-            document.body.classList.add('loaded');
-            document.querySelector('.container').classList.add('loaded');
-            document.querySelector('.buttons').classList.add('loaded');
-            document.querySelector('.sections').classList.add('loaded');
-            document.querySelector('.logo').style.opacity = '1'; /* Aggiunto per mostrare il logo */
-        };
+       let words = document.querySelectorAll(".glitch");
+let currentIndex = 0;
 
-        // Toggle sections visibility with transition
-        function toggleSection(sectionId) {
-            const sections = document.querySelectorAll('.section');
-            const currentSection = document.getElementById(sectionId);
-            
-            // Chiude il box già aperto
-            sections.forEach(section => {
-                if (section !== currentSection) {
-                    section.classList.remove('show');
-                    section.style.display = 'none';
-                }
-            });
+function showWord(index) {
+    words.forEach(word => {
+        word.style.opacity = "0";
+        word.style.visibility = "hidden";
+        word.style.animation = "none"; // Resetta l'animazione
+    });
 
-            // Alterna l'apertura e la chiusura del box
-            if (currentSection.style.display === 'block') {
-                currentSection.classList.remove('show');
-                currentSection.style.display = 'none';
-            } else {
-                currentSection.classList.add('show');
-                currentSection.style.display = 'block';
-            }
-        }
+    words[index].style.opacity = "1";
+    words[index].style.visibility = "visible";
+    words[index].style.animation = "glitch-effect 1.5s infinite alternate"; // Riattiva l'effetto glitch
 
-        // Close sections when clicking outside
-        document.addEventListener('click', function(event) {
-            const sections = document.querySelectorAll('.section');
-            const buttons = document.querySelectorAll('.btn');
-
-            // Check if click is outside of any button or section
-            if (!event.target.closest('.btn') && !event.target.closest('.section')) {
-                sections.forEach(section => {
-                    section.classList.remove('show');
-                    section.style.display = 'none';
-                });
-            }
-        });
-// Aggiungi un effetto ripple quando si clicca in qualsiasi punto della pagina
-document.body.addEventListener('click', function (event) {
-    const ripple = document.createElement('span');
-    const rect = document.body.getBoundingClientRect();
-    const size = 20; // Ridotto per avere un effetto più piccolo
-    const x = event.clientX - rect.left - size / 2;
-    const y = event.clientY - rect.top - size / 2;
-
-    ripple.style.width = ripple.style.height = `${size}px`; // Mantenuto piccolo
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-
-    ripple.classList.add('ripple');
-
-    document.body.appendChild(ripple);
-
-    // Rimuove l'elemento ripple dopo che l'animazione è finita
     setTimeout(() => {
-        ripple.remove();
-    }, 400); // 400ms corrisponde alla durata dell'animazione
+        words[index].style.opacity = "0";
+        words[index].style.visibility = "hidden";
+    }, 3000); // Nasconde la parola dopo 3 secondi
+
+    // Passa alla parola successiva ciclicamente
+    currentIndex = (currentIndex + 1) % words.length;
+    setTimeout(() => showWord(currentIndex), 4000); // Cambia parola ogni 4 secondi
+}
+
+// Avvia il loop
+showWord(0);
+
+let banner = document.getElementById("topBanner");
+let timeout;
+
+window.addEventListener("scroll", () => {
+    banner.classList.add("hidden");
+
+    clearTimeout(timeout); // Reset timer se l'utente continua a scorrere
+
+    timeout = setTimeout(() => {
+        banner.classList.remove("hidden");
+    }, 3000); // Dopo 3 secondi di inattività, il banner riappare
 });
-function hidePreloader() {
-            document.getElementById("preloader").classList.add("hidden");
-            setTimeout(() => {
-                document.getElementById("preloader").style.display = "none";
-                document.getElementById("content").style.display = "block";
-            }, 1000); // Attendi il fade-out prima di mostrare il contenuto
+ window.addEventListener("scroll", function() {
+        let scrollPosition = window.innerHeight + window.scrollY;
+        let documentHeight = document.documentElement.scrollHeight;
+        let imageSection = document.querySelector(".image-section");
+
+        if (scrollPosition >= documentHeight) {
+            imageSection.style.opacity = "1";
+            imageSection.style.visibility = "visible";
+        } else {
+            imageSection.style.opacity = "0";
+            imageSection.style.visibility = "hidden";
         }
- document.addEventListener("DOMContentLoaded", function () {
-        if (!localStorage.getItem("followed")) {
-            document.getElementById("twitter-popup").style.display = "flex";
-        }
-
-        document.getElementById("follow-btn").addEventListener("click", function () {
-            localStorage.setItem("followed", "true");
-            document.getElementById("twitter-popup").style.display = "none";
-        });
-    });    
-document.getElementById("follow-btn").addEventListener("click", function() {
-    localStorage.setItem("followedOnTwitter", "true"); // Salva lo stato di follow
-    document.getElementById("twitter-popup").style.display = "none"; // Chiude il popup
-});
-
-// Controlla se l'utente ha già seguito su Twitter
-window.addEventListener("load", function() {
-    if (localStorage.getItem("followedOnTwitter") === "true") {
-        document.getElementById("twitter-popup").style.display = "none";
-    }
-});
-// Toggle il menu elegante con effetto scorrevole
-document.getElementById("menuToggle").addEventListener("click", function () {
-    const menuBox = document.getElementById("menuBox");
-    const isVisible = menuBox.classList.contains("show");
-
-    // Aggiungi o rimuovi la classe 'show' per mostrare o nascondere il menu
-    if (isVisible) {
-        menuBox.classList.remove("show");
-    } else {
-        menuBox.classList.add("show");
-    }
-});
-
-// Chiudi il menu se si clicca fuori dal box
-document.addEventListener("click", function (event) {
-    const menuBox = document.getElementById("menuBox");
-    const menuToggle = document.getElementById("menuToggle");
-
-    // Se si clicca fuori dal menu e dal bottone, nascondi il menu
-    if (!menuBox.contains(event.target) && !menuToggle.contains(event.target)) {
-        menuBox.classList.remove("show");
-    }
-});
-
-
-</script>
+    });
+    </script>
 </body>
 </html>
