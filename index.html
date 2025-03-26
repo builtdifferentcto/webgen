@@ -9,17 +9,72 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Bebas Neue', sans-serif;
-            background-color: black;
-            color: white;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-            box-sizing: border-box;
-        }
+     
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    box-sizing: border-box;
+    z-index: -1; /* Mette il contenuto sopra */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://imagizer.imageshack.com/img923/7116/Li6QyU.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    z-index: -1; /* Mette l'immagine come sfondo */
+    opacity: 0.6; /* Aggiungi l'opacità qui (puoi regolare il valore) */
+}
+
+/* Opacità sfondo delle sezioni */
+.section {
+    background-color: rgba(0, 0, 0, 0.7); /* Sfondo nero con opacità */
+    width: 100%;
+    padding: 160px 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInZoom 1.5s ease-out forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    visibility: hidden;
+}
+
+/* Altri stili per le sezioni */
+.section h2 {
+    font-size: 6em;
+    max-width: 600px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    animation: glitch-effect 2s infinite linear alternate-reverse;
+}
+
+.section p {
+    font-size: 1.8em;
+    color: #ccc;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: justify;
+    word-wrap: break-word;
+    opacity: 0;
+    animation: fadeInZoom 1.5s ease-out 1s forwards;
+}
 
         /* Effetto glitch modificato */
         @keyframes glitch-effect {
@@ -43,43 +98,7 @@
             }
         }
 
-        .section {
-            width: 100%;
-            padding: 160px 20px;
-            background-color: black;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInZoom 1.5s ease-out forwards;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            text-align: center;
-            visibility: hidden;
-        }
-
-        .section h2 {
-            font-size: 6em;
-            max-width: 600px;
-            font-weight: bold;
-            color: white;
-            text-transform: uppercase;
-            animation: glitch-effect 2s infinite linear alternate-reverse;
-        }
-
-        .section p {
-            font-size: 1.8em;
-            color: #ccc;
-            line-height: 1.6;
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: justify;
-            word-wrap: break-word;
-            opacity: 0;
-            animation: fadeInZoom 1.5s ease-out 1s forwards;
-        }
-
-        .word-container {
+               .word-container {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -143,17 +162,25 @@
             color: #007bff;
         }
 
-        .top-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: black;
-            padding: 10px 0;
-            text-align: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-in-out;
-        }
+        /* Aggiungi margine alla prima sezione per evitare che il banner la copra */
+.section {
+    margin-top: 80px; /* Distanza extra per spostare la sezione sotto il banner */
+}
+
+/* Impostiamo un padding-top per garantire che la sezione non venga coperta dal banner */
+.top-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: black;
+    padding: 10px 0;
+    text-align: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
 
         .top-banner img {
             max-width: 100%;
@@ -169,42 +196,22 @@
             height: 200px;
         }
 
-        .image-section {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: black;
-            padding: 20px 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
-        }
+/* Bottone scroll to top sopra il footer */
+.scroll-to-top {
+    position: absolute;
+    bottom: 2.5cm; /* Distanza dal fondo della pagina */
+    right: 20px; /* Distanza dal lato destro */
+    z-index: 100;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+}
 
-        .bottom-image {
-            max-width: 100%;
-            height: auto;
-        }
+.scroll-to-top img {
+    width: 100%;
+    height: 100%;
+}
 
-        /* Posizione del bottone Scroll to Top */
-        .scroll-to-top {
-            position: fixed;
-            bottom: 2.5cm;
-            right: 20px;
-            z-index: 100;
-            cursor: pointer;
-            width: 70px;
-            height: 70px;
-        }
-
-        .scroll-to-top img {
-            width: 100%;
-            height: 100%;
-        }
 
         /* Nuova sezione sopra il footer */
         .new-section {
@@ -263,13 +270,26 @@
                 font-size: 5em;
                 letter-spacing: 4px;
             }
+
+            .new-section img {
+                width: 100%;
+            }
         }
+
+        /* Bottone Scroll to Top adattato per dispositivi mobili */
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 1.5cm;
+                right: 10px;
+                width: 50px;
+                height: 50px;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <div class="top-banner" id="topBanner">
-        <img src="https://imagizer.imageshack.com/img924/6306/1nJpr7.png" alt="Banner" />
-    </div>
+
 
     <br>
     <!-- Sezione parole con effetto glitch -->
@@ -280,7 +300,9 @@
         <div class="glitch" id="word4" data-text="CONNECT">CONNECT</div>
         <div class="glitch" id="word5" data-text="NETWORK">NETWORK</div>
     </div>
-
+    <div class="top-banner" id="topBanner">
+        <img src="https://imagizer.imageshack.com/img924/6306/1nJpr7.png" alt="Banner" />
+    </div>
     <div class="section">
         <h2>Services</h2>
         <p>Custom landing pages, websites, banners, and ads are essential tools for growing a personal profile on X. A well-crafted profile boosts engagement, attracts followers, and builds valuable connections. By creating unique content and leveraging growth strategies, users can optimize their presence, enhance visibility, and accelerate growth. Hire me to transform your online presence and achieve success!</p>
@@ -292,19 +314,19 @@
     </div>
 
     <div class="section">
-        <a href="https://x.com/webgen_graphics">
+       
             <h2>FOLLOW ME</h2>
-        </a>
+     
         <p>Follow me on X and learn how to grow by leveraging the algorithm! Master strategies to boost your engagement, optimize your personal profile, and make every interaction count. Become a Reply Guy and dominate engagement!</p>
     </div>
 
     <div class="new-section">
+	<a href="https://x.com/webgen_graphics">
         <img src="https://imagizer.imageshack.com/img924/579/Zbd7gl.png" alt="New Section Image">
+</a>
     </div>
 
-    <div class="image-section">
-        <img src="https://imagizer.imageshack.com/img923/6449/D33uud.png" class="bottom-image" alt="Banner">
-    </div>
+
 
     <footer>
         <p>Copyrights bla bla by <a href="https://x.com/webgen_graphics" target="_blank">webGen</a></p>
@@ -350,7 +372,7 @@
                 timeout = setTimeout(() => {
                     topBanner.classList.remove("hidden");
                     isScrolling = false;
-                }, 3000);
+                }, 6000);
             }
 
             // Mostra il bottone di scroll to top solo dopo metà pagina
