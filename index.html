@@ -31,18 +31,31 @@
             100% { transform: translate(0) scale(1); opacity: 1; }
         }
 
+        /* Animazione fade-in con zoom per il testo */
+        @keyframes fadeInZoom {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
         .section {
             width: 100%;
             padding: 160px 20px;
             background-color: black;
             opacity: 0;
             transform: translateY(50px);
-            animation: fadeIn 1s ease-out forwards;
+            animation: fadeInZoom 1.5s ease-out forwards;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             text-align: center;
+            visibility: hidden;
         }
 
         .section h2 {
@@ -63,20 +76,7 @@
             text-align: justify;
             word-wrap: break-word;
             opacity: 0;
-            animation: fadeInText 1s ease-out 1s forwards;
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInText {
-            to {
-                opacity: 1;
-            }
+            animation: fadeInZoom 1.5s ease-out 1s forwards;
         }
 
         .word-container {
@@ -190,6 +190,38 @@
             height: auto;
         }
 
+        /* Posizione del bottone Scroll to Top */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2.5cm;
+            right: 20px;
+            z-index: 100;
+            cursor: pointer;
+            width: 70px;
+            height: 70px;
+        }
+
+        .scroll-to-top img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Nuova sezione sopra il footer */
+        .new-section {
+            background-color: black;
+            text-align: center;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .new-section img {
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+        }
+
         /* Impostiamo il layout responsivo per tutti i dispositivi */
         @media (max-width: 1200px) {
             .container, .section {
@@ -263,22 +295,25 @@
         <a href="https://x.com/webgen_graphics">
             <h2>FOLLOW ME</h2>
         </a>
-        <p>Follow me on X and learn how to grow by leveraging the algorithm! Master strategies to boost your engagement, optimize your personal profile, and make every interaction count. Expand with targeted content, reply strategically, and attract new followers. Become a Reply Guy and dominate engagement!</p>
+        <p>Follow me on X and learn how to grow by leveraging the algorithm! Master strategies to boost your engagement, optimize your personal profile, and make every interaction count. Become a Reply Guy and dominate engagement!</p>
+    </div>
+
+    <div class="new-section">
+        <img src="https://imagizer.imageshack.com/img924/579/Zbd7gl.png" alt="New Section Image">
     </div>
 
     <div class="image-section">
         <img src="https://imagizer.imageshack.com/img923/6449/D33uud.png" class="bottom-image" alt="Banner">
     </div>
 
-    <div class="spacer"></div>
-
-    <div class="image-section">
-        <img src="https://imagizer.imageshack.com/img924/1014/bwj5Cw.png" class="bottom-image" alt="Banner">
-    </div>
-
     <footer>
         <p>Copyrights bla bla by <a href="https://x.com/webgen_graphics" target="_blank">webGen</a></p>
     </footer>
+
+    <!-- Bottone scroll to top -->
+    <div class="scroll-to-top" id="scrollToTop">
+        <img src="https://imagizer.imageshack.com/img922/3255/akNvgd.png" alt="Scroll to Top">
+    </div>
 
     <script>
         let words = document.querySelectorAll(".glitch");
@@ -317,10 +352,27 @@
                     isScrolling = false;
                 }, 3000);
             }
+
+            // Mostra il bottone di scroll to top solo dopo metà pagina
+            const scrollToTop = document.getElementById("scrollToTop");
+            if (window.scrollY > window.innerHeight / 2) {
+                scrollToTop.style.display = 'block';
+            } else {
+                scrollToTop.style.display = 'none';
+            }
+
+            // Animazione di apparizione delle sezioni quando si scrolla
+            const sections = document.querySelectorAll(".section");
+            sections.forEach(section => {
+                if (window.scrollY + window.innerHeight > section.offsetTop + 100) {
+                    section.style.visibility = 'visible';
+                    section.style.opacity = 1;
+                }
+            });
         });
 
-        topBanner.addEventListener("click", function() {
-            this.classList.add("hidden");
+        document.getElementById("scrollToTop").addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
