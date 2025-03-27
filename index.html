@@ -381,7 +381,16 @@ body::before {
         font-size: 1em;
     }
 }
+ .glitch {
+        font-size: 2em; /* Riduce la grandezza del testo */
+        letter-spacing: 1px; /* Meno spazio tra le lettere */
+    }
 
+    .glitch:before,
+    .glitch:after {
+        font-size: 2em; /* Assicura che il glitch non si ingrandisca troppo */
+        top: 0.05em; /* Regola la posizione dell'effetto glitch */
+    }
     </style>
 </head>
 <body>
