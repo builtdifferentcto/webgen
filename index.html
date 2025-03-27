@@ -228,7 +228,40 @@ body::before {
             max-width: 800px;
             height: auto;
         }
+/* Banner in alto - Responsive */
+.banner {
+    padding: 10px;
+    font-size: clamp(1em, 2.5vw, 1.4em);
+}
 
+/* Navbar o menu (se presente) */
+.navbar {
+    font-size: clamp(1em, 3vw, 1.5em);
+}
+
+/* Sezioni */
+.section h2 {
+    font-size: clamp(2em, 6vw, 3.5em);
+}
+
+.section p {
+    font-size: clamp(1.2em, 3vw, 1.6em);
+}
+
+/* Mobile Specific */
+@media screen and (max-width: 768px) {
+    h1, h2 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+
+    .banner {
+        font-size: 1em;
+    }
+}
         /* Impostiamo il layout responsivo per tutti i dispositivi */
         @media (max-width: 1200px) {
             .container, .section {
@@ -381,7 +414,17 @@ body::before {
         padding: 8px 12px;
     }
 }
+/* Titoli e Testo - Responsive */
+h1, h2 {
+    font-size: clamp(2em, 5vw, 4em); /* Adatta tra 2em e 4em in base alla larghezza */
+    text-align: center;
+    margin-bottom: 15px;
+}
 
+p {
+    font-size: clamp(1em, 2.5vw, 1.6em);
+    text-align: justify;
+}
     </style>
 </head>
 <body>
